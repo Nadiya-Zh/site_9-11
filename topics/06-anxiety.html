@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сила моєї думки · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #080808;
+  --s1:    #0E0E0E;
+  --s2:    #141414;
+  --s3:    #1A1A1A;
+  --gold:  #C8A840;
+  --go-l:  rgba(200,168,64,.11);
+  --go-ll: rgba(200,168,64,.05);
+  --slate: #D8D4CC;
+  --sl-l:  rgba(216,212,204,.08);
+  --rose:  #C84858;
+  --ro-l:  rgba(200,72,88,.09);
+  --teal:  #28B898;
+  --te-l:  rgba(40,184,152,.09);
+  --lav:   #9880C8;
+  --la-l:  rgba(152,128,200,.09);
+  --text:  #E8E4DC;
+  --muted: rgba(232,228,220,.48);
+  --dim:   rgba(232,228,220,.26);
+  --bd:    rgba(255,255,255,.07);
+  --bd2:   rgba(255,255,255,.13);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 48% at 8% 15%,rgba(200,168,64,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 55% at 88% 85%,rgba(152,128,200,.1) 0%,transparent 62%),
+    radial-gradient(ellipse 35% 30% at 52% 50%,rgba(40,184,152,.05) 0%,transparent 55%);}
+
+.prog{position:fixed;top:0;left:0;height:1px;z-index:500;background:linear-gradient(90deg,var(--gold),var(--lav));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:5px;height:5px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--gold);transform:scale(1.8);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 3rem 3.5rem;}
+.hero-kicker{font-size:.6rem;font-weight:500;letter-spacing:.26em;color:rgba(200,168,64,.6);text-transform:uppercase;margin-bottom:2rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:400;line-height:.92;letter-spacing:-.02em;color:var(--text);margin-bottom:2.5rem;}
+.hero h1 .it{font-style:italic;color:var(--gold);}
+.hero h1 .sm{font-size:.38em;font-weight:300;letter-spacing:.02em;color:var(--dim);display:block;margin-top:.5rem;}
+.hero-foot{border-top:1px solid var(--bd2);padding-top:1.5rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.hero-desc{font-size:.9rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:400px;}
+.hero-index{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem .8rem;}
+.hi{font-size:.6rem;font-weight:500;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:7rem 2rem;}
+.divl{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;position:relative;z-index:2;padding:0 2rem;}
+.divl-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.3;}
+.divl-n{font-size:.6rem;font-weight:500;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;white-space:nowrap;}
+
+.lbl{font-size:.6rem;font-weight:500;letter-spacing:.2em;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
+.lbl::after{content:'';width:24px;height:1px;background:var(--gold);opacity:.5;}
+
+h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:1.1rem;letter-spacing:-.01em;}
+h2 em{font-style:italic;color:var(--gold);}
+h2 .sub{display:block;font-size:.48em;font-weight:300;font-style:normal;color:var(--muted);margin-top:.5rem;letter-spacing:.01em;font-family:'Inter',sans-serif;}
+
+.lead{font-size:.95rem;font-weight:300;line-height:1.95;color:var(--muted);max-width:660px;margin-bottom:2rem;}
+
+/* PSYCHO */
+.psy{border-left:1px solid var(--gold);padding:1.4rem 2rem;margin:2.5rem 0;position:relative;}
+.psy::before{content:'';position:absolute;top:0;left:-1px;width:1px;height:40px;background:var(--gold);}
+.psy-who{font-size:.58rem;font-weight:500;letter-spacing:.2em;color:rgba(200,168,64,.6);margin-bottom:.7rem;text-transform:uppercase;}
+.psy p{font-size:.92rem;font-weight:300;line-height:1.95;color:rgba(232,228,220,.7);font-style:italic;font-family:'Playfair Display',serif;}
+
+/* ANXIETY TRACKER */
+.anx-wrap{margin:2rem 0;}
+.anx-dial{display:flex;align-items:center;gap:1.5rem;margin:1.2rem 0;flex-wrap:wrap;}
+.anx-slider{-webkit-appearance:none;appearance:none;width:100%;max-width:480px;height:2px;background:var(--bd2);outline:none;border-radius:1px;}
+.anx-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 0 12px rgba(200,168,64,.4);}
+.anx-val{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--gold);min-width:3rem;text-align:center;}
+.anx-txt{font-size:.82rem;font-weight:300;color:var(--muted);font-style:italic;max-width:360px;min-height:2.5rem;}
+
+/* DISTORTIONS — 7 items, grid of cards on hover/click */
+.dist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--bd);margin:2rem 0;border:1px solid var(--bd);}
+.dg{background:var(--s1);padding:1.5rem;cursor:pointer;transition:background .2s;position:relative;}
+.dg:hover{background:var(--s2);}
+.dg.open{background:var(--s2);border-right:1px solid rgba(200,168,64,.3);}
+.dg.open .dg-t{color:var(--gold);}
+.dg-n{font-size:.58rem;font-weight:500;letter-spacing:.12em;color:var(--dim);margin-bottom:.5rem;}
+.dg-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:var(--text);margin-bottom:.3rem;transition:color .2s;}
+.dg-short{font-size:.76rem;font-weight:300;color:var(--muted);line-height:1.55;}
+.dg-body{display:none;margin-top:.8rem;font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.78;border-top:1px solid var(--bd);padding-top:.8rem;}
+.dg.open .dg-body{display:block;}
+.dg-ex{margin:.6rem 0;padding:.6rem .9rem;background:var(--s3);border-left:1px solid var(--gold);font-size:.78rem;font-style:italic;}
+.dg-cq{margin:.5rem 0;padding:.6rem .9rem;background:var(--te-l);border-left:1px solid var(--teal);font-size:.78rem;}
+
+/* THOUGHT RECORD */
+.tr-box{border:1px solid var(--bd);margin:2rem 0;}
+.tr-head{padding:1rem 1.5rem;border-bottom:1px solid var(--bd);font-size:.6rem;font-weight:500;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;}
+.tr-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--bd);}
+.trc{background:var(--s1);padding:1.3rem;}
+.trc-l{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;line-height:1;margin-bottom:.3rem;}
+.trc-n{font-size:.6rem;font-weight:500;letter-spacing:.1em;color:var(--dim);margin-bottom:.5rem;text-transform:uppercase;}
+.trc-d{font-size:.75rem;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:.7rem;}
+.trc-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.45rem 0;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.55;}
+.trc-in:focus{border-color:var(--gold);}
+.trc-in::placeholder{color:var(--dim);}
+.tr-btn{background:none;border:1px solid var(--gold);color:var(--gold);padding:.65rem 2rem;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;display:block;margin:1.5rem auto;transition:all .2s;letter-spacing:.03em;}
+.tr-btn:hover{background:var(--gold);color:var(--bg);}
+.tr-res{display:none;border-top:1px solid var(--bd);padding:1.5rem;}
+.tr-res.show{display:block;}
+.tr-ri{margin-bottom:.9rem;font-size:.84rem;font-weight:300;color:var(--muted);line-height:1.75;}
+.tr-ri strong{color:var(--gold);font-family:'Playfair Display',serif;font-size:.7rem;letter-spacing:.08em;display:block;margin-bottom:.2rem;font-style:normal;}
+.tr-note{padding:.7rem 1rem;background:var(--go-ll);border-left:1px solid var(--gold);font-size:.8rem;color:var(--muted);font-style:italic;margin-top:.8rem;}
+
+/* METACOGNITION */
+.meta-wrap{margin:2rem 0;}
+.meta-q{border-bottom:1px solid var(--bd);padding:1.1rem 0;cursor:pointer;display:flex;align-items:flex-start;gap:1rem;transition:opacity .2s;}
+.meta-q:hover{opacity:.8;}
+.meta-q.open .meta-qt{color:var(--gold);}
+.meta-qn{font-size:.6rem;font-weight:500;color:var(--dim);min-width:1.8rem;padding-top:.12rem;letter-spacing:.05em;}
+.meta-qt{font-size:.88rem;font-weight:500;color:var(--text);flex:1;transition:color .2s;line-height:1.6;}
+.meta-qa{display:none;margin-top:.7rem;padding:.8rem 1rem;background:var(--s1);font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.78;border-left:1px solid var(--gold);}
+.meta-q.open .meta-qa{display:block;}
+
+/* ACT DEFUSION */
+.act-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.8rem;margin:2rem 0;}
+.act-c{background:var(--s1);border:1px solid var(--bd);padding:1.5rem;cursor:pointer;transition:all .2s;}
+.act-c:hover{border-color:var(--bd2);}
+.act-c.open{border-color:var(--teal);}
+.act-c.open .act-ct{color:var(--teal);}
+.act-ci{font-size:1.6rem;margin-bottom:.5rem;display:block;}
+.act-ct{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;transition:color .2s;}
+.act-cs{font-size:.76rem;font-weight:300;color:var(--muted);line-height:1.55;}
+.act-cx{display:none;margin-top:.8rem;font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.75;border-top:1px solid var(--bd);padding-top:.8rem;}
+.act-c.open .act-cx{display:block;}
+
+/* SCENARIOS */
+.sc-wrap{border:1px solid var(--bd);margin:2rem 0;}
+.sc-top{padding:.9rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;}
+.sc-tl{font-size:.58rem;font-weight:500;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;}
+.sc-pp{font-size:.7rem;font-weight:600;color:var(--gold);}
+.sc-pb{height:1px;background:var(--bd);}
+.sc-pf{height:100%;background:var(--gold);transition:width .4s;}
+.sc-body{padding:2rem 1.5rem;}
+.sc-q{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:400;line-height:1.55;color:var(--text);margin-bottom:1.5rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.4rem;}
+.sc-o{background:var(--s1);border:1px solid var(--bd);padding:.8rem 1.1rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-o:hover{border-color:var(--bd2);color:var(--text);}
+.sc-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);}
+.sc-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.sc-o:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.83rem;font-weight:300;padding:.85rem 1.1rem;border-left:1px solid var(--bd2);margin-top:1rem;display:none;line-height:1.82;color:var(--muted);}
+.sc-fb.show{display:block;}.sc-fb.ok{border-color:var(--teal);}.sc-fb.bad{border-color:var(--rose);}
+.sc-nx{display:none;margin-top:1rem;background:none;border:1px solid var(--bd2);padding:.5rem 1.5rem;font-family:'Inter',sans-serif;font-size:.76rem;color:var(--dim);cursor:pointer;transition:all .2s;}
+.sc-nx:hover{border-color:var(--gold);color:var(--gold);}.sc-nx.show{display:inline-block;}
+.sc-sc{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:var(--gold);text-align:center;margin-top:1.5rem;display:none;}
+
+/* QUIZ */
+.qz-wrap{border:1px solid var(--bd);margin:2rem 0;}
+.qz-top{padding:.85rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;}
+.qz-pr{font-size:.58rem;font-weight:500;letter-spacing:.1em;color:var(--dim);}
+.qz-pp{font-size:.58rem;font-weight:600;color:var(--gold);}
+.qz-body{padding:2rem 1.5rem;}
+.qz-q{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:400;line-height:1.52;color:var(--text);margin-bottom:1.4rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.4rem;}
+.qz-o{background:var(--s1);border:1px solid var(--bd);padding:.78rem 1.1rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);}
+.qz-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);font-weight:500;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.82rem;font-weight:300;padding:.8rem 1rem;border-left:1px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.8;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--teal);}.qz-fb.bad{border-color:var(--rose);}
+.qz-nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.48rem 1.5rem;font-family:'Inter',sans-serif;font-size:.74rem;color:var(--dim);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{border-color:var(--gold);color:var(--gold);}.qz-nx.show{display:inline-block;}
+.qz-sc{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:var(--gold);text-align:center;margin-top:1.5rem;display:none;padding:1rem;}
+
+/* PLAN */
+.plan-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.pf{background:var(--s1);padding:1.4rem;}
+.pfl{font-size:.58rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.pf-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.45rem 0;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.55;}
+.pf-in:focus{border-color:var(--gold);}
+.pf-in::placeholder{color:var(--dim);}
+.plan-btn{background:none;border:1px solid var(--gold);color:var(--gold);padding:.72rem 2.2rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:500;cursor:pointer;display:block;margin:1.5rem auto;transition:all .2s;letter-spacing:.04em;}
+.plan-btn:hover{background:var(--gold);color:var(--bg);}
+.plan-res{display:none;background:var(--s1);border:1px solid var(--bd2);padding:2rem;margin-top:1.5rem;}
+.plan-res.show{display:block;}
+.plan-res h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;color:var(--text);text-align:center;margin-bottom:1.2rem;}
+.pr-r{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.82rem;font-weight:300;line-height:1.65;}
+.pr-r:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.65rem;font-weight:500;letter-spacing:.06em;min-width:155px;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:6rem 2rem 9rem;}
+.final-cert{border:1px solid var(--bd2);padding:2.5rem;margin:2rem 0;}
+.fcl{font-size:.58rem;font-weight:500;letter-spacing:.16em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-family:'Playfair Display',serif;font-size:.96rem;font-weight:400;color:var(--text);line-height:1.75;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="9-11" data-mo-id="06" data-mo-kind="student" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Тема 6 з 24 · Сила моєї думки: долаємо тривогу</span><span class="mo-r"><a href="05-stress.html" title="Попередня тема">‹</a><a href="07-crisis_calm.html" title="Наступна тема">›</a></span></nav>
+<div class="prog" id="prog"></div>
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+  <button class="snd" data-i="7"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="hero-kicker">Онлайн-урок · 9–11 клас · Психологічна просвіта</div>
+  <h1>
+    Сила<br>
+    моєї <span class="it">думки</span>
+    <span class="sm">долаємо тривогу · КПТ і нейронаука</span>
+  </h1>
+  <div class="hero-foot">
+    <p class="hero-desc">Когнітивна нейронаука тривоги, 7 спотворень Бека, Thought Record, метакогніція, АСТ-дефузія — повний інструментарій без спрощень</p>
+    <div class="hero-index">
+      <span class="hi">◈ 7 спотворень Бека</span>
+      <span class="hi">▲ Метакогніція</span>
+      <span class="hi">◎ Thought Record 5C</span>
+      <span class="hi">◇ ACT-дефузія</span>
+      <span class="hi">▽ 9 дилем</span>
+      <span class="hi">◉ 9 питань вікторина</span>
+    </div>
+  </div>
+</section>
+
+<!-- S1: НЕЙРОНАУКА ТРИВОГИ -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">01 — Нейронаука</div></div>
+<section class="sec reveal" id="s1">
+  <div class="lbl">Тривога — це нейробіологія</div>
+  <h2>Мигдалина проти <em>кори</em></h2>
+  <p class="lead">Тривога — не характер і не слабкість. Це конкуренція між еволюційно давньою системою загрози (мигдалина) і сучасним аналітичним мозком (префронтальна кора). КПТ — це тренування кори.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про нейронауку і КПТ</div>
+    <p>Мигдалина реагує на загрозу за 12 мілісекунд — до того як кора встигла обробити ситуацію. При хронічній тривозі мигдалина стає гіперчутливою: вона «бачить» загрозу там де її немає. КПТ буквально змінює нейронні зв'язки: сканування МРТ після курсу КПТ показує знижену активність мигдалини і підвищену — PFC. Ти можеш змінити свій мозок.</p>
+  </div>
+
+  <p style="font-size:.7rem;font-weight:500;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;margin-bottom:1rem">Оціни свій рівень тривоги зараз:</p>
+  <div class="anx-wrap">
+    <div class="anx-dial">
+      <span style="font-size:.7rem;color:var(--dim)">0</span>
+      <input class="anx-slider" type="range" min="0" max="10" value="0" id="anxSlider" oninput="updAnx(this.value)">
+      <span style="font-size:.7rem;color:var(--dim)">10</span>
+      <span class="anx-val" id="anxVal">0</span>
+    </div>
+    <div class="anx-txt" id="anxTxt">Постав повзунок — і зафіксуй свій стан</div>
+  </div>
+</section>
+
+<!-- S2: 7 СПОТВОРЕНЬ -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">02 — КПТ / Бек 1979</div></div>
+<section class="sec reveal" id="s2">
+  <div class="lbl">Когнітивні спотворення</div>
+  <h2>7 автоматичних <em>помилок</em> мозку</h2>
+  <p class="lead">Аарон Бек виявив: при тривозі мозок систематично перекручує реальність через «автоматичні негативні думки». Вони швидкі, правдоподібні — і помилкові. Натисни на кожне.</p>
+
+  <div class="dist-grid">
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">01 · Найпоширеніша</div>
+      <div class="dg-t">Катастрофізація</div>
+      <div class="dg-short">Перебільшення негативу до крайнощів</div>
+      <div class="dg-body">Мозок малює найгірший сценарій як єдиний можливий — і ігнорує статистику. «Один провал → все зруйновано». Activates HPA axis: кортизол росте як при реальній загрозі.
+        <div class="dg-ex">«Якщо провалю ЗНО — моє майбутнє знищено»</div>
+        <div class="dg-cq">↳ Яка реальна ймовірність найгіршого? Що роблять більшість людей в схожій ситуації?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">02 · Соціальна тривога</div>
+      <div class="dg-t">Читання думок</div>
+      <div class="dg-short">Знаєш що думають інші — без доказів</div>
+      <div class="dg-body">Телепатія не існує, але тривожний мозок «переконаний». Особливо активне при соціальній тривозі і перфекціонізмі.
+        <div class="dg-ex">«Вони мовчать — значить засуджують»</div>
+        <div class="dg-cq">↳ Які реальні докази? Скільки альтернативних пояснень існує?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">03 · Перфекціонізм</div>
+      <div class="dg-t">«Все або нічого»</div>
+      <div class="dg-short">Тільки крайнощі — без спектра</div>
+      <div class="dg-body">Дихотомічне мислення: або ідеально, або катастрофа. Сильно пов'язане з перфекціонізмом і ОКР. Знижує толерантність до невизначеності.
+        <div class="dg-ex">«Або я найкращий/-а — або я нікчема»</div>
+        <div class="dg-cq">↳ Де на шкалі 0–100 це реально знаходиться? Що означає «достатньо добре»?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">04 · Самозвинувачення</div>
+      <div class="dg-t">Персоналізація</div>
+      <div class="dg-short">Відповідальний/-а за все що йде не так</div>
+      <div class="dg-body">Гіперактивне «я» в центрі всіх подій. Часто поєднується з провиною і хронічним стресом. Пов'язане з надмірно розвиненою теорією розуму (ToM).
+        <div class="dg-ex">«Вони посварились — через мою присутність»</div>
+        <div class="dg-cq">↳ Які ще фактори вплинули? Чи я реально маю таку владу над ситуацією?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">05 · Генералізація</div>
+      <div class="dg-t">Надузагальнення</div>
+      <div class="dg-short">Один випадок → глобальний висновок</div>
+      <div class="dg-body">Мозок будує патерни навіть з одного прикладу — це еволюційно корисно (швидке навчання), але катастрофічно для тривоги. «Один раз — завжди».
+        <div class="dg-ex">«Одного разу я розгубився/-лась публічно — значить я завжди розгублюватимусь»</div>
+        <div class="dg-cq">↳ Скільки реальних прикладів підтверджують цей висновок? А скільки спростовують?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">06 · Почуття = факт</div>
+      <div class="dg-t">Емоційне мислення</div>
+      <div class="dg-short">«Я відчуваю → значить це правда»</div>
+      <div class="dg-body">Emotive reasoning: емоція стає доказом реальності. Пов'язана з низькою толерантністю до невизначеності і мигдалиновим «захопленням».
+        <div class="dg-ex">«Я відчуваю що все зруйную → значить зруйную»</div>
+        <div class="dg-cq">↳ Емоція — це сигнал, не доказ. Які об'єктивні факти незалежно від відчуттів?</div>
+      </div>
+    </div>
+    <div class="dg" onclick="this.classList.toggle('open')">
+      <div class="dg-n">07 · Фільтр уваги</div>
+      <div class="dg-t">Знецінення позитивного</div>
+      <div class="dg-short">Позитив відкидається — негатив закріплюється</div>
+      <div class="dg-body">Асиметрія уваги: негативне притягує більше когнітивних ресурсів (negativity bias — еволюційна функція). При тривозі посилюється до патологічного рівня.
+        <div class="dg-ex">«Мене похвалили 10 разів — але один раз розкритикували. Значить я поганий/-а»</div>
+        <div class="dg-cq">↳ Якщо негатив і позитив мають різну «вагу» — чи це справедливо? Чому позитив «не рахується»?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: THOUGHT RECORD 5C -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">03 — Thought Record</div></div>
+<section class="sec reveal" id="s3">
+  <div class="lbl">Інструмент КПТ</div>
+  <h2>Thought Record: <em>5 колонок</em></h2>
+  <p class="lead">Розширений протокол роботи з автоматичними думками — 5 колонок замість стандартних 4. Спотворення детектується автоматично.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про Thought Record</div>
+    <p>Greenberger і Padesky (1995) розробили 7-колонковий Thought Record. Ми працюємо з 5-колонковим — оптимальним для самостійного використання. Ключовий ефект: переведення обробки з мигдалини до PFC через вербалізацію і структурування. Дослідження показують зниження сили автоматичної думки на 20–50% після одного TR-сеансу.</p>
+  </div>
+
+  <div class="tr-box">
+    <div class="tr-head">Thought Record · 5 колонок · Заповни свою ситуацію</div>
+    <div class="tr-cols">
+      <div class="trc">
+        <div class="trc-l" style="color:var(--rose)">С</div>
+        <div class="trc-n">Situation</div>
+        <div class="trc-d">Факти: хто, де, коли — без оцінки</div>
+        <textarea class="trc-in" id="t1" rows="3" placeholder="Що сталось…"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-l" style="color:var(--gold)">А</div>
+        <div class="trc-n">Automatic Thought</div>
+        <div class="trc-d">Перша думка. Сила 0–100%</div>
+        <textarea class="trc-in" id="t2" rows="3" placeholder="«Я…» Сила: __%"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-l" style="color:var(--lav)">Е</div>
+        <div class="trc-n">Emotion & Body</div>
+        <div class="trc-d">Емоція і де в тілі. Сила 0–100%</div>
+        <textarea class="trc-in" id="t3" rows="3" placeholder="Тривога 70%, груди…"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-l" style="color:var(--teal)">Д</div>
+        <div class="trc-n">Distortion</div>
+        <div class="trc-d">Яке когнітивне спотворення?</div>
+        <textarea class="trc-in" id="t4" rows="3" placeholder="Катастрофізація / читання думок…"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-l" style="color:var(--slate)">Б</div>
+        <div class="trc-n">Balanced Thought</div>
+        <div class="trc-d">Збалансованіша думка — не позитивна, а точна</div>
+        <textarea class="trc-in" id="t5" rows="3" placeholder="Реалістичніший погляд…"></textarea>
+      </div>
+    </div>
+    <button class="tr-btn" onclick="genTR()">Проаналізувати →</button>
+    <div class="tr-res" id="trRes"></div>
+  </div>
+</section>
+
+<!-- S4: МЕТАКОГНІЦІЯ -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">04 — Метакогніція</div></div>
+<section class="sec reveal" id="s4">
+  <div class="lbl">Думки про думки</div>
+  <h2><em>Метакогніція:</em> як ти думаєш про свою тривогу</h2>
+  <p class="lead">Метакогнітивна терапія (Wells, 2009) виявила: не самі думки підтримують тривогу — а переконання про думки. «Хвилюватись — корисно», «якщо не контролювати думки — щось погане трапиться». Натисни на кожне питання.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про метакогнітивну пастку</div>
+    <p>Adrian Wells (2009): тривога підтримується двома типами метакогнітивних переконань. Позитивні: «хвилювання захищає мене», «якщо не тривожуся — не підготовлений/-а». Негативні: «мої думки небезпечні», «я не можу контролювати свій розум». Обидва хибні — і обидва підтримують цикл тривоги.</p>
+  </div>
+
+  <div class="meta-wrap">
+    <div class="meta-q" onclick="this.classList.toggle('open')">
+      <span class="meta-qn">01</span>
+      <div><div class="meta-qt">«Хвилюватись — корисно: це допомагає підготуватись»</div>
+      <div class="meta-qa">Метакогнітивне переконання «позитивне». Частково правда (помірна тривога мобілізує) — але хронічне хвилювання не допомагає підготуватись, воно заважає. Дослідження: надмірне хвилювання знижує когнітивний перформанс на 15–20%. Перевір: «коли я хвилюючись «готуюсь» — я реально готуюсь чи просто хвилююсь?»</div></div>
+    </div>
+    <div class="meta-q" onclick="this.classList.toggle('open')">
+      <span class="meta-qn">02</span>
+      <div><div class="meta-qt">«Якщо я не контролюватиму тривожні думки — щось погане трапиться»</div>
+      <div class="meta-qa">Ілюзія контролю думок. Спроба «не думати» активує paradoxical rebound (Wegner): думка з'являється частіше. Думки — не дії і не причини. Думка «стрибнути» не означає що ти стрибнеш. Контроль думок — не захист.</div></div>
+    </div>
+    <div class="meta-q" onclick="this.classList.toggle('open')">
+      <span class="meta-qn">03</span>
+      <div><div class="meta-qt">«Мої тривожні думки говорять правду — я повинен/-на їм довіряти»</div>
+      <div class="meta-qa">Cognitive fusion (ACT): злиття з думкою. Думка — це не реальність. «Я провалюсь» — не пророцтво, а слова. Практика дефузії: «У мене є думка, що…» — і вже є дистанція.</div></div>
+    </div>
+    <div class="meta-q" onclick="this.classList.toggle('open')">
+      <span class="meta-qn">04</span>
+      <div><div class="meta-qt">«Тривога — ознака що я не справляюсь»</div>
+      <div class="meta-qa">Мета-помилка: тривога — сигнал нервової системи, не оцінка твоїх здібностей. Kelly McGonigal (2013): люди що сприймали свою тривогу як «я готовий/-а» мали кращий когнітивний перформанс ніж ті що сприймали як «я не справляюсь» — при тій самій фізіологічній реакції.</div></div>
+    </div>
+    <div class="meta-q" onclick="this.classList.toggle('open')">
+      <span class="meta-qn">05</span>
+      <div><div class="meta-qt">«Я повинен/-на позбутись тривоги перед тим як діяти»</div>
+      <div class="meta-qa">Фундаментальна помилка уникання. В ACT — «тривога і дія» не виключають одне одного. Можна відчувати тривогу і діяти відповідно до своїх цінностей. Чекати «поки мине» — підтримувати цикл уникання.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: ACT DEFUSION -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">05 — ACT</div></div>
+<section class="sec reveal" id="s5">
+  <div class="lbl">Acceptance and Commitment Therapy</div>
+  <h2>Дефузія: <em>дивитись на думку</em><br>а не з думки</h2>
+  <p class="lead">ACT (Hayes, 1999) не оспорює думки — воно змінює відношення до них. Дефузія = бачити думку як слова, а не як реальність. Натисни на кожну техніку.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · КПТ проти ACT — різниця</div>
+    <p>КПТ: перевіряємо думку на реалістичність і замінюємо точнішою. ACT: не змінюємо думку — змінюємо наше ставлення до неї. «Я невдаха» → «У мене є думка, що я невдаха». Обидва підходи доведені. КПТ краще при специфічних спотвореннях. ACT — при хронічній тривозі і надмірному «злитті» з думками.</p>
+  </div>
+
+  <div class="act-cards">
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">🏷️</span>
+      <div class="act-ct">Перейменування думки</div>
+      <div class="act-cs">«У мене є думка, що…»</div>
+      <div class="act-cx">Замість «Я провалюсь» → «У мене є думка, що я провалюсь». Ця маленька зміна створює дистанцію між тобою і думкою. Думка більше не є «тобою» — це просто слова в голові.</div>
+    </div>
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">☁️</span>
+      <div class="act-ct">Думки як хмари</div>
+      <div class="act-cs">Спостерігати — не зупиняти</div>
+      <div class="act-cx">Уяви: ти — небо. Думки — хмари що проходять. Ти не намагаєшся зупинити хмару або «відмовитись» від неї — ти просто спостерігаєш. Та сама логіка з думками: вони приходять і йдуть. Ти — більше ніж думки.</div>
+    </div>
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">🎵</span>
+      <div class="act-ct">Заспівати думку</div>
+      <div class="act-cs">Деструктуризація через абсурд</div>
+      <div class="act-cx">Виберіть думку: «Я провалюсь на ЗНО». Тепер заспівайте її на мелодію дитячої пісеньки. Смішно? Так. Ефективно? Теж так. Абсурдна подача знижує «загрозу» думки — вона більше не звучить як вирок.</div>
+    </div>
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">📺</span>
+      <div class="act-ct">Думки на екрані</div>
+      <div class="act-cs">Спостерігач замість актора</div>
+      <div class="act-cx">Уяви що бачиш свої думки на екрані телевізора — ти сидиш в кріслі і дивишся на них здалеку. Ти не «всередині» думки — ти дивишся на неї. Це і є позиція «спостерігача» (observer self) в ACT.</div>
+    </div>
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">⏱️</span>
+      <div class="act-ct">«Знову ця думка»</div>
+      <div class="act-cs">Нейтральне розпізнавання</div>
+      <div class="act-cx">Коли думка з'являється: «О, знову ця думка про провал. Вона тут». Не боротись, не аналізувати, не тікати. Просто нейтрально відзначити. Ця нейтральна позиція поступово знижує силу думки.</div>
+    </div>
+    <div class="act-c" onclick="this.classList.toggle('open')">
+      <span class="act-ci">💎</span>
+      <div class="act-ct">Цінності vs тривога</div>
+      <div class="act-cx">ACT-дію визначає не відсутність тривоги, а цінності. «Мені важливо виступити — навіть якщо тривожно». Тривога і дія — не взаємовиключні. Питання: «Що б я зробив/-ла якщо б тривоги не було?» — і зроби це при тривозі.</div>
+      <div class="act-cs">Дій відповідно до цінностей — не до тривоги</div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ДИЛЕМИ -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">06 — Дилеми</div></div>
+<section class="sec reveal" id="s6">
+  <div class="lbl">КПТ і ACT у дії</div>
+  <h2>9 <em>дилем</em> без правильних відповідей<span class="sub">точніше — з однією правильною на кожну</span></h2>
+
+  <div class="sc-wrap">
+    <div class="sc-top"><span class="sc-tl" id="scTl">Дилема I / IX</span><span class="sc-pp" id="scPp">0 pts</span></div>
+    <div class="sc-pb"><div class="sc-pf" id="scPf" style="width:11%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-nx" id="scNx" onclick="nxSc()">Наступна →</button>
+      <div class="sc-sc" id="scSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: ВІКТОРИНА -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">07 — Вікторина</div></div>
+<section class="sec reveal" id="s7">
+  <div class="lbl">9 питань</div>
+  <h2>Нейронаука, КПТ, <em>ACT</em></h2>
+
+  <div class="qz-wrap">
+    <div class="qz-top"><span class="qz-pr" id="qzPr">I / IX</span><span class="qz-pp" id="qzPp">0 pts</span></div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-nx" id="qzNx" onclick="nxQz()">Далі →</button>
+      <div class="qz-sc" id="qzSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8: ПЛАН -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">08 — Практика</div></div>
+<section class="sec reveal" id="s8">
+  <div class="lbl">Особистий протокол</div>
+  <h2>Мій <em>антитривожний</em> протокол</h2>
+  <p class="lead">Склади заздалегідь — щоб у момент кризи не думати, а виконувати.</p>
+
+  <div class="plan-wrap">
+    <div class="pf">
+      <label class="pfl">Мій основний тригер тривоги</label>
+      <textarea class="pf-in" id="p1" rows="2" placeholder="Що запускає тривогу найчастіше…"></textarea>
+    </div>
+    <div class="pf">
+      <label class="pfl">Моє когнітивне спотворення №1</label>
+      <input class="pf-in" type="text" id="p2" placeholder="Катастрофізація / читання думок…">
+      <br><br>
+      <label class="pfl">Сократів контрзахід до нього</label>
+      <input class="pf-in" type="text" id="p3" placeholder="«Яка реальна ймовірність?»…">
+    </div>
+    <div class="pf">
+      <label class="pfl">Моя ACT-дефузійна фраза</label>
+      <input class="pf-in" type="text" id="p4" placeholder="«У мене є думка, що…»">
+      <br><br>
+      <label class="pfl">Моя цінність — чому я діятиму попри тривогу</label>
+      <input class="pf-in" type="text" id="p5" placeholder="Мені важливо…">
+    </div>
+    <div class="pf">
+      <label class="pfl">Перший крок при гострій тривозі</label>
+      <input class="pf-in" type="text" id="p6" placeholder="Дихання / TR / дефузія…">
+      <br><br>
+      <label class="pfl">Контакт при хронічній тривозі</label>
+      <input class="pf-in" type="text" id="p7" value="116 111 — анонімно, цілодобово">
+    </div>
+  </div>
+  <button class="plan-btn" onclick="genPlan()">Зберегти протокол →</button>
+  <div class="plan-res" id="planRes">
+    <h3>Мій антитривожний протокол</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.65rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.1em">СКРІНШОТ — ЗБЕРЕЖИ — ВИКОРИСТОВУЙ У КРИЗІ</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="divl reveal"><div class="divl-line"></div><div class="divl-n">Фінал</div></div>
+<div class="final reveal">
+  <div class="lbl" style="justify-content:flex-start">Урок завершено</div>
+  <h2>Тривога — <em>сигнал,</em><br>не вирок</h2>
+  <p class="lead" style="margin-bottom:2rem">Ти маєш 7 когнітивних спотворень, Thought Record 5C, метакогнітивний аналіз, 6 технік ACT-дефузії і особистий протокол. Це реальний клінічний інструментарій.</p>
+  <div class="final-cert">
+    <div class="fcl">Компетенції</div>
+    <div class="fcv">Нейронаука тривоги · 7 спотворень Бека · Thought Record 5C · Метакогніція (Wells) · ACT-дефузія (Hayes) · Особистий протокол</div>
+    <br>
+    <div class="fcl">Джерела</div>
+    <div class="fcv">Beck 1979 · LeDoux 1996 · Hayes 1999 · Wells 2009 · McGonigal 2013 · Neff 2003 · 116 111</div>
+  </div>
+  <div class="psy" style="margin-top:2rem">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Марк Аврелій казав: «Нас турбують не речі, а наші думки про речі». Це — перше формулювання когнітивної терапії, написане у 170 році нашої ери. Дві тисячі років потому нейронаука підтвердила те, що філософи знали інтуїтивно. Тепер у тебе є і мова, і інструменти. Якщо тривога стає хронічною — 116 111 або фахівець. Попросити допомоги — це найдоросліший крок.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// ANXIETY SLIDER
+const anxMsgs=['Стан спокою — гарний момент для практики','Мінімальна фонова тривога','Легке хвилювання','Помірна тривога','Відчутна тривога — що запустило?','Підвищена — хороший момент для TR','Висока — спробуй дефузію прямо зараз','Досить сильна — дихання 4 цикли','Сильна тривога — першу допомогу зараз','Дуже висока — якщо тримається: 116 111','Максимум — не залишайся сам/сама'];
+function updAnx(v){
+  document.getElementById('anxVal').textContent=v;
+  document.getElementById('anxTxt').textContent=anxMsgs[+v]||'';
+  const g=document.getElementById('anxSlider');
+  const pct=(v/10)*100;
+  g.style.background=`linear-gradient(to right,var(--gold) ${pct}%,var(--bd2) ${pct}%)`;
+}
+
+// THOUGHT RECORD
+function detectDist(text){
+  const t=(text||'').toLowerCase();
+  if(/завжди|ніколи|всі|ніхто/.test(t))return'→ Ймовірно: Надузагальнення';
+  if(/думають|вважають|знаю що/.test(t))return'→ Ймовірно: Читання думок';
+  if(/через мене|моя вина/.test(t))return'→ Ймовірно: Персоналізація';
+  if(/значить я|відчуваю тому/.test(t))return'→ Ймовірно: Емоційне мислення';
+  if(/або.*або|ідеально|повністю/.test(t))return'→ Ймовірно: «Все або нічого»';
+  if(/провал|кінець|жахливо|знищено/.test(t))return'→ Ймовірно: Катастрофізація';
+  if(/просто пощастило|нічого не значить/.test(t))return'→ Ймовірно: Знецінення позитивного';
+  return'→ Перевір: яке з 7 спотворень тут?';
+}
+function genTR(){
+  const vals=Array.from({length:5},(_,i)=>(document.getElementById('t'+(i+1)).value.trim()||'—'));
+  const [s,a,e,d,b]=vals;
+  const autoDetect=a!=='—'?detectDist(a):'';
+  document.getElementById('trRes').innerHTML=`
+    <div class="tr-ri"><strong>Ситуація</strong>${s}</div>
+    <div class="tr-ri"><strong>Автоматична думка</strong>${a}</div>
+    ${autoDetect?`<div class="tr-note">${autoDetect} ${d!=='—'?'· Ваш варіант: '+d:''}</div>`:''}
+    <div class="tr-ri"><strong>Емоція і тіло</strong>${e}</div>
+    <div class="tr-ri"><strong>Когнітивне спотворення</strong>${d}</div>
+    <div class="tr-ri"><strong>Збалансована думка</strong>${b!=='—'?b:'Спробуй: «Яка думка враховує всі докази — і за, і проти?»'}</div>
+    <div class="tr-note">Оціни силу початкової думки ще раз (0–100%). Знизилась? Якщо так — PFC знову в грі.</div>`;
+  document.getElementById('trRes').classList.add('show');
+}
+
+// ROMAN NUMERALS (must be defined before ldSc/ldQz run)
+const romans=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+function toRoman(n){return romans[n-1]||n;}
+
+// SCENARIOS
+const sc=[
+  {q:'«Я хвилююсь перед важливою зустріччю — значить я зруйную її». Найточніша відповідь:',
+   opts:['Це правда — тривога завжди заважає','«У мене є думка, що зруйную. Це емоційне мислення — відчуття не є прогнозом. Тривога і успішний виступ — сумісні»','Намагатись не думати про це','Відкласти зустріч поки не заспокоюсь'],
+   ans:1,fb:'Емоційне мислення + ACT-дефузія. McGonigal (2013): люди що сприймали тривогу як «готовність» — показували кращий перформанс. Відкладення зустрічі підтримує уникання.'},
+  {q:'Ти отримав/-ла відмову після відбору. Думка: «Значить я ніколи не досягну нічого». Яке спотворення і що зробити?',
+   opts:['Думка правдива — треба переосмислити цілі','Надузагальнення: один приклад ≠ закономірність. Контрзапитання: «Скільки разів я справлявся/-лась? Яка базова ставка відмов у цій сфері?»','Пожалітись другу і забути','Уникати схожих ситуацій надалі'],
+   ans:1,fb:'Надузагальнення — маркери «ніколи/завжди». Статистика: більшість успішних людей мали серії відмов. Один відбір — одна точка даних, не тренд.'},
+  {q:'«Я повинен/-на позбутись тривоги перед ЗНО — і тоді зможу підготуватись». Проблема цього підходу:',
+   opts:['Ніякої — це здорова логіка','Це уникання: чекати «поки мине тривога» означає чекати вічно. ACT: дій відповідно до цінностей попри тривогу — підготовка при тривозі кращa ніж жодна підготовка','Треба просто більше відпочивати','Ця думка абсолютно правильна'],
+   ans:1,fb:'Метакогнітивна пастка уникання. Тривога і дія — не взаємовиключні. Вимоги до «нульової тривоги» перед дією підтримують цикл уникання і посилюють тривогу.'},
+  {q:'Друг/-ка критикує тебе і ти думаєш: «Він/-вона завжди так — він/-вона мене ненавидить». Сократів аналіз:',
+   opts:['Можливо це правда — подумати про розрив','Надузагальнення + читання думок. Докази: скільки разів він/-вона підтримував/-ла? Чи є інші пояснення критики? Критика ≠ ненависть','Мовчати і тримати в собі','Зразу відповісти різко'],
+   ans:1,fb:'Два спотворення одночасно. «Завжди» — надузагальнення. «Ненавидить» — читання думок. Сократів метод: шукати докази обох сторін і найімовірніше пояснення.'},
+  {q:'«Я хвилююсь і це означає що я слабкий/-а». Метакогнітивна відповідь:',
+   opts:['Можливо це правда — треба стати сильнішим/-ою','Це хибне метакогнітивне переконання: тривога — нейробіологічна реакція, не оцінка сили характеру. Хирурги, спортсмени, пілоти відчувають тривогу — і виконують роботу','Спробувати пригнічити тривогу','Уникати стресових ситуацій'],
+   ans:1,fb:'Метакогніція: переконання «тривога = слабкість» підтримує тривогу. Реальність: тривога — еволюційна система, не характеристика людини. Спроба пригнічення (варіант 3) — парадокс Вегнера.'},
+  {q:'Thought Record заповнено. Сила автоматичної думки була 90% — після заповнення стала 60%. Що це означає?',
+   opts:['Нічого особливого','Prefrontal cortex реактивована: аналіз конкретизував думку і знизив її емоційну силу. Це вимірюване нейронне зрушення','TR не спрацював — треба спробувати ще раз','Треба знизити до 0% — інакше не рахується'],
+   ans:1,fb:'Саме так працює TR: зниження 90→60 — клінічно значуще. Мета не «позбутись думки», а знизити її силу до керованого рівня. 0% — не реалістична ціль.'},
+  {q:'«Я заспівую тривожну думку на мелодію пісеньки» — яка це техніка і навіщо?',
+   opts:['Відволікання — щоб забути думку','ACT-дефузія: деструктуризація думки через абсурдну подачу знижує її «загрозу». Думка перестає звучати як вирок','КПТ — оспорення думки','Це несерйозно і не ефективно'],
+   ans:1,fb:'ACT-дефузія: зміна контексту думки (серйозний → абсурдний) знижує cognitive fusion. Дослідження Hayes et al.: дефузійні техніки знижують дистрес від думки — навіть якщо думка не змінюється.'},
+  {q:'Хронічна тривога що заважає функціонувати місяцями — правильна стратегія:',
+   opts:['Чекати поки само пройде','Більше практикувати КПТ-техніки самостійно','Звернутись до фахівця: ГТР, соціальна фобія, ОКР — медичні умови що потребують клінічної КПТ або фармакотерапії. 116 111 як перший крок','Уникати тригерів'],
+   ans:2,fb:'Хронічна тривога що порушує функціонування — не «просто хвилювання». ГТР і соціальна фобія мають доведені клінічні протоколи. КПТ-техніки — профілактика і підтримка, але не замінник клінічної допомоги.'},
+  {q:'«Переконання про переконання» — це концепція якої терапії?',
+   opts:['КПТ (Бек)','АСТ (Hayes)','Метакогнітивної терапії (Wells)','Психоаналізу (Фрейд)'],
+   ans:2,fb:'Adrian Wells (2009): метакогнітивна терапія фокусується не на змісті думок (як КПТ), а на переконаннях про думки: «хвилювання корисне», «мої думки небезпечні». Зміна метапереконань знижує тривогу ефективніше ніж зміна окремих думок.'},
+];
+let scI=0,scSc=0,scAns=false;
+function ldSc(){
+  const s=sc[scI];
+  document.getElementById('scTl').textContent=`Дилема ${toRoman(scI+1)} / ${toRoman(sc.length)}`;
+  document.getElementById('scPf').style.width=`${((scI+1)/sc.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-o';b.textContent=op;b.onclick=()=>anSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';scAns=false;
+}
+function anSc(i){
+  if(scAns)return;scAns=true;
+  const s=sc[scI];document.querySelectorAll('.sc-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-o')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPp').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-o')[i].classList.add('bad');document.querySelectorAll('.sc-o')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNx').className='sc-nx show';
+}
+function nxSc(){
+  scI++;if(scI<sc.length){ldSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';
+  document.getElementById('scTl').textContent='Завершено';
+  const el=document.getElementById('scSc');el.style.display='block';
+  const m=['Є над чим подумати','КПТ-база сформована','Сильний рівень','Бездоганно'];
+  el.textContent=`${scSc} / ${sc.length} — ${m[Math.min(Math.floor(scSc/(sc.length/m.length)),m.length-1)]}`;
+}
+ldSc();
+
+// QUIZ
+const qz=[
+  {q:'«Cognitive fusion» в термінології ACT — це:',opts:['Злиття двох нейронних мереж','Ідентифікація з думкою — сприймання її як реальності, а не просто слів','Техніка медитації','Нейронна інтеграція'],ans:1,exp:'Hayes (1999): cognitive fusion = злиття з думкою. «Я провалюсь» сприймається як факт, а не як думка. Дефузія розриває це злиття — «у мене є думка, що…».'},
+  {q:'Що доводять нейровізуалізаційні дослідження після курсу КПТ?',opts:['Структура мозку не змінюється','Знижена активність мигдалини і підвищена — PFC: КПТ змінює нейронні зв\'язки вимірювально','КПТ впливає лише на поведінку, не на мозок','Змінюється лише гіпокамп'],ans:1,exp:'Linden (2006) і DeRubeis et al.: нейровізуалізація після КПТ показує зниження гіперактивності мигдалини і посилення PFC-контролю — ті самі зміни, що і при фармакотерапії, але через різні механізми.'},
+  {q:'Парадокс Вегнера (1994) стверджує:',opts:['Позитивні думки витісняють негативні','Спроба «не думати» про щось підвищує частоту цієї думки — ironic monitoring','Придушення думок завжди ефективне','Думки контролюються зусиллям волі'],ans:1,exp:'Wegner «white bear experiment»: «не думай про білого ведмедя» → думаєш частіше. Іронічний моніторинг: мозок перевіряє «чи не думаю?» — і активує саму думку. Наслідок для КПТ: не придушувати, а оспорювати або деструктурувати.'},
+  {q:'Метакогнітивна терапія (Wells) відрізняється від КПТ (Бек) тим що:',opts:['Вона більш ефективна в усіх випадках','Замість зміни змісту думок — змінює переконання про думки (метапереконання)','Вона не використовує техніки','Вона фокусується на минулому'],ans:1,exp:'КПТ: «ця думка неточна → замінимо точнішою». MCT: «переконання що хвилювання корисне → це переконання хибне і підтримує тривогу». Різний рівень інтервенції.'},
+  {q:'«Negativity bias» (упередженість до негативного) — це:',opts:['Клінічна депресія','Еволюційна функція: негативне привертає більше когнітивних ресурсів ніж позитивне — при тривозі посилюється до патологічного рівня','Когнітивне спотворення придумане Беком','Тип тривожного розладу'],ans:1,exp:'Baumeister et al. (2001): «bad is stronger than good» — еволюційна асиметрія. Один негативний досвід вимагає 4–5 позитивних для «компенсації». Пов\'язане зі спотворенням «знецінення позитивного».'},
+  {q:'Градуйована експозиція ефективна тому що:',opts:['Допомагає уникнути тривожних ситуацій','Кожен успішний крок перепрограмує мигдалину: «загроза керована» — нейронне навчання через досвід','Знижує тривогу через відволікання','Змінює переконання без дії'],ans:1,exp:'Wolpe (1958): систематична десенситизація. Сучасне розуміння: exposure перепрограмує мигдалину через inhibitory learning — не стирає страх, а формує нове «безпечне» спогадування поряд з ним.'},
+  {q:'Self-compassion (Neff, 2003) знижує тривогу через:',opts:['Уникання відповідальності','Три компоненти: доброта до себе (vs самокритика), спільна людяність (vs ізоляція), усвідомленість (vs надмірна ідентифікація). Знижує активацію системи загрози','Позитивне мислення','Ігнорування болю'],ans:1,exp:'Neff (2003): self-compassion активує систему турботи (окситоцин, вагус) замість системи загрози (кортизол). Це фізіологічно відрізняється від «позитивного мислення» — і від самозвинувачення.'},
+  {q:'«Tolerance of uncertainty» (толерантність до невизначеності) — центральний конструкт при:',opts:['Специфічних фобіях','Генералізованому тривожному розладі (ГТР) — низька TU підтримує надмірне хвилювання як спробу «контролювати» невизначеність','Панічному розладі','Соціальній фобії'],ans:1,exp:'Dugas et al. (1998): нетолерантність до невизначеності — ядерний механізм ГТР. Хвилювання = ілюзорна спроба «підготуватись до всього». КПТ при ГТР включає спеціальні техніки підвищення TU.'},
+  {q:'Марк Аврелій («Нас турбують не речі, а наші думки про речі») описував:',opts:['Психоаналіз','Стоїчну філософію — попередника когнітивної терапії: Епіктет, Аврелій формулювали КПТ-ідеї за 2000 років до Бека','Буддистську медитацію','Поведінкову терапію'],ans:1,exp:'Епіктет: «Не зовнішні події, а наші уявлення про них нас хвилюють» — це буквально когнітивна модель. Бек визнавав вплив стоїків на розробку КПТ. Логотерапія Франкла теж базувалась на стоїчній традиції.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function ldQz(){
+  const q=qz[qzI];
+  document.getElementById('qzPr').textContent=`${toRoman(qzI+1)} / ${toRoman(qz.length)}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;
+}
+function anQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPp').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';
+}
+function nxQz(){
+  qzI++;if(qzI<qz.length){ldQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';
+  document.getElementById('qzPr').textContent='done';
+  const el=document.getElementById('qzSc');el.style.display='block';
+  const m=['Є база для розвитку','Добрий рівень','Сильно','Відмінно'];
+  el.textContent=`${qzSc} / ${qz.length} — ${m[Math.min(Math.floor(qzSc/(qz.length/m.length)),m.length-1)]}`;
+}
+ldQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>(document.getElementById(id).value.trim()||'—');
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-r"><span class="pr-l">Основний тригер</span><span>${v('p1')}</span></div>
+    <div class="pr-r"><span class="pr-l">Спотворення №1</span><span>${v('p2')}</span></div>
+    <div class="pr-r"><span class="pr-l">Контрзахід</span><span>${v('p3')}</span></div>
+    <div class="pr-r"><span class="pr-l">ACT-дефузія</span><span>${v('p4')}</span></div>
+    <div class="pr-r"><span class="pr-l">Моя цінність</span><span>${v('p5')}</span></div>
+    <div class="pr-r"><span class="pr-l">Перший крок при тривозі</span><span>${v('p6')}</span></div>
+    <div class="pr-r"><span class="pr-l">Контакт при хронічній</span><span>${v('p7')}</span></div>`;
+  document.getElementById('planRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🎤</i><b>The space between self-esteem and self-compassion</b><br><span>Kristin Neff, TEDxCentralTexas, 2013<br>Про доброту до себе</span></div><div><i>📖</i><b>The Anxiety Workbook for Teens</b><br><span>Lisa M. Schab, 2008<br>Практичні вправи для підлітків</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (8)</summary><ol><li>Beck, A. T., Rush, A. J., Shaw, B. F., &amp; Emery, G. (1979). <i>Cognitive Therapy of Depression</i>. Guilford Press.</li><li>LeDoux, J. (1996). <i>The Emotional Brain</i>. Simon &amp; Schuster.</li><li>Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., &amp; Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. <i>Cognitive Therapy and Research, 36</i>(5), 427–440.</li><li>Greenberger, D., &amp; Padesky, C. A. (1995). <i>Mind Over Mood</i>. Guilford Press.</li><li>Hayes, S. C., Strosahl, K. D., &amp; Wilson, K. G. (1999). <i>Acceptance and Commitment Therapy</i>. Guilford Press.</li><li>Wells, A. (2009). <i>Metacognitive Therapy for Anxiety and Depression</i>. Guilford Press.</li><li>Wegner, D. M., Schneider, D. J., Carter, S. R., &amp; White, T. L. (1987). Paradoxical effects of thought suppression. <i>Journal of Personality and Social Psychology, 53</i>(1), 5–13.</li><li>Craske, M. G., Kircanski, K., Zelikowsky, M., et al. (2008). Optimizing inhibitory learning during exposure therapy. <i>Behaviour Research and Therapy, 46</i>(1), 5–27.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="05-stress.html">← Попередня</a> <a href="../index.html">Усі теми</a></span><a href="07-crisis_calm.html">Наступна тема →</a></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>

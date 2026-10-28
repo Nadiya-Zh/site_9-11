@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стрес і тіло · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #07080A;
+  --s1:    #0C0D10;
+  --s2:    #111318;
+  --s3:    #161820;
+  --gold:  #D4A030;
+  --go-l:  rgba(212,160,48,.12);
+  --go-ll: rgba(212,160,48,.06);
+  --teal:  #28A890;
+  --te-l:  rgba(40,168,144,.1);
+  --rose:  #C84858;
+  --ro-l:  rgba(200,72,88,.09);
+  --slate: #4878A8;
+  --sl-l:  rgba(72,120,168,.09);
+  --text:  #EAE4D8;
+  --muted: rgba(234,228,216,.48);
+  --dim:   rgba(234,228,216,.24);
+  --bd:    rgba(255,255,255,.065);
+  --bd2:   rgba(255,255,255,.12);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 50% 45% at 15% 20%,rgba(212,160,48,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 50% at 85% 75%,rgba(40,168,144,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 35% 30% at 55% 50%,rgba(200,72,88,.04) 0%,transparent 55%);}
+
+/* noise texture */
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");}
+
+.prog{position:fixed;top:0;left:0;height:2px;z-index:500;background:linear-gradient(90deg,var(--gold),rgba(212,160,48,.3));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:5px;height:5px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--gold);transform:scale(1.8);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;padding:4rem 3rem 5rem;gap:3rem;}
+@media(max-width:700px){.hero{grid-template-columns:1fr;}}
+
+.hero-left{}
+.hero-label{font-family:'Instrument Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.26em;color:var(--dim);text-transform:uppercase;margin-bottom:1.4rem;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:700;line-height:.95;color:var(--text);letter-spacing:-.01em;margin-bottom:2rem;}
+.hero h1 .g{color:var(--gold);}
+.hero h1 .italic{font-style:italic;font-weight:300;color:var(--muted);}
+
+.hero-right{border-left:1px solid var(--bd2);padding-left:2.5rem;}
+.hero-desc{font-size:.9rem;font-weight:300;line-height:1.92;color:var(--muted);margin-bottom:2rem;}
+.hero-meta{display:flex;flex-direction:column;gap:.5rem;}
+.hm{display:flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:500;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;}
+.hm::before{content:'';width:14px;height:1px;background:var(--gold);opacity:.5;flex-shrink:0;}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:6rem 2rem;}
+.div{max-width:900px;margin:0 auto;height:1px;background:linear-gradient(90deg,var(--gold),transparent);position:relative;z-index:2;opacity:.25;}
+
+.lbl{font-family:'Instrument Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;}
+.lbl::after{content:'';width:20px;height:1px;background:var(--gold);opacity:.5;}
+
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:600;line-height:1.08;color:var(--text);margin-bottom:1.1rem;letter-spacing:-.005em;}
+h2 em{font-style:italic;color:var(--gold);}
+.lead{font-size:.93rem;font-weight:300;line-height:1.94;color:var(--muted);max-width:660px;margin-bottom:2rem;}
+
+/* PSYCHO */
+.psy{border-left:1px solid rgba(212,160,48,.4);padding:1.5rem 2rem;margin:2rem 0;background:var(--go-ll);}
+.psy-who{font-family:'Instrument Sans',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.22em;color:var(--gold);margin-bottom:.6rem;text-transform:uppercase;}
+.psy p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;line-height:1.85;color:rgba(234,228,216,.78);font-style:italic;}
+
+/* CORTISOL METER */
+.cm-wrap{margin:2rem 0;}
+.cm-item{margin-bottom:1.4rem;}
+.cm-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;}
+.cm-title{font-size:.84rem;font-weight:500;color:var(--text);}
+.cm-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--gold);}
+.cm-bar-bg{height:6px;background:var(--s2);border-radius:3px;overflow:hidden;}
+.cm-bar{height:100%;border-radius:3px;transition:width .6s cubic-bezier(.25,.46,.45,.94);}
+.cm-note{font-size:.72rem;font-weight:300;color:var(--muted);margin-top:.35rem;font-style:italic;}
+.cm-slider{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;outline:none;cursor:pointer;margin:0 0 .35rem;}
+.cm-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer;border:2px solid var(--bg);}
+
+/* SCIENCE ACCORDION */
+.sci-acc{margin:2rem 0;}
+.sai{border-bottom:1px solid var(--bd);}
+.sai-h{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;cursor:pointer;}
+.sai-h:hover .sai-t{color:var(--gold);}
+.sai-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--dim);line-height:1;min-width:2.5rem;padding-top:.1rem;}
+.sai-t{font-size:.9rem;font-weight:500;color:var(--text);flex:1;padding-top:.35rem;transition:color .2s;}
+.sai-tag{font-size:.6rem;font-weight:600;letter-spacing:.08em;padding:.18rem .52rem;border-radius:2px;margin-top:.4rem;}
+.sai-arr{font-size:.6rem;color:var(--dim);padding-top:.45rem;transition:transform .25s;flex-shrink:0;}
+.sai.open .sai-arr{transform:rotate(90deg);}
+.sai-body{display:none;padding:0 0 1.5rem 3.5rem;font-size:.87rem;font-weight:300;line-height:1.9;color:var(--muted);}
+.sai.open .sai-body{display:block;}
+.sai-src{font-size:.7rem;color:var(--dim);margin-top:.6rem;font-style:italic;}
+.sai-key{margin-top:.8rem;padding:.65rem 1rem;background:var(--s2);border-left:1px solid var(--gold);font-size:.8rem;color:var(--muted);}
+
+/* BREATHING */
+.br-wrap{border:1px solid var(--bd);padding:3rem 2rem;margin:2rem 0;text-align:center;}
+.br-outer{width:200px;height:200px;border-radius:50%;margin:0 auto 2rem;display:flex;align-items:center;justify-content:center;position:relative;transition:all .4s;}
+.br-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(212,160,48,.2);animation:ringPulse 4s ease-in-out infinite;pointer-events:none;}
+.br-ring2{position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(212,160,48,.1);animation:ringPulse 4s ease-in-out infinite .5s;pointer-events:none;}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.4;}50%{transform:scale(1.06);opacity:1;}}
+.br-circle{width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(212,160,48,.15),rgba(212,160,48,.04));display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(212,160,48,.3);transition:all .4s;}
+.br-circle.inh{background:radial-gradient(circle,rgba(212,160,48,.25),rgba(212,160,48,.08));animation:brIn 4s ease-in-out forwards;}
+.br-circle.hld{background:radial-gradient(circle,rgba(72,120,168,.2),rgba(72,120,168,.06));border-color:rgba(72,120,168,.4);}
+.br-circle.exh{background:radial-gradient(circle,rgba(40,168,144,.12),rgba(40,168,144,.04));border-color:rgba(40,168,144,.3);animation:brOut 6s ease-in-out forwards;}
+@keyframes brIn{from{transform:scale(1);}to{transform:scale(1.22);}}
+@keyframes brOut{from{transform:scale(1.22);}to{transform:scale(1);}}
+.br-ph{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);}
+.br-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;}
+.br-hint{font-size:.78rem;font-weight:300;color:var(--muted);margin-bottom:1.2rem;}
+.br-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--gold);margin-bottom:1rem;}
+.br-techs{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-bottom:.8rem;}
+.brt{background:none;border:1px solid var(--bd2);padding:.35rem .95rem;font-family:'Instrument Sans',sans-serif;font-size:.75rem;font-weight:400;color:var(--muted);cursor:pointer;transition:all .2s;}
+.brt:hover{border-color:var(--gold);color:var(--gold);}
+.brt.on{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:600;}
+.br-cycles{font-size:.72rem;color:var(--dim);margin-top:.5rem;}
+
+/* TOOLS TABLE */
+.tools-tbl{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.85rem;}
+.tools-tbl th{border-bottom:1px solid var(--bd2);text-align:left;padding:.7rem 1rem;font-size:.62rem;font-weight:500;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;}
+.tools-tbl td{padding:.75rem 1rem;border-bottom:1px solid var(--bd);font-weight:300;color:var(--muted);vertical-align:top;line-height:1.65;}
+.tools-tbl td:first-child{font-weight:500;color:var(--text);}
+.tools-tbl tr:hover td{background:var(--s1);}
+.speed-tag{font-size:.62rem;font-weight:600;padding:.12rem .45rem;border-radius:2px;}
+
+/* SCENARIOS */
+.scn-wrap{border:1px solid var(--bd);margin:2rem 0;}
+.scn-head{padding:.9rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.scn-lbl{font-size:.6rem;font-weight:500;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;}
+.scn-pts{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--gold);}
+.scn-prog{height:1px;background:var(--bd);}
+.scn-prog-fill{height:100%;background:var(--gold);transition:width .4s;}
+.scn-body{padding:2.5rem 2rem;}
+.scn-q{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;line-height:1.55;color:var(--text);margin-bottom:1.5rem;}
+.scn-opts{display:flex;flex-direction:column;gap:.45rem;}
+.scn-o{background:transparent;border:1px solid var(--bd);padding:.82rem 1.2rem;font-family:'Instrument Sans',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.scn-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s1);}
+.scn-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);}
+.scn-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.scn-o:disabled{cursor:not-allowed;}
+.scn-fb{font-size:.84rem;font-weight:300;padding:.9rem 1.2rem;border-left:1px solid var(--bd2);margin-top:1rem;display:none;line-height:1.8;color:var(--muted);}
+.scn-fb.show{display:block;}.scn-fb.ok{border-color:var(--teal);}.scn-fb.bad{border-color:var(--rose);}
+.scn-nx{display:none;margin-top:1rem;background:none;border:1px solid var(--bd2);padding:.5rem 1.6rem;font-family:'Instrument Sans',sans-serif;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;}
+.scn-nx:hover{border-color:var(--gold);color:var(--gold);}.scn-nx.show{display:inline-block;}
+.scn-sc{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold);text-align:center;margin-top:1.5rem;display:none;}
+
+/* QUIZ */
+.qz-wrap{border:1px solid var(--bd);margin:2rem 0;}
+.qz-top{padding:.85rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.qz-p{font-size:.6rem;font-weight:500;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;}
+.qz-s{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);}
+.qz-body{padding:2.5rem 2rem;}
+.qz-q{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;line-height:1.55;color:var(--text);margin-bottom:1.5rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.42rem;}
+.qz-o{background:transparent;border:1px solid var(--bd);padding:.78rem 1.2rem;font-family:'Instrument Sans',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s1);}
+.qz-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);font-weight:500;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.83rem;font-weight:300;padding:.8rem 1.2rem;border-left:1px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.8;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--teal);}.qz-fb.bad{border-color:var(--rose);}
+.qz-nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.48rem 1.5rem;font-family:'Instrument Sans',sans-serif;font-size:.76rem;color:var(--muted);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{border-color:var(--gold);color:var(--gold);}.qz-nx.show{display:inline-block;}
+.qz-sc{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold);text-align:center;margin-top:1.5rem;display:none;padding:1rem;}
+
+/* JOURNAL */
+.jn-wrap{border:1px solid var(--bd);padding:2.5rem;margin:2rem 0;}
+.jn-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--text);margin-bottom:1.5rem;}
+.jn-row{margin-bottom:1.2rem;}
+.jn-label{font-size:.62rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.45rem;text-transform:uppercase;}
+.jn-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Instrument Sans',sans-serif;font-size:.87rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.65;}
+.jn-in:focus{border-color:var(--gold);}
+.jn-in::placeholder{color:var(--dim);}
+.jn-slider-wrap{display:flex;align-items:center;gap:1rem;}
+.jn-slider{flex:1;-webkit-appearance:none;appearance:none;height:3px;border-radius:2px;background:linear-gradient(to right,var(--gold) 50%,var(--bd2) 50%);outline:none;cursor:pointer;}
+.jn-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg);}
+.jn-sv{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--gold);min-width:2rem;text-align:right;}
+.jn-btn{background:var(--gold);color:var(--bg);border:none;padding:.72rem 2rem;font-family:'Instrument Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;display:block;margin:.8rem 0 0;transition:all .25s;letter-spacing:.03em;}
+.jn-btn:hover{background:#C09020;}
+.jn-res{display:none;margin-top:1.2rem;border-left:1px solid var(--gold);padding:1rem 1.4rem;background:var(--go-ll);}
+.jn-res.show{display:block;}
+.jn-res p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;line-height:1.85;color:rgba(234,228,216,.8);}
+.jn-res strong{color:var(--gold);font-style:italic;}
+
+/* PLAN */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.pg{background:var(--s1);padding:1.5rem;}
+.pg label{font-size:.6rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.pg-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Instrument Sans',sans-serif;font-size:.85rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.pg-in:focus{border-color:var(--teal);}
+.pg-in::placeholder{color:var(--dim);}
+.plan-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.72rem 2rem;font-family:'Instrument Sans',sans-serif;font-size:.86rem;font-weight:500;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;letter-spacing:.04em;}
+.plan-btn:hover{background:var(--gold);color:var(--bg);}
+.plan-res{display:none;margin-top:1.5rem;border:1px solid var(--bd2);padding:2rem;}
+.plan-res.show{display:block;}
+.plan-res h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--text);text-align:center;margin-bottom:1.2rem;}
+.pr-row{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.84rem;font-weight:300;}
+.pr-row:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.66rem;font-weight:500;letter-spacing:.07em;min-width:145px;text-transform:uppercase;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:6rem 2rem 9rem;}
+.final-n{font-family:'Instrument Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:1.5rem;}
+.final-cert{border:1px solid var(--bd2);padding:2rem;margin:2rem 0;}
+.fc-l{font-size:.6rem;font-weight:500;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fc-v{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;color:var(--text);line-height:1.65;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="9-11" data-mo-id="05" data-mo-kind="student" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Тема 5 з 24 · Стрес і тіло: як зняти напруження</span><span class="mo-r"><a href="04-boundaries.html" title="Попередня тема">‹</a><a href="06-anxiety.html" title="Наступна тема">›</a></span></nav>
+<div class="prog" id="prog"></div>
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="hero-left">
+    <div class="hero-label">Онлайн-урок · 9–11 клас · Нейробіологія</div>
+    <h1>Стрес<br>і <em class="g">тіло:</em><br><span class="italic">як зняти<br>напруження</span></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-desc">Від мигдалини до кортизолу, від HRV до allostatic load — механізми стресу і доказові методи саморегуляції. Без «просто заспокойся».</p>
+    <div class="hero-meta">
+      <div class="hm">45 хвилин</div>
+      <div class="hm">7 концепцій нейронауки</div>
+      <div class="hm">9 сценаріїв</div>
+      <div class="hm">9 питань вікторини</div>
+      <div class="hm">щоденник + кризовий план</div>
+    </div>
+  </div>
+</section>
+
+<!-- S1 -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="lbl">01 — Базова нейробіологія</div>
+  <h2>Стрес — це <em>фізіологія,</em> а не характер</h2>
+  <p class="lead">Першопричина стресової реакції — не «слабка воля» і не «надмірна чутливість». Це мигдалина, що активує вісь HPA і запускає каскад гормонів. Розуміти цей механізм — значить мати над ним доступ.</p>
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про ілюзію контролю і реальний контроль</div>
+    <p>У 9–11 класі стрес максимально накопичений: ЗНО, стосунки, вибір майбутнього, воєнний контекст. І при цьому соціальний тиск «тримайся» максимальний. Але «тримайся» — це не стратегія, це виснаження резервів. Сьогодні ми говоримо про те, що реально змінює фізіологію.</p>
+  </div>
+
+  <p style="font-size:.78rem;font-weight:500;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:1.4rem">Оціни свій поточний рівень напруження в кожній сфері:</p>
+  <div class="cm-wrap" id="cmWrap">
+    <div class="cm-item">
+      <div class="cm-label"><span class="cm-title">Когнітивне навантаження</span><span class="cm-val" id="cv0">60%</span></div>
+      <input type="range" min="0" max="100" value="60" class="cm-slider" style="background:linear-gradient(to right,var(--gold) 60%,var(--bd2) 60%);accent-color:var(--gold)" oninput="updCm(this,0)">
+      <div class="cm-note" id="cn0">Думки про навчання і майбутнє переважають — але є простір для відновлення</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label"><span class="cm-title">Фізичне напруження в тілі</span><span class="cm-val" id="cv1">45%</span></div>
+      <input type="range" min="0" max="100" value="45" class="cm-slider" style="background:linear-gradient(to right,var(--teal) 45%,var(--bd2) 45%);accent-color:var(--teal)" oninput="updCm(this,1)">
+      <div class="cm-note" id="cn1">Є відчуття напруги — але тіло ще в ресурсі</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label"><span class="cm-title">Емоційне виснаження</span><span class="cm-val" id="cv2">50%</span></div>
+      <input type="range" min="0" max="100" value="50" class="cm-slider" style="background:linear-gradient(to right,var(--rose) 50%,var(--bd2) 50%);accent-color:var(--rose)" oninput="updCm(this,2)">
+      <div class="cm-note" id="cn2">Середній рівень — є ресурс, є і витрата</div>
+    </div>
+    <div class="cm-item">
+      <div class="cm-label"><span class="cm-title">Якість сну і відновлення</span><span class="cm-val" id="cv3">40%</span></div>
+      <input type="range" min="0" max="100" value="40" class="cm-slider" style="background:linear-gradient(to right,var(--slate) 40%,var(--bd2) 40%);accent-color:var(--slate)" oninput="updCm(this,3)">
+      <div class="cm-note" id="cn3">Сон порушений — кортизоловий цикл під загрозою</div>
+    </div>
+  </div>
+</section>
+
+<!-- S2 -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="lbl">02 — Механізми</div>
+  <h2>7 концепцій <em>нейронауки стресу</em></h2>
+  <p class="lead">Розгорни кожен блок — за ним конкретний механізм з першоджерелом.</p>
+  <div class="sci-acc">
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">01</span>
+        <div style="flex:1">
+          <div class="sai-t">Вісь HPA і каскад кортизолу</div>
+          <span class="sai-tag" style="background:var(--go-l);color:var(--gold)">Ендокринологія</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Гіпоталамус → CRH → гіпофіз → ACTH → кора наднирників → кортизол. Адреналін — миттєва реакція (секунди). Кортизол — тривала (хвилини–години, пік через 15–20 хв). При хронічному стресі: десенситизація рецепторів, пошкодження гіпокампу, зниження імунітету, порушення метаболізму.
+        <div class="sai-key">⚑ Ключове: кортизол — не «поганий» гормон. Він необхідний. Проблема в хронічній надмірності.</div>
+        <div class="sai-src">McEwen B.S. (1998). Stress, adaptation, and disease: Allostasis and allostatic load. Annals of the New York Academy of Sciences.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">02</span>
+        <div style="flex:1">
+          <div class="sai-t">Allostatic load — ціна адаптації</div>
+          <span class="sai-tag" style="background:var(--te-l);color:var(--teal)">Системний погляд</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">McEwen і Sterling (1993) ввели поняття allostasis — адаптація через зміну. Allostatic load — накопичений «рахунок» за постійну адаптацію. Виміряний через 10 біомаркерів (кортизол, АТ, ІМТ, СРБ тощо). Пояснює чому хронічний стрес — навіть «помірний» — шкодить здоров'ю довгостроково.
+        <div class="sai-key">⚑ Для підлітків: 3–4 роки воєнного стресу = значне накопичення allostatic load. Не «після закінчиться» — вже зараз потрібні відновлювальні практики.</div>
+        <div class="sai-src">McEwen B.S., Stellar E. (1993). Stress and the individual: Mechanisms leading to disease. Archives of Internal Medicine.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">03</span>
+        <div style="flex:1">
+          <div class="sai-t">HRV як біомаркер саморегуляції</div>
+          <span class="sai-tag" style="background:var(--sl-l);color:var(--slate)">Вимірювання</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Варіабельність серцевого ритму (Heart Rate Variability) — різниця між ударами серця в мілісекундах. Високий HRV = гарна вагальна функція, гнучка саморегуляція НС. Низький HRV = хронічний стрес, вигорання, ризик серцево-судинних захворювань. Дихальні техніки підвищують HRV вимірювано — це доказ їхньої ефективності.
+        <div class="sai-key">⚑ HRV можна виміряти смартфоном або смарт-годинником. «Coherence breathing» (5.5 вдихів/хв = 0.1 Гц) — максимальне підвищення HRV.</div>
+        <div class="sai-src">Thayer J.F. et al. (2012). A meta-analysis of heart rate variability and neuroimaging studies: Implications for heart rate variability as a marker of stress and health. Neuroscience & Biobehavioral Reviews.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">04</span>
+        <div style="flex:1">
+          <div class="sai-t">Нейропластичність і стрес</div>
+          <span class="sai-tag" style="background:var(--go-l);color:var(--gold)">Нейробіологія</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Стрес змінює структуру мозку: хронічний кортизол знижує дендритну комплексність у гіпокампі (пам'ять, навчання) і збільшує мигдалину (страх). Але нейропластичність — це також відновлення: вправи, медитація, якісний сон збільшують гіпокамп назад. Мозок підлітка особливо пластичний — це вікно для формування і пошкодження.
+        <div class="sai-key">⚑ BDNF (brain-derived neurotrophic factor) — «добриво для нейронів» — збільшується при фізичній активності, знижується при хронічному стресі.</div>
+        <div class="sai-src">Sapolsky R.M. (2015). Stressed: The Biology of Hope. + Siegel D.J. (2010). Mindsight.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">05</span>
+        <div style="flex:1">
+          <div class="sai-t">Expressive writing — Pennebaker protocol</div>
+          <span class="sai-tag" style="background:var(--te-l);color:var(--teal)">Доказова практика</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Pennebaker & Beall (1986): студенти, які писали про травматичні події 15 хв/день, мали менше візитів до лікаря протягом 6 місяців. Механізм: вербалізація активує PFC → пригнічення мигдалини (Lieberman, 2007). Психофізіологічний ефект: зниження шкірної провідності, ЧСС, м'язової напруги під час і після письма.
+        <div class="sai-key">⚑ Формула: писати про найважчу подію — почуття + думки + значення. 15–20 хв. Не редагувати. 3–4 дні поспіль.</div>
+        <div class="sai-src">Pennebaker J.W., Beall S.K. (1986). Confronting a traumatic event. Journal of Abnormal Psychology.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">06</span>
+        <div style="flex:1">
+          <div class="sai-t">Апрейзл — оцінка, що визначає стрес</div>
+          <span class="sai-tag" style="background:var(--ro-l);color:var(--rose)">Когнітивний рівень</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Lazarus & Folkman (1984): стрес виникає не від події, а від оцінки «загрози» (primary appraisal) і оцінки «чи вистачить ресурсів» (secondary appraisal). McGonigal (2013): ті, хто переосмислює стрес як «виклик», а не «загрозу», мають іншу серцево-судинну реакцію — ширша мережа судин, кращий кровотік.
+        <div class="sai-key">⚑ «Моє серце б'ється — я готовий/-а» vs «я в паніці» — різний кортизоловий профіль при однаковому ЧСС.</div>
+        <div class="sai-src">McGonigal K. (2013). How to make stress your friend. TED Global 2013.</div>
+      </div>
+    </div>
+    <div class="sai">
+      <div class="sai-h" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sai-num">07</span>
+        <div style="flex:1">
+          <div class="sai-t">Соціальна буфаризація стресу</div>
+          <span class="sai-tag" style="background:var(--sl-l);color:var(--slate)">Психосоціальний</span>
+        </div>
+        <span class="sai-arr">▶</span>
+      </div>
+      <div class="sai-body">Cobb (1976) і Taylor (2000): соціальна підтримка — найпотужніший буфер стресу. Механізм: окситоцин (при довірчому контакті) знижує активацію мигдалини і рівень кортизолу. «Tend-and-befriend» реакція (Taylor) — еволюційна альтернатива «бій-тікай». Соціальна ізоляція = підвищений allostatic load.
+        <div class="sai-key">⚑ 10 хвилин розмови з довіреною людиною = вимірюване зниження кортизолу. Соціальний зв'язок — не «розкіш», а фізіологічна потреба.</div>
+        <div class="sai-src">Taylor S.E. et al. (2000). Biobehavioral responses to stress in females: Tend-and-befriend. Psychological Review.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="lbl">03 — Техніка дихання</div>
+  <h2><em>Respiratory sinus arrhythmia:</em><br>як дихання перепрограмовує НС</h2>
+  <p class="lead">Кожен видих стимулює блукаючий нерв → зниження ЧСС → активація парасимпатики. Це RSA — respiratory sinus arrhythmia. Чим більша амплітуда RSA, тим кращий HRV. Чотири техніки — різні для різних ситуацій.</p>
+  <div class="br-wrap">
+    <div class="br-name" id="brName">Оберіть техніку нижче</div>
+    <div class="br-outer">
+      <div class="br-ring"></div><div class="br-ring2"></div>
+      <div class="br-circle" id="brCirc" onclick="startBr()">
+        <div class="br-ph" id="brPh">▶</div>
+        <div class="br-n" id="brN">—</div>
+      </div>
+    </div>
+    <div class="br-hint" id="brHt">Натисни коло щоб почати</div>
+    <div class="br-techs">
+      <button class="brt on" onclick="setTech('c')" id="tc">Coherence 5.5</button>
+      <button class="brt" onclick="setTech('b')" id="tb">4-7-8</button>
+      <button class="brt" onclick="setTech('q')" id="tq">Квадратне</button>
+      <button class="brt" onclick="setTech('p')" id="tp">Фізіологічне</button>
+    </div>
+    <div class="br-cycles" id="brCyc">Циклів: 0</div>
+  </div>
+</section>
+
+<!-- S4 -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="lbl">04 — Арсенал</div>
+  <h2>Методи <em>саморегуляції:</em><br>механізми і швидкість</h2>
+  <p class="lead">Різні інструменти діють через різні фізіологічні канали. Вибирай залежно від ситуації.</p>
+  <table class="tools-tbl">
+    <thead><tr><th>Метод</th><th>Механізм</th><th>Час ефекту</th><th>Ситуація</th></tr></thead>
+    <tbody>
+      <tr><td>Дихання (RSA)</td><td>Вагальна стимуляція → ↓ЧСС → ↑HRV</td><td><span class="speed-tag" style="background:var(--te-l);color:var(--teal)">2–4 хв</span></td><td>Тривога, перед виступом</td></tr>
+      <tr><td>Рефлекс занурення</td><td>Холодна вода → diving reflex → ЧСС –10–25%</td><td><span class="speed-tag" style="background:var(--te-l);color:var(--teal)">30 сек</span></td><td>Паніка, гострий стрес</td></tr>
+      <tr><td>Фізична активність</td><td>↓кортизол, ↑ендорфіни, ↑BDNF</td><td><span class="speed-tag" style="background:var(--go-l);color:var(--gold)">15–30 хв</span></td><td>Накопичений стрес, злість</td></tr>
+      <tr><td>5-4-3-2-1</td><td>Сенсорне залучення → ↓активація мигдалини</td><td><span class="speed-tag" style="background:var(--te-l);color:var(--teal)">3–5 хв</span></td><td>Панічна атака, дисоціація</td></tr>
+      <tr><td>Expressive writing</td><td>Вербалізація → PFC → ↓мигдалина (Lieberman)</td><td><span class="speed-tag" style="background:var(--go-l);color:var(--gold)">15–20 хв</span></td><td>Циклічні думки, безсоння</td></tr>
+      <tr><td>Coherence breathing</td><td>0.1 Гц резонанс → максимальний HRV</td><td><span class="speed-tag" style="background:var(--go-l);color:var(--gold)">5–10 хв</span></td><td>Щоденна практика</td></tr>
+      <tr><td>Cognitive reappraisal</td><td>PFC переосмислює → ↓активація мигдалини</td><td><span class="speed-tag" style="background:var(--ro-l);color:var(--rose)">Хв–дні</span></td><td>Хронічний стрес, оцінки</td></tr>
+      <tr><td>Соціальний контакт</td><td>↑окситоцин → ↓кортизол, ↓мигдалина</td><td><span class="speed-tag" style="background:var(--go-l);color:var(--gold)">10–20 хв</span></td><td>Ізоляція, виснаження</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- S5 -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="lbl">05 — Дилеми</div>
+  <h2><em>9 дилем</em> без простих відповідей</h2>
+  <p class="lead">Реальні ситуації старшокласника. Вибір з науковим обґрунтуванням.</p>
+  <div class="scn-wrap">
+    <div class="scn-head"><span class="scn-lbl" id="snLbl">Дилема 1 / 9</span><span class="scn-pts" id="snPts">0</span></div>
+    <div class="scn-prog"><div class="scn-prog-fill" id="snFill" style="width:11%"></div></div>
+    <div class="scn-body">
+      <div class="scn-q" id="snQ"></div>
+      <div class="scn-opts" id="snOpts"></div>
+      <div class="scn-fb" id="snFb"></div>
+      <button class="scn-nx" id="snNx" onclick="nextSn()">Наступна →</button>
+      <div class="scn-sc" id="snSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="lbl">06 — Вікторина</div>
+  <h2>9 запитань <em>нейронауки стресу</em></h2>
+  <p class="lead">Механізми, першоджерела і практичні висновки.</p>
+  <div class="qz-wrap">
+    <div class="qz-top"><span class="qz-p" id="qzPr">01 / 09</span><span class="qz-s" id="qzSc">0 pts</span></div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-nx" id="qzNx" onclick="nextQz()">Далі →</button>
+      <div class="qz-sc" id="qzScores"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 -->
+<div class="div"></div>
+<section class="sec reveal" id="s7">
+  <div class="lbl">07 — Практика</div>
+  <h2>Щоденник і <em>кризовий план</em></h2>
+  <p class="lead">Письмова рефлексія за протоколом Pennebaker + особистий кризовий план.</p>
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про систематичну практику</div>
+    <p>Одна техніка застосована одного разу — недостатньо. Дослідження Pennebaker: ефект максимальний при 3–4 сесіях протягом тижня. HRV покращується після 4–6 тижнів щоденного когерентного дихання. Стрес-менеджмент — це тренування, а не одноразовий захід.</p>
+  </div>
+  <div class="jn-wrap">
+    <div class="jn-title">Сьогоднішній стрес-запис</div>
+    <div class="jn-row">
+      <span class="jn-label">Рівень стресу прямо зараз (0–10)</span>
+      <div class="jn-slider-wrap">
+        <input type="range" min="0" max="10" value="5" class="jn-slider" id="jslider" oninput="updJS(this)">
+        <span class="jn-sv" id="jsv">5</span>
+      </div>
+    </div>
+    <div class="jn-row">
+      <span class="jn-label">Що найбільше тисне прямо зараз?</span>
+      <textarea class="jn-in" id="j1" rows="2" placeholder="Конкретно, не «всі»…"></textarea>
+    </div>
+    <div class="jn-row">
+      <span class="jn-label">Де це у тілі — і що воно робить?</span>
+      <input class="jn-in" type="text" id="j2" placeholder="Стиснення у грудях, важкість у голові…">
+    </div>
+    <div class="jn-row">
+      <span class="jn-label">Яка думка крутиться по колу?</span>
+      <textarea class="jn-in" id="j3" rows="2" placeholder="Напиши її — навіть якщо здається нелогічною…"></textarea>
+    </div>
+    <div class="jn-row">
+      <span class="jn-label">Що вже спробував/-ла для відновлення?</span>
+      <input class="jn-in" type="text" id="j4" placeholder="Дихання, рух, поговорив/-ла…">
+    </div>
+    <button class="jn-btn" onclick="buildJournal()">Зберегти запис</button>
+    <div class="jn-res" id="jRes"></div>
+  </div>
+
+  <div style="margin-top:3rem">
+    <h2 style="font-size:1.8rem;margin-bottom:1rem">Мій <em>кризовий план</em></h2>
+    <p class="lead" style="margin-bottom:1.5rem">Заповни заздалегідь — у кризі мозок не генерує стратегії, він шукає вже готові.</p>
+    <div class="plan-grid">
+      <div class="pg">
+        <label>Мій основний стресор зараз</label>
+        <textarea class="pg-in" id="p1" rows="2" placeholder="Що найбільше виснажує…"></textarea>
+      </div>
+      <div class="pg">
+        <label>Перші 60 секунд при паніці</label>
+        <textarea class="pg-in" id="p2" rows="2" placeholder="Diving reflex / дихання / 5-4-3-2-1…"></textarea>
+      </div>
+      <div class="pg">
+        <label>Після гострого стресу — 15 хвилин</label>
+        <textarea class="pg-in" id="p3" rows="2" placeholder="Рух, письмо, контакт…"></textarea>
+      </div>
+      <div class="pg">
+        <label>Людина довіри і коли можу звернутись</label>
+        <input class="pg-in" type="text" id="p4" placeholder="Ім'я, час…">
+        <br><br>
+        <label>При хронічному стресі</label>
+        <input class="pg-in" type="text" id="p5" value="116 111 або шкільний психолог">
+      </div>
+    </div>
+    <button class="plan-btn" onclick="buildPlan()">Зберегти кризовий план</button>
+    <div class="plan-res" id="planRes">
+      <h3>Мій кризовий план стресу</h3>
+      <div id="planCont"></div>
+      <p style="font-size:.68rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.1em">СКРІНШОТ → ЗБЕРЕЖИ → ВІДКРИЙ КОЛИ ВАЖКО</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="div"></div>
+<div class="final reveal">
+  <div class="final-n">Урок завершено</div>
+  <h2>Стрес — <em>сигнал,</em><br>не вирок</h2>
+  <p class="lead">Ти знаєш механізми. Маєш арсенал методів з доказовою базою. І маєш план. Це — реальна перевага.</p>
+  <div class="final-cert">
+    <div class="fc-l">Концепції</div>
+    <div class="fc-v">Вісь HPA · Allostatic load (McEwen) · HRV і вагальний тонус · Нейропластичність · Pennebaker protocol · Cognitive reappraisal (McGonigal) · Соціальна буфаризація (Taylor)</div>
+    <br>
+    <div class="fc-l">Методи</div>
+    <div class="fc-v">Coherence breathing · 4-7-8 · Квадратне · Фізіологічне зітхання · Diving reflex · 5-4-3-2-1 · Expressive writing · Фізична активність · Cognitive reappraisal</div>
+    <br>
+    <div class="fc-l">Ресурси</div>
+    <div class="fc-v">116 111 — анонімно, цілодобово · McGonigal TED 2013 · Sapolsky «Why Zebras Don't Get Ulcers»</div>
+  </div>
+  <div class="psy" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>«Тримайся» — не стратегія. Це виснаження без відновлення. Реальна стратегія — знати механізм, мати інструменти, просити підтримки тоді, коли потрібно. Якщо стрес став хронічним і перекриває функціонування — це медичний стан, що потребує допомоги фахівця. Не «саме пройде». 116 111 або до психолога — перший крок, а не останній.</p>
+  </div>
+</div>
+
+<script>
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// METERS
+const cmNotes=[
+  ['Когнітивний ресурс є — використай його для відновлення','Середнє навантаження — стеж за відновленням','Когнітивне перевантаження — потрібна розвантажувальна практика'],
+  ['Тіло відновлюється','Є напруга — зроби фізичну розрядку сьогодні','Тіло накопичило стрес — diving reflex або рух зараз'],
+  ['Емоційний резерв є','Середній рівень — соціальний контакт сьогодні','Емоційне виснаження — потрібна підтримка або professional help'],
+  ['Сон відновлює ресурс','Сон порушений — coherence breathing перед сном','Хронічне недосипання = хронічний кортизол — це серйозно']
+];
+const cmColors=['var(--gold)','var(--teal)','var(--rose)','var(--slate)'];
+function updCm(inp,i){
+  const v=+inp.value;
+  inp.style.background=`linear-gradient(to right,${cmColors[i]} ${v}%,var(--bd2) ${v}%)`;
+  document.getElementById('cv'+i).textContent=v+'%';
+  document.getElementById('cn'+i).textContent=cmNotes[i][v<34?0:v<68?1:2];
+}
+
+// BREATHING — точний таймер з performance.now()
+const brTechs={
+  c:{name:'Coherence Breathing (5.5)',desc:'Ідеальний для HRV: 5.5 вдихів/хв = 0.1 Гц резонанс',phases:['Вдих','Видих'],times:[5.5,5.5],lbs:['носом повільно','ротом або носом'],maxCyc:6},
+  b:{name:'4-7-8 (Andrew Weil)',desc:'Максимальна вагальна стимуляція: видих 8 сек активує vagus',phases:['Вдих','Затримай','Видих'],times:[4,7,8],lbs:['носом','не дихай','ротом повільно'],maxCyc:5},
+  q:{name:'Квадратне дихання',desc:'Баланс симпатики і парасимпатики — для концентрації',phases:['Вдих','Затримай','Видих','Затримай'],times:[4,4,4,4],lbs:['носом','затримай','ротом','порожньо'],maxCyc:6},
+  p:{name:'Фізіологічне зітхання',desc:'Найшвидша техніка: подвійний вдих + довгий видих',phases:['Вдих ×2','Видих'],times:[3,7],lbs:['носом двічі підряд','ротом повільно — 7 сек'],maxCyc:4}
+};
+let curBr='c',brRAF=null,brPhI=0,brCyc=0,brRun=false,brPhStart=0,brPhDur=0;
+
+function setTech(t){
+  curBr=t;
+  document.querySelectorAll('.brt').forEach(b=>b.classList.remove('on'));
+  document.getElementById('t'+t).classList.add('on');
+  document.getElementById('brName').textContent=brTechs[t].name;
+  document.getElementById('brHt').textContent=brTechs[t].desc;
+  if(brRun)stopBr();
+  resetBr();
+}
+function resetBr(){
+  document.getElementById('brPh').textContent='▶';
+  document.getElementById('brN').textContent='—';
+  document.getElementById('brHt').textContent=brTechs[curBr].desc;
+  document.getElementById('brCyc').textContent='Циклів: 0 / '+brTechs[curBr].maxCyc;
+  document.getElementById('brCirc').className='br-circle';
+  brPhI=0;brCyc=0;brPhStart=0;brPhDur=0;
+}
+function startBr(){
+  if(brRun){stopBr();return;}
+  brRun=true;
+  beginPhase(performance.now());
+}
+function beginPhase(ts){
+  const t=brTechs[curBr];
+  const ph=t.phases[brPhI],tm=t.times[brPhI],lb=t.lbs[brPhI];
+  brPhStart=ts;
+  brPhDur=tm*1000;
+  document.getElementById('brPh').textContent=ph;
+  document.getElementById('brN').textContent=tm%1===0?tm:tm.toFixed(1).replace('.',',');
+  document.getElementById('brHt').textContent=lb;
+  const c=document.getElementById('brCirc');
+  c.className='br-circle';
+  if(ph.includes('Вдих')){void c.offsetWidth;c.classList.add('inh');c.style.animationDuration=tm+'s';}
+  else if(ph.includes('Видих')){void c.offsetWidth;c.classList.add('exh');c.style.animationDuration=tm+'s';}
+  else{c.classList.add('hld');}
+  tick();
+}
+function tick(){
+  if(!brRun)return;
+  const now=performance.now();
+  const elapsed=now-brPhStart;
+  const remaining=Math.max(0,(brPhDur-elapsed)/1000);
+  // показуємо залишок, округляємо вгору до 1 десяткової для дробових фаз
+  const t=brTechs[curBr];
+  const tm=t.times[brPhI];
+  const display=tm%1===0?Math.ceil(remaining):remaining.toFixed(1).replace('.',',');
+  document.getElementById('brN').textContent=display;
+  if(elapsed>=brPhDur){
+    // перехід до наступної фази
+    const nextPhI=(brPhI+1)%t.phases.length;
+    if(nextPhI===0){
+      brCyc++;
+      document.getElementById('brCyc').textContent=`Циклів: ${brCyc} / ${t.maxCyc}`;
+      if(brCyc>=t.maxCyc){
+        finishBr();
+        return;
+      }
+    }
+    brPhI=nextPhI;
+    beginPhase(now);
+    return;
+  }
+  brRAF=requestAnimationFrame(tick);
+}
+function finishBr(){
+  brRun=false;
+  cancelAnimationFrame(brRAF);
+  document.getElementById('brCirc').className='br-circle';
+  document.getElementById('brPh').textContent='✓';
+  document.getElementById('brN').textContent='✓';
+  document.getElementById('brHt').textContent='Сесія завершена — HRV підвищено';
+  document.getElementById('brCyc').textContent='Циклів: '+brTechs[curBr].maxCyc+' / '+brTechs[curBr].maxCyc;
+}
+function stopBr(){
+  brRun=false;
+  cancelAnimationFrame(brRAF);
+  document.getElementById('brCirc').className='br-circle';
+  document.getElementById('brPh').textContent='▶';
+  document.getElementById('brN').textContent='—';
+}
+setTech('c');
+
+// SCENARIOS
+const sns=[
+  {q:'Завтра ЗНО, і за дві тижні ти не спав/-ла нормально. Мозок відмовляє. Перед сном о 23:00 що робиш?',
+   opts:['Займаюсь ще 2 години — повторю ще раз','10 хвилин coherence breathing → запис «що тривожить» → сон без телефону','Гортаю соцмережі поки не засну','Приймаю «щось заспокійливе» без рецепту'],
+   ans:1,fb:'Coherence breathing підвищує HRV → покращує сон. Письмо звільняє PFC від циклічних думок. Повторення за 2 години до сну при хронічному недосипанні — знижує консолідацію пам\'яті, а не покращує.'},
+  {q:'Після оголошення результатів — провал. Серце стукає, сльози, думки катастрофізують. Що першим?',
+   opts:['Відразу аналізую помилки і планую що далі','Занурити обличчя у холодну воду (diving reflex) або лід на зап\'ястя → 3 цикли 4-7-8 → потім говорити','Замовчати і нікому не говорити','Одразу писати всім що сталось'],
+   ans:1,fb:'Гострий стрес з фізичними симптомами → спочатку фізіологічне заспокоєння (diving reflex: ЧСС –15% за 30 сек), потім дихання. Аналіз помилок у стані кортизолового піку — неефективний і шкідливий для самооцінки.'},
+  {q:'Хронічна тривога вже 3 місяці — нічого не радує, важко вставати, оцінки падають. Що це?',
+   opts:['Лінощі і відсутність мотивації','Можливо тривожний розлад або депресія — потрібна оцінка фахівця, не самолікування','Зайвий стрес від ЗНО — пройде саме','Недосипання — треба більше спати'],
+   ans:1,fb:'3+ місяці стійкої зміни функціонування = ознака клінічного стану. Самотерапія технікою не замінює оцінку психолога або психіатра. 116 111 — перший крок. «Само пройде» при клінічній депресії рідко і повільно.'},
+  {q:'Перед публічним виступом серце стукає, голос тремтить. Як переосмислити?',
+   opts:['«Я в паніці — треба заспокоїтись»','«Моє тіло мобілізується. Це та сама енергія що й ентузіазм — спрямую її у виступ»','«Напевно я поганий/-а оратор/-ка»','Уникати публічних виступів взагалі'],
+   ans:1,fb:'McGonigal (2013): переосмислення «загроза» → «виклик» змінює серцево-судинну реакцію — розширюються судини, кращий кровотік до мозку. Та сама ЧСС — але різна фізіологія залежно від інтерпретації.'},
+  {q:'Після сильного конфлікту ти відчуваєш, що «не можеш думати» — все заблоковано. Що відбувається?',
+   opts:['Ти надто чутливий/-а','Кортизоловий пік пригнічує PFC — «думаючий» мозок тимчасово недоступний. Це нормальна фізіологія.','Треба більше старатись','Це ознака психічного розладу'],
+   ans:1,fb:'Під стресом PFC буквально пригнічена кортизолом — звідси «заблоковано». Рішення: фізіологічне заспокоєння першим (дихання, рух, холодна вода), потім думати і говорити. Не навпаки.'},
+  {q:'Ти помітив/-ла, що коли тисне — закриваєшся і ні з ким не говориш. Наскільки це ефективно?',
+   opts:['Добра стратегія — сам/-а краще','Окситоцин від соціального контакту знижує кортизол — ізоляція посилює allostatic load','Залежить від людини','Соціальний контакт додає стресу'],
+   ans:1,fb:'Taylor (2000): соціальна буфаризація — найпотужніший довгостроковий буфер стресу. Ізоляція = ↑кортизол, ↑запалення, ↑allostatic load. Навіть 10 хвилин розмови з довіреною людиною = вимірюване зниження кортизолу.'},
+  {q:'Однолітки говорять «треба просто не звертати уваги». Що відповіси?',
+   opts:['Мабуть вони праві','«Ignore» — це когнітивна стратегія, яка потребує PFC, що пригнічена при стресі. Не «не звертати уваги» — а змінити оцінку або фізіологію першим.','Вони неправі — стрес завжди поганий','Так, треба намагатись більше'],
+   ans:1,fb:'«Не звертати уваги» = пригнічення (suppression) — неефективна стратегія, збільшує фізіологічну реакцію (Gross, 1998). Доказові альтернативи: reappraisal (переосмислення) або фізіологічне заспокоєння першим.'},
+  {q:'Після важкого тижня відчуваєш «зону» — нічого не відчуваю, байдужість. Що це?',
+   opts:['Ти став/-ла сильнішим/-ою','Емоційне оніміння — можливо дорсальний вагальний стан (freeze extended) або дистимія. Потрібна увага.','Просто втома — пройде','Ознака успішного стрес-менеджменту'],
+   ans:1,fb:'Тривала байдужість після інтенсивного стресу — ознака виснаження НС. Порогові нервова і Porges: «shutdown» стан = дорсальний вагальний режим. Потребує соціального контакту, помірної активності і при необхідності — фахівця.'},
+  {q:'Ти хочеш покращити стрес-стійкість довгостроково. Яка стратегія найефективніша?',
+   opts:['Вживати адаптогени і вітаміни','Системна практика: щоденне coherence breathing 10 хв + регулярна фізична активність + сон 7–9 г + соціальний зв\'язок — 4–6 тижнів показують вимірювані зміни HRV','Уникати стресових ситуацій','Медитувати 1 раз на тиждень по годині'],
+   ans:1,fb:'Доказові зміни HRV і allostatic load відбуваються при системній практиці: щоденне дихання + активність + сон. Уникнення стресу знижує толерантність (антикрихкість). Адаптогени — слабка доказова база.'},
+];
+let snI=0,snSc=0,snAns=false;
+function ldSn(){const s=sns[snI];document.getElementById('snLbl').textContent=`Дилема ${snI+1} / ${sns.length}`;document.getElementById('snFill').style.width=`${((snI+1)/sns.length)*100}%`;document.getElementById('snQ').textContent=s.q;const o=document.getElementById('snOpts');o.innerHTML='';s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='scn-o';b.textContent=op;b.onclick=()=>anSn(i);o.appendChild(b);});document.getElementById('snFb').className='scn-fb';document.getElementById('snNx').className='scn-nx';snAns=false;}
+function anSn(i){if(snAns)return;snAns=true;const s=sns[snI];document.querySelectorAll('.scn-o').forEach(b=>b.disabled=true);const fb=document.getElementById('snFb');if(i===s.ans){document.querySelectorAll('.scn-o')[i].classList.add('ok');fb.className='scn-fb ok show';snSc++;document.getElementById('snPts').textContent=snSc;}else{document.querySelectorAll('.scn-o')[i].classList.add('bad');document.querySelectorAll('.scn-o')[s.ans].classList.add('ok');fb.className='scn-fb bad show';}fb.textContent=s.fb;document.getElementById('snNx').className='scn-nx show';}
+function nextSn(){snI++;if(snI<sns.length){ldSn();return;}document.getElementById('snQ').textContent='';document.getElementById('snOpts').innerHTML='';document.getElementById('snFb').className='scn-fb';document.getElementById('snNx').className='scn-nx';document.getElementById('snLbl').textContent='Завершено';const sc=document.getElementById('snSc');sc.style.display='block';const m=['Є над чим подумати','Добра база','Сильний рівень','Відмінно — рівень нейронауки'];sc.textContent=`${snSc} / ${sns.length} — ${m[Math.min(Math.floor(snSc/(sns.length/m.length)),m.length-1)]}`;}
+ldSn();
+
+// QUIZ
+const qz=[
+  {q:'Що таке allostatic load?',opts:['Пік стресу в конкретний момент','Накопичений «рахунок» за постійну адаптацію — вимірюваний через біомаркери','Кількість стресорів за тиждень','Рівень адреналіну в крові'],ans:1,exp:'McEwen (1998): allostatic load = кумулятивний біологічний знос від хронічної адаптації. Виміряний через кортизол, АТ, ІМТ, СРБ та інші маркери.'},
+  {q:'Яка частота дихання максимізує HRV?',opts:['12–15 вдихів/хв (норма)','Близько 5.5 вдихів/хв (0.1 Гц) — резонансна частота серцево-дихального зв\'язку','3 вдихи/хв','20 вдихів/хв'],ans:1,exp:'Coherence breathing: ~5.5 вдихів/хв = 0.1 Гц RSA резонанс. Максимальна амплітуда HRV. Thayer (2012): найвищий вагальний тонус при цій частоті.'},
+  {q:'Що таке cognitive reappraisal за McGonigal?',opts:['Придушення стресової реакції','Переосмислення стресового стимулу з «загрози» на «виклик» — змінює фізіологічну відповідь','Думати про щось інше','Переконати себе що стресу немає'],ans:1,exp:'McGonigal (2013): при реappraisal розширюються судини (challenge state) на відміну від стану загрози. Та сама ЧСС — різна гемодинаміка і кортизоловий профіль.'},
+  {q:'Чому diving reflex ефективний при паніці?',opts:['Відволікає від тривожних думок','Холодна вода на обличчя активує еволюційний рефлекс ссавців — ЧСС знижується на 10–25% за 30 сек','Знижує температуру тіла і це заспокоює','Активує симпатичну НС'],ans:1,exp:'Рефлекс занурення ссавців: холодний рецептор на обличчі → N.vagus → знижується ЧСС. Найшвидша фізіологічна інтервенція при гострій тривозі — без ліків.'},
+  {q:'Що таке RSA (respiratory sinus arrhythmia)?',opts:['Аномальний серцевий ритм при стресі','Нормальна флуктуація ЧСС синхронно з диханням — вдих ↑ЧСС, видих ↓ЧСС; індикатор вагальної функції','Синдром дихальної недостатності','Ритмічна атака паніки'],ans:1,exp:'RSA — варіація ЧСС з частотою дихання. Чим більша амплітуда RSA, тим вищий HRV і тим краща вагальна регуляція. Збільшується при когерентному диханні.'},
+  {q:'Що Pennebaker & Beall (1986) виявили про expressive writing?',opts:['Письмо посилює стрес через повторне переживання','Студенти, що писали про травматичні події 15 хв, мали менше візитів до лікаря через 6 місяців','Письмо не має вимірюваного ефекту','Ефективно лише для дорослих'],ans:1,exp:'Expressive writing: ↓відвідувань лікаря, ↓тривоги, ↑імунної функції. Механізм: вербалізація активує PFC → пригнічення мигдалини (Lieberman, 2007).'},
+  {q:'Як хронічний кортизол впливає на гіпокамп?',opts:['Збільшує гіпокамп — покращує пам\'ять','Пошкоджує дендрити нейронів гіпокампу — ↓пам\'ять і навчання','Не впливає на гіпокамп','Тимчасово покращує концентрацію'],ans:1,exp:'Sapolsky (2015): хронічний кортизол = глюкокортикоїдна токсичність для гіпокампу. Зниження дендритної комплексності і нейрогенезу. Зворотно відновлюється при фізичній активності (↑BDNF).'},
+  {q:'Що означає «tend-and-befriend» реакція (Taylor, 2000)?',opts:['Агресія і захист — варіант «бій-тікай»','Еволюційна стрес-реакція через соціальний зв\'язок і турботу — знижує кортизол через окситоцин','Технологія медитації','Форма когнітивної поведінкової терапії'],ans:1,exp:'Taylor: альтернатива fight-flight — доглядати (tend) і шукати зв\'язку (befriend). Окситоцин при соціальному контакті → ↓мигдалина, ↓кортизол. Особливо виражено при хронічному стресі.'},
+  {q:'Яке твердження про стрес найточніше з точки зору нейронауки?',opts:['Стрес завжди шкідливий і потрібно його уникати','Стрес — функціональна адаптація; шкідлива не реакція, а її хронічне накопичення без відновлення','Стрес повністю контролюється силою волі','«Позитивне мислення» скасовує фізіологічну реакцію'],ans:1,exp:'Антикрихкість (Taleb) + McEwen: стрес адаптивний. Проблема — хронічне накопичення (allostatic load) без відновлювальних практик. Уникнення знижує толерантність. Управління — оптимальна стратегія.'},
+];
+let qzI=0,qzS=0,qzAns=false;
+function ldQz(){const q=qz[qzI];document.getElementById('qzPr').textContent=`${String(qzI+1).padStart(2,'0')} / ${String(qz.length).padStart(2,'0')}`;document.getElementById('qzQ').textContent=q.q;const o=document.getElementById('qzOpts');o.innerHTML='';q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;}
+function anQz(i){if(qzAns)return;qzAns=true;const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);const fb=document.getElementById('qzFb');if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzS++;document.getElementById('qzSc').textContent=qzS+' pts';}else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';}
+function nextQz(){qzI++;if(qzI<qz.length){ldQz();return;}document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';document.getElementById('qzPr').textContent='done';const sc=document.getElementById('qzScores');sc.style.display='block';const m=['Є над чим подумати','Добра база нейронауки','Сильний рівень','Рівень нейробіолога'];sc.textContent=`${qzS} / ${qz.length} — ${m[Math.min(Math.floor(qzS/(qz.length/m.length)),m.length-1)]}`;}
+ldQz();
+
+// JOURNAL
+function updJS(inp){
+  const v=+inp.value;
+  const pct=v*10;
+  inp.style.background=`linear-gradient(to right,var(--gold) ${pct}%,var(--bd2) ${pct}%)`;
+  document.getElementById('jsv').textContent=v;
+}
+function buildJournal(){
+  const lv=document.getElementById('jslider').value;
+  const j1=document.getElementById('j1').value.trim()||'—';
+  const j2=document.getElementById('j2').value.trim()||'—';
+  const j3=document.getElementById('j3').value.trim()||'—';
+  const j4=document.getElementById('j4').value.trim()||'—';
+  const today=new Date().toLocaleDateString('uk-UA',{day:'numeric',month:'long',year:'numeric'});
+  const r=document.getElementById('jRes');
+  r.innerHTML=`<p><strong>${today} · Рівень ${lv}/10</strong><br><br>Тригер: ${j1}<br>Тіло: ${j2}<br>Думка: ${j3}<br>Спробував/-ла: ${j4}</p>`;
+  r.classList.add('show');
+}
+function buildPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('planCont').innerHTML=`
+    <div class="pr-row"><span class="pr-l">Основний стресор</span><span>${v('p1')}</span></div>
+    <div class="pr-row"><span class="pr-l">Перші 60 секунд</span><span>${v('p2')}</span></div>
+    <div class="pr-row"><span class="pr-l">Після гострого — 15 хв</span><span>${v('p3')}</span></div>
+    <div class="pr-row"><span class="pr-l">Людина довіри</span><span>${v('p4')}</span></div>
+    <div class="pr-row"><span class="pr-l">При хронічному</span><span>${v('p5')}</span></div>`;
+  document.getElementById('planRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🎤</i><b>How to make stress your friend</b><br><span>Kelly McGonigal, TED, 2013<br>Про ставлення до стресу; для обговорення</span></div><div><i>📖</i><b>The Upside of Stress</b><br><span>Kelly McGonigal, 2015<br>Про ставлення до стресу</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (6)</summary><ol><li>McEwen, B. S. (1998). Protective and damaging effects of stress mediators. <i>New England Journal of Medicine, 338</i>(3), 171–179.</li><li>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <i>Neuroscience &amp; Biobehavioral Reviews, 36</i>(2), 747–756.</li><li>Sapolsky, R. M. (2004). <i>Why Zebras Don’t Get Ulcers</i> (3rd ed.). Henry Holt.</li><li>Porges, S. W. (2011). <i>The Polyvagal Theory</i>. W. W. Norton. (Теорія дискусійна: використовуйте як практичну метафору.)</li><li>Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <i>Psychological Science, 8</i>(3), 162–166.</li><li>Keller, A., Litzelman, K., Wisk, L. E., et al. (2012). Does the perception that stress affects health matter? <i>Health Psychology, 31</i>(5), 677–684.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="04-boundaries.html">← Попередня</a> <a href="../index.html">Усі теми</a></span><a href="06-anxiety.html">Наступна тема →</a></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>

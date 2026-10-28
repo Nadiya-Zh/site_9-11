@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Психологічна безпека · Коло довіри · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:       #0A0C0F;
+  --s1:       #111318;
+  --s2:       #181C24;
+  --s3:       #1E2330;
+  --green:    #1DB87A;
+  --green-d:  #148A5C;
+  --green-l:  rgba(29,184,122,.1);
+  --amber:    #D4A843;
+  --amber-l:  rgba(212,168,67,.08);
+  --rose:     #C05070;
+  --rose-l:   rgba(192,80,112,.08);
+  --slate:    #6B82A8;
+  --slate-l:  rgba(107,130,168,.08);
+  --text:     #E4E1DA;
+  --text2:    rgba(228,225,218,.6);
+  --text3:    rgba(228,225,218,.35);
+  --border:   rgba(255,255,255,.06);
+  --border2:  rgba(255,255,255,.12);
+  --line:     rgba(255,255,255,.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Instrument Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* subtle noise texture */
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+
+/* ── NAV ── */
+.pnav{
+  position:fixed;right:1.3rem;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:.5rem;z-index:300;
+}
+.pnd{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--border2);border:none;cursor:pointer;padding:0;
+  transition:all .3s;
+}
+.pnd.on{background:var(--green);transform:scale(1.7);}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:2;
+  min-height:100vh;
+  display:grid;place-items:center;
+  padding:4rem 2rem;text-align:center;
+}
+
+/* animated gradient line at top */
+.top-line{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:400;
+  background:linear-gradient(90deg,transparent,var(--green),var(--amber),var(--green),transparent);
+  background-size:200% 100%;
+  animation:lineScroll 4s linear infinite;
+}
+@keyframes lineScroll{from{background-position:0% 0%}to{background-position:200% 0%}}
+
+.hero-label{
+  font-size:.65rem;font-weight:500;letter-spacing:.25em;
+  color:var(--text3);margin-bottom:2rem;
+  display:flex;align-items:center;gap:.8rem;justify-content:center;
+}
+.hero-label::before,.hero-label::after{
+  content:'';width:40px;height:1px;background:var(--border2);
+}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:300;line-height:1;
+  letter-spacing:-.03em;color:var(--text);
+  margin-bottom:1.5rem;
+}
+.hero h1 .accent{
+  display:block;font-style:italic;
+  color:var(--green);font-weight:300;
+}
+.hero h1 .sub-h{
+  display:block;font-size:.42em;
+  font-style:normal;font-weight:300;
+  color:var(--text2);letter-spacing:.02em;
+  margin-top:.5rem;
+}
+
+.hero-desc{
+  font-size:.95rem;font-weight:300;font-style:italic;
+  color:var(--text2);max-width:440px;margin:0 auto 2.5rem;
+  line-height:1.9;
+}
+
+.meta-row{
+  display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;
+  font-size:.72rem;font-weight:500;letter-spacing:.08em;
+  color:var(--text3);text-transform:uppercase;
+  padding-top:2rem;border-top:1px solid var(--line);
+  max-width:500px;margin:0 auto;
+}
+
+.scroll-ind{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-size:.62rem;letter-spacing:.12em;color:var(--text3);
+}
+.scroll-ind .bar{
+  width:1px;height:56px;
+  background:linear-gradient(to bottom,var(--green),transparent);
+  animation:barDrop 2.5s ease-in-out infinite;
+}
+@keyframes barDrop{
+  0%,100%{opacity:.25;transform:scaleY(.4)translateY(-14px);}
+  50%{opacity:1;transform:scaleY(1)translateY(0);}
+}
+
+/* ── CONTENT ── */
+.sec{
+  position:relative;z-index:2;
+  max-width:860px;margin:0 auto;
+  padding:6rem 2rem;
+}
+
+.sec-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.75rem;font-weight:300;letter-spacing:.2em;
+  color:var(--green);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.sec-num::after{content:'';flex:1;max-width:40px;height:1px;background:var(--green);opacity:.5;}
+
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4.5vw,3.5rem);
+  font-weight:300;line-height:1.15;
+  color:var(--text);margin-bottom:1.2rem;
+  letter-spacing:-.02em;
+}
+h2 em{font-style:italic;color:var(--amber);}
+h2 strong{font-weight:600;color:var(--text);}
+
+.body-text{
+  font-size:.94rem;font-weight:300;line-height:1.9;
+  color:var(--text2);max-width:640px;margin-bottom:2rem;
+}
+
+/* ── PSYCHO ── */
+.psycho{
+  border-left:2px solid var(--green);
+  padding:1.5rem 1.8rem;margin:2.5rem 0;
+  background:linear-gradient(90deg,rgba(29,184,122,.04),transparent);
+}
+.psy-who{
+  font-size:.62rem;font-weight:500;letter-spacing:.18em;
+  color:var(--green);margin-bottom:.7rem;text-transform:uppercase;
+}
+.psycho p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:300;font-style:italic;
+  line-height:1.85;color:rgba(228,225,218,.75);
+}
+
+/* ── DIVIDER ── */
+.div{
+  max-width:860px;margin:0 auto;
+  height:1px;background:var(--line);
+  position:relative;z-index:2;
+}
+.div::after{
+  content:'';position:absolute;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);opacity:.4;
+}
+
+/* ── SIGNALS MATRIX ── */
+.sig-matrix{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:2px;margin:2rem 0;overflow:hidden;
+}
+.sig-cell{
+  background:var(--s1);padding:1.4rem;
+  cursor:pointer;transition:background .2s;
+  position:relative;
+}
+.sig-cell:hover{background:var(--s2);}
+.sig-cell.on{background:rgba(29,184,122,.07);}
+.sig-cell.on .sig-tick{opacity:1;}
+.sig-tick{
+  position:absolute;top:.7rem;right:.8rem;
+  font-size:.75rem;color:var(--green);opacity:0;
+  transition:opacity .2s;
+}
+.sig-cell .sct{font-size:.82rem;font-weight:500;color:var(--text);margin-bottom:.25rem;line-height:1.4;}
+.sig-cell .scs{font-size:.72rem;color:var(--text3);line-height:1.4;}
+.sig-eval{
+  font-size:.88rem;font-weight:300;padding:1.2rem 1.5rem;
+  border-left:2px solid var(--green);margin-top:1.5rem;
+  display:none;line-height:1.7;
+}
+.sig-eval.show{display:block;}
+.sig-btn{
+  background:none;border:1px solid var(--border2);color:var(--text2);
+  border-radius:2px;padding:.6rem 1.6rem;
+  font-family:'Instrument Sans',sans-serif;font-size:.8rem;font-weight:500;
+  cursor:pointer;transition:all .25s;letter-spacing:.04em;
+  margin-top:1rem;
+}
+.sig-btn:hover{border-color:var(--green);color:var(--green);}
+
+/* ── TRUST CIRCLE ── */
+.tc-layout{
+  display:grid;grid-template-columns:auto 1fr;gap:3rem;
+  align-items:start;margin:2rem 0;
+}
+@media(max-width:600px){.tc-layout{grid-template-columns:1fr;}}
+#tcC{max-width:320px;width:100%;display:block;}
+.tc-right h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:300;margin-bottom:1rem;color:var(--text);
+}
+.tc-entry{
+  display:flex;gap:.8rem;align-items:center;
+  padding:.6rem 0;border-bottom:1px solid var(--line);
+}
+.tc-entry:last-child{border:none;}
+.tc-ename{font-size:.83rem;font-weight:500;color:var(--text);flex:1;}
+.tc-esub{font-size:.72rem;color:var(--text3);}
+.tc-esel{
+  background:var(--s2);border:1px solid var(--border2);
+  border-radius:2px;padding:.25rem .55rem;
+  font-family:'Instrument Sans',sans-serif;font-size:.75rem;
+  color:var(--text);cursor:pointer;outline:none;transition:border-color .2s;
+}
+.tc-esel:focus{border-color:var(--green);}
+.tc-msg{font-size:.78rem;color:var(--text3);margin-top:.8rem;font-style:italic;}
+
+/* ── MANIPULATION ACCORDION ── */
+.manip-list{margin:2rem 0;}
+.manip-item{border-bottom:1px solid var(--line);}
+.manip-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 0;cursor:pointer;gap:1rem;
+}
+.manip-head:hover .mh-title{color:var(--amber);}
+.mh-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:300;color:var(--text3);
+  min-width:2rem;
+}
+.mh-title{font-size:.9rem;font-weight:500;color:var(--text);transition:color .2s;flex:1;}
+.mh-tag{font-size:.67rem;font-weight:500;letter-spacing:.07em;padding:.2rem .55rem;border-radius:2px;}
+.mh-arr{font-size:.7rem;color:var(--text3);transition:transform .25s;}
+.manip-item.open .mh-arr{transform:rotate(90deg);}
+.manip-body{
+  display:none;padding:0 0 1.5rem 2.8rem;
+  font-size:.86rem;font-weight:300;line-height:1.85;color:var(--text2);
+}
+.manip-item.open .manip-body{display:block;}
+.manip-body .mb-signal{
+  margin-top:.8rem;padding:.7rem 1rem;
+  background:var(--s2);border-left:2px solid var(--amber);
+  font-size:.8rem;color:var(--text2);
+}
+.manip-body .mb-action{
+  margin-top:.6rem;padding:.7rem 1rem;
+  background:rgba(29,184,122,.06);border-left:2px solid var(--green);
+  font-size:.8rem;color:var(--text2);
+}
+
+/* ── SCENARIOS ── */
+.sc-container{
+  background:var(--s1);border:1px solid var(--border);
+  border-radius:2px;margin:2rem 0;overflow:hidden;
+}
+.sc-header{
+  padding:1rem 1.5rem;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.sc-hnum{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.8rem;font-weight:300;letter-spacing:.12em;color:var(--text3);
+}
+.sc-bar{height:2px;background:var(--line);position:relative;}
+.sc-bar-fill{height:100%;background:var(--green);transition:width .4s ease;}
+.sc-body{padding:2rem;}
+.sc-q{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:300;line-height:1.7;
+  color:var(--text);margin-bottom:1.5rem;
+}
+.sc-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sc-opt{
+  background:var(--s2);border:1px solid var(--border);
+  padding:.85rem 1.1rem;
+  font-family:'Instrument Sans',sans-serif;font-size:.85rem;font-weight:300;
+  cursor:pointer;text-align:left;color:var(--text2);transition:all .2s;
+}
+.sc-opt:hover{border-color:var(--border2);color:var(--text);background:var(--s3);}
+.sc-opt.ok{border-color:var(--green);background:var(--green-l);color:var(--green);}
+.sc-opt.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.sc-opt:disabled{cursor:not-allowed;}
+.sc-fb{
+  font-size:.84rem;font-weight:300;padding:.9rem 1.1rem;
+  border-left:2px solid var(--border2);margin-top:1rem;display:none;
+  line-height:1.75;color:var(--text2);
+}
+.sc-fb.show{display:block;}
+.sc-fb.ok{border-color:var(--green);}
+.sc-fb.bad{border-color:var(--rose);}
+.sc-next{
+  background:none;border:1px solid var(--border2);
+  padding:.55rem 1.5rem;margin-top:1rem;
+  font-family:'Instrument Sans',sans-serif;font-size:.78rem;
+  color:var(--text2);cursor:pointer;transition:all .2s;display:none;
+  letter-spacing:.04em;
+}
+.sc-next:hover{border-color:var(--green);color:var(--green);}
+.sc-next.show{display:inline-block;}
+.sc-score{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:300;color:var(--amber);
+  text-align:center;margin-top:1.5rem;display:none;font-style:italic;
+}
+
+/* ── DIGITAL SECTION ── */
+.dig-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0;}
+@media(max-width:560px){.dig-cols{grid-template-columns:1fr;}}
+.dig-col{padding:1.5rem;border:1px solid var(--border);}
+.dig-col h3{
+  font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
+}
+.dig-col.do h3{color:var(--green);}
+.dig-col.dont h3{color:var(--rose);}
+.dig-col ul{padding-left:0;list-style:none;}
+.dig-col ul li{
+  font-size:.83rem;font-weight:300;color:var(--text2);
+  padding:.4rem 0;border-bottom:1px solid var(--line);
+  display:flex;gap:.6rem;align-items:flex-start;line-height:1.5;
+}
+.dig-col ul li:last-child{border:none;}
+.dig-col ul li::before{flex-shrink:0;font-size:.9rem;}
+.dig-col.do ul li::before{content:'↗';color:var(--green);}
+.dig-col.dont ul li::before{content:'↘';color:var(--rose);}
+
+/* ── AWARENESS ── */
+.aware-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--line);margin:2rem 0;}
+.aware-card{
+  background:var(--s1);padding:1.4rem;cursor:pointer;transition:background .2s;
+}
+.aware-card:hover{background:var(--s2);}
+.aware-card.open{background:var(--s2);}
+.aware-icon{font-size:1.5rem;margin-bottom:.6rem;display:block;opacity:.7;}
+.aware-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.aware-body{font-size:.78rem;font-weight:300;color:var(--text3);line-height:1.6;display:none;}
+.aware-card.open .aware-body{display:block;}
+.aware-card.open .aware-title{color:var(--amber);}
+
+/* ── QUIZ ── */
+.quiz-box{border:1px solid var(--border);margin:2rem 0;}
+.quiz-box .qz-top{
+  padding:.9rem 1.5rem;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.qz-prog{font-size:.7rem;font-weight:500;letter-spacing:.09em;color:var(--text3);}
+.qz-pts{font-size:.7rem;font-weight:600;color:var(--green);}
+.qz-body{padding:2rem 1.5rem;}
+.qz-q{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:300;line-height:1.65;
+  color:var(--text);margin-bottom:1.4rem;
+}
+.qz-opts{display:flex;flex-direction:column;gap:.45rem;}
+.qz-o{
+  background:var(--s1);border:1px solid var(--border);
+  padding:.8rem 1.1rem;
+  font-family:'Instrument Sans',sans-serif;font-size:.84rem;font-weight:300;
+  cursor:pointer;text-align:left;color:var(--text2);transition:all .2s;
+}
+.qz-o:hover{border-color:var(--border2);color:var(--text);background:var(--s2);}
+.qz-o.ok{border-color:var(--green);background:var(--green-l);color:var(--green);}
+.qz-o.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.83rem;font-weight:300;padding:.8rem 1rem;border-left:2px solid var(--border2);margin-top:.8rem;display:none;line-height:1.7;color:var(--text2);}
+.qz-fb.show{display:block;}
+.qz-fb.ok{border-color:var(--green);}
+.qz-fb.bad{border-color:var(--rose);}
+.qz-next{background:none;border:1px solid var(--border2);padding:.5rem 1.4rem;margin-top:.8rem;font-family:'Instrument Sans',sans-serif;font-size:.77rem;color:var(--text3);cursor:pointer;transition:all .2s;display:none;}
+.qz-next:hover{border-color:var(--amber);color:var(--amber);}
+.qz-next.show{display:inline-block;}
+.qz-score{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;font-style:italic;padding:1rem;}
+
+/* ── PLAN ── */
+.plan-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);margin:2rem 0;border:1px solid var(--line);}
+.pf-block{background:var(--s1);padding:1.4rem;}
+.pf-block label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:.5rem;}
+.pf-input{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--border2);
+  padding:.5rem 0;font-family:'Instrument Sans',sans-serif;font-size:.84rem;
+  color:var(--text);outline:none;transition:border-color .2s;resize:none;
+  line-height:1.6;
+}
+.pf-input:focus{border-color:var(--green);}
+.pf-input::placeholder{color:var(--text3);}
+.plan-gen{
+  background:var(--green);color:var(--bg);border:none;
+  padding:.75rem 2rem;font-family:'Instrument Sans',sans-serif;
+  font-size:.84rem;font-weight:600;cursor:pointer;
+  display:block;margin:1.5rem auto 0;
+  transition:all .25s;letter-spacing:.04em;
+}
+.plan-gen:hover{background:var(--green-d);}
+.plan-result{
+  display:none;margin-top:1.5rem;
+  border:1px solid var(--border2);padding:2rem;background:var(--s1);
+}
+.plan-result.show{display:block;}
+.plan-result h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:300;font-style:italic;
+  color:var(--text);margin-bottom:1.2rem;text-align:center;
+}
+.pr-row{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.83rem;font-weight:300;}
+.pr-row:last-child{border:none;}
+.pr-label{color:var(--text3);font-size:.72rem;font-weight:500;letter-spacing:.06em;min-width:140px;}
+
+/* ── FINAL ── */
+.final-wrap{
+  position:relative;z-index:2;
+  max-width:660px;margin:0 auto;
+  padding:6rem 2rem 8rem;text-align:center;
+}
+.final-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;font-weight:300;color:var(--green);
+  opacity:.3;line-height:1;margin-bottom:1.5rem;
+  display:block;
+}
+.final-wrap h2{color:var(--text);margin-bottom:1rem;}
+.final-wrap .body-text{margin:0 auto 2rem;text-align:center;}
+.final-cert{
+  border:1px solid var(--border2);padding:2rem;margin:2rem 0;text-align:left;
+}
+.final-cert .fc-label{font-size:.62rem;font-weight:500;letter-spacing:.15em;color:var(--text3);margin-bottom:.5rem;}
+.final-cert .fc-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--text);line-height:1.6;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="9-11" data-mo-id="03" data-mo-kind="student" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Тема 3 з 24 · Психологічна безпека та коло довіри</span><span class="mo-r"><a href="02-emotions.html" title="Попередня тема">‹</a><a href="04-boundaries.html" title="Наступна тема">›</a></span></nav>
+
+<div class="top-line"></div>
+
+<nav class="pnav" id="pNav">
+  <button class="pnd on" data-i="0"></button>
+  <button class="pnd" data-i="1"></button>
+  <button class="pnd" data-i="2"></button>
+  <button class="pnd" data-i="3"></button>
+  <button class="pnd" data-i="4"></button>
+  <button class="pnd" data-i="5"></button>
+  <button class="pnd" data-i="6"></button>
+  <button class="pnd" data-i="7"></button>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="s0">
+  <div>
+    <div class="hero-label">Онлайн-урок · 9–11 клас</div>
+    <h1>
+      Психологічна<br>
+      <span class="accent">безпека</span>
+      <span class="sub-h">та коло довіри</span>
+    </h1>
+    <p class="hero-desc">Як будувати стосунки без маніпуляцій, розпізнавати токсичне середовище і зберігати себе — у реальному і цифровому просторі</p>
+    <div class="meta-row">
+      <span>⌚ 45 хвилин</span>
+      <span>◎ 8 активностей</span>
+      <span>▲ 9 дилем</span>
+      <span>◇ план безпеки</span>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <span>scroll</span>
+    <div class="bar"></div>
+  </div>
+</section>
+
+<!-- ══ S1 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-num">01 — Середовище</div>
+  <h2>Коли безпека — це<br><em>не про замки</em></h2>
+  <p class="body-text">У 9–11 класі ви вже знаєте, що фізична безпека — не єдина. Психологічна безпека — це право бути собою у стосунках: говорити чесно, не боятись осуду, знати, що тебе не зрадять. Більшість конфліктів, криз і вигорання в юності — наслідок її відсутності.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Контекст для старшокласника</div>
+    <p>У 14–17 років мозок переживає другий критичний виток розвитку. Лімбічна система активна, але префронтальна кора ще не завершила формування. Це означає: ви гострше відчуваєте відкидання і сильніше реагуєте на маніпуляцію — не тому що ви «слабкі», а тому що так влаштована нейробіологія. Знати це — означає мати важіль над своїми реакціями.</p>
+  </div>
+
+  <p style="font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--text3);margin-bottom:1rem;text-transform:uppercase">Відмітьте знаки, що є у вашому житті:</p>
+
+  <div class="sig-matrix" id="sigMat">
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="sct">Можу висловити незгоду</div><div class="scs">Без страху остракізму або покарання</div></div>
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="sct">Мої межі поважають</div><div class="scs">Ніхто не переходить лінії без дозволу</div></div>
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="scs">Можу говорити про помилки</div><div class="scs">Без сорому і висміювання</div></div>
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="sct">Є людина для кризи</div><div class="scs">Знаю, до кого прийти у найважчий момент</div></div>
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="sct">Таємниці зберігаються</div><div class="scs">Довіряю конкретній людині</div></div>
+    <div class="sig-cell" onclick="this.classList.toggle('on')"><span class="sig-tick">✓</span><div class="sct">Не змушують мовчати</div><div class="scs">Право говорити — у мене завжди є</div></div>
+  </div>
+  <button class="sig-btn" onclick="evalSig()">Оцінити середовище</button>
+  <div class="sig-eval" id="sigEval"></div>
+</section>
+
+<!-- ══ S2 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-num">02 — Коло</div>
+  <h2>Рівні <em>довіри</em><br>і чому вони мають значення</h2>
+  <p class="body-text">Довіра — градієнт, а не перемикач. Плутати рівні — дорого коштує: надто швидке зближення з незнайомим веде до маніпуляції, надто закрите — до ізоляції. Розстав людей на своєму колі.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про диференційовану довіру</div>
+    <p>Дослідження Брене Браун: найбільш вразливі — ті, хто «ділиться з усіма рівно». Справжня уразливість вибіркова. Вона розвивається поступово, через перевірку поведінки, а не слів. Запитання не «чи довіряти?», а «якою мірою і в чому?»</p>
+  </div>
+
+  <div class="tc-layout">
+    <canvas id="tcC" width="320" height="320"></canvas>
+    <div class="tc-right">
+      <h3>Розстав людей на своєму колі</h3>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Батьки / опікуни</div><div class="tc-esub">Первинні дорослі</div></div>
+        <select class="tc-esel" data-n="Батьки" data-e="◉" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Найближчий друг</div><div class="tc-esub">Людина, якій найбільше довіряю</div></div>
+        <select class="tc-esel" data-n="Друг" data-e="◈" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Романтичний партнер</div><div class="tc-esub">Якщо є</div></div>
+        <select class="tc-esel" data-n="Партнер" data-e="♡" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Компанія / однокласники</div><div class="tc-esub">Соціальне коло</div></div>
+        <select class="tc-esel" data-n="Компанія" data-e="◎" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Психолог / ментор</div><div class="tc-esub">Довірена доросла людина</div></div>
+        <select class="tc-esel" data-n="Психолог" data-e="◇" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-entry">
+        <div><div class="tc-ename">Онлайн-знайомий</div><div class="tc-esub">Незустрічався офлайн</div></div>
+        <select class="tc-esel" data-n="Онлайн" data-e="△" onchange="tcAdd(this)"><option value="">—</option><option value="0">Ядро</option><option value="1">Близькі</option><option value="2">Знайомі</option></select>
+      </div>
+      <div class="tc-msg" id="tcMsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S3 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-num">03 — Маніпуляція</div>
+  <h2>Анатомія<br><em>маніпуляції</em></h2>
+  <p class="body-text">Маніпуляція у підліткових стосунках рідко виглядає очевидно. Вона замаскована під турботу, жарт або «правила дружби». Клікніть на кожен тип — щоб навчитись бачити патерн.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про владу і вплив</div>
+    <p>Ключова різниця між впливом і маніпуляцією: вплив — прозорий, дає вибір, звертається до розуму. Маніпуляція — прихована, нав'язує рішення, апелює до страху або провини. Якщо після взаємодії ви почуваєтесь «у боргу» або «винним/ою» без реальної причини — це маніпуляція.</p>
+  </div>
+
+  <div class="manip-list">
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">01</span>
+        <span class="mh-title">Газлайтинг</span>
+        <span class="mh-tag" style="background:rgba(192,80,112,.1);color:var(--rose)">Когнітивний</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        Систематичне заперечення вашого сприйняття: «це не так», «ти вигадуєш», «ти занадто чутливий/а». Мета — змусити сумніватись у власній версії реальності. Характерна ознака: після розмови ви відчуваєте провину за свою реакцію, а не за свої дії.
+        <div class="mb-signal">⚑ Сигнал: ви регулярно виходите з розмови з відчуттям «я, напевно, неправий/а» без конкретних аргументів.</div>
+        <div class="mb-action">↗ Дія: довіряйте записаному. Якщо зафіксували щось письмово — воно реальне. Газлайтинг не працює з доказами.</div>
+      </div>
+    </div>
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">02</span>
+        <span class="mh-title">Емоційний шантаж</span>
+        <span class="mh-tag" style="background:rgba(212,168,67,.1);color:var(--amber)">Емоційний</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        Використання ваших почуттів як важеля: «якщо ти мій/моя — ти це зробиш», «я засмучений/а через тебе». Susan Forward виділяє 4 типи: страх, обов'язок, провина, сором. Усі — апелюють до того, що вам важливо, щоб змусити діяти проти власних інтересів.
+        <div class="mb-signal">⚑ Сигнал: ви робите щось «щоб тільки не ображати» — систематично.</div>
+        <div class="mb-action">↗ Дія: питайте себе «я хочу це зробити — чи я боюсь не робити?». Різниця важлива.</div>
+      </div>
+    </div>
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">03</span>
+        <span class="mh-title">Love bombing + знецінення</span>
+        <span class="mh-tag" style="background:rgba(107,130,168,.1);color:var(--slate)">Романтичний</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        Цикл: спочатку надмірна увага, подарунки, «ти найкращий/а» — потім різке знецінення без очевидної причини. Нарциссичний патерн. Створює залежність: ви весь час намагаєтесь повернути «ту першу фазу».
+        <div class="mb-signal">⚑ Сигнал: стосунки відчуваються як «то сонце, то буря» — без середини.</div>
+        <div class="mb-action">↗ Дія: стабільність — ознака здорових стосунків. Якщо ви «заробляєте» хороше ставлення — це нездорово.</div>
+      </div>
+    </div>
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">04</span>
+        <span class="mh-title">DARVO</span>
+        <span class="mh-tag" style="background:rgba(29,184,122,.1);color:var(--green)">Захисний</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        Deny (заперечити) — Attack (атакувати) — Reverse Victim and Offender (поміняти жертву і кривдника місцями). «Ти сам/а почала», «ти мені зробив/ла гірше». Типова реакція кривдника при спробі поставити межу.
+        <div class="mb-signal">⚑ Сигнал: ви прийшли пояснити, чому вам погано — і вийшли винним/ою у чужому болю.</div>
+        <div class="mb-action">↗ Дія: якщо кожна спроба поговорити про свій стан перетворюється на «а ти знаєш, як мені» — зверніться до психолога.</div>
+      </div>
+    </div>
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">05</span>
+        <span class="mh-title">Ізоляція</span>
+        <span class="mh-tag" style="background:rgba(192,80,112,.1);color:var(--rose)">Соціальний</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        Поступове відрізання від друзів, сім'ї, підтримки: «вони тебе не розуміють», «з ними ти стаєш іншим/ою», «нам двох достатньо». Класичний патерн абьюзивних стосунків. Без зовнішньої мережі підтримки ви стаєте повністю залежні від маніпулятора.
+        <div class="mb-signal">⚑ Сигнал: за останні місяці ваше коло спілкування різко звузилось через одну людину.</div>
+        <div class="mb-action">↗ Дія: підтримуйте стосунки поза основним колом. Навіть один зовнішній друг — це ресурс виходу.</div>
+      </div>
+    </div>
+    <div class="manip-item">
+      <div class="manip-head" onclick="toggleManip(this)">
+        <span class="mh-num">06</span>
+        <span class="mh-title">Таємниця як зброя</span>
+        <span class="mh-tag" style="background:rgba(212,168,67,.1);color:var(--amber)">Контроль</span>
+        <span class="mh-arr">▶</span>
+      </div>
+      <div class="manip-body">
+        «Це тільки між нами» — коли мета не конфіденційність, а контроль. Таємниця, яка стосується безпеки — не є таємницею, яку треба зберігати. Маніпулятор використовує «таємний зв'язок» для ізоляції та залежності.
+        <div class="mb-signal">⚑ Сигнал: таємниця вас тяготить, ви почуваєтесь відповідальним/ою за когось іншого.</div>
+        <div class="mb-action">↗ Дія: таємниця, пов'язана з чиєюсь безпекою або здоров'ям — це не ваш тягар нести на самоті.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S4 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-num">04 — Дилеми</div>
+  <h2>9 дилем:<br><em>ваш вибір</em></h2>
+  <p class="body-text">Реальні ситуації — неоднозначні відповіді. Тут немає «правильного» за популярністю. Є — за безпекою і самоповагою.</p>
+
+  <div class="sc-container">
+    <div class="sc-header">
+      <span class="sc-hnum" id="scNum">Дилема 1 / 9</span>
+      <span style="font-size:.7rem;color:var(--green)" id="scScoreInline">0 pts</span>
+    </div>
+    <div class="sc-bar"><div class="sc-bar-fill" id="scBarFill" style="width:11%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-next" id="scNext" onclick="nextSc()">Наступна дилема →</button>
+      <div class="sc-score" id="scScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S5 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-num">05 — Цифровий простір</div>
+  <h2>Безпека онлайн:<br><em>нові правила гри</em></h2>
+  <p class="body-text">Цифровий простір — не «несправжній». Маніпуляції, контроль і загрози там так само реальні. А сексторшн, грумінг і кібербулінг мають конкретні юридичні наслідки.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про цифрову ідентичність</div>
+    <p>Дослідження 2023 (Pew Research): 46% підлітків 14–17 стикались із небажаним сексуальним контентом онлайн. 72% не розповідали батькам. Причина — не страх покарання, а впевненість що «не зрозуміють». Знати, що зробити, і мати до кого піти — ось що змінює статистику.</p>
+  </div>
+
+  <div class="aware-grid">
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">⊗</span>
+      <div class="aware-title">Сексторшн</div>
+      <div class="aware-body">Шантаж особистими зображеннями. Не важливо, як вони потрапили до кривдника. 100% відповідальність — на кривднику. Не сплачуйте — це посилює шантаж. Заблокуйте, зробіть скріншот, зверніться в поліцію (102) або кіберполіцію.</div>
+    </div>
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">⊕</span>
+      <div class="aware-title">Грумінг</div>
+      <div class="aware-body">Поетапне маніпулятивне зближення з метою шкоди. Починається з «ти особливий/а» і «ніхто тебе не розуміє». Тривалість — від тижнів до місяців. Ознака: людина просить тримати ваші стосунки в таємниці від близьких.</div>
+    </div>
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">◬</span>
+      <div class="aware-title">Кібербулінг</div>
+      <div class="aware-body">Цілеспрямоване переслідування онлайн. Юридично — адміністративна або кримінальна відповідальність залежно від тяжкості. Зберігайте докази (скріншоти з датами). Не відповідайте — блокуйте і повідомляйте платформу + дорослим.</div>
+    </div>
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">◈</span>
+      <div class="aware-title">Цифровий слід</div>
+      <div class="aware-body">Все опубліковане — залишається. Навіть «Stories». Навіть «видалене». Перед публікацією: «Чи хочу, щоб це побачив роботодавець або мої діти?» — якщо ні, не публікуйте.</div>
+    </div>
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">◉</span>
+      <div class="aware-title">Алгоритми і бульбашка</div>
+      <div class="aware-body">Алгоритми соцмереж показують те, що викликає сильну реакцію — включно з контентом, що посилює тривогу, гнів або FOMO. Усвідомлений перегляд: обирайте, що і скільки споживати — а не дозволяйте алгоритму вирішувати.</div>
+    </div>
+    <div class="aware-card" onclick="this.classList.toggle('open')">
+      <span class="aware-icon">△</span>
+      <div class="aware-title">Онлайн-стосунки і реальність</div>
+      <div class="aware-body">Онлайн-стосунки можуть бути справжніми — і небезпечними одночасно. Правило: людина, яка просить тримати ваш зв'язок у таємниці від усіх — не безпечна. Справжня близькість не вимагає тіні.</div>
+    </div>
+  </div>
+
+  <div class="dig-cols">
+    <div class="dig-col do">
+      <h3>Роби</h3>
+      <ul>
+        <li>Зберігай скріншоти підозрілого листування</li>
+        <li>Перевіряй профілі — фото, друзі, активність</li>
+        <li>Розповідай довіреній людині про нові знайомства</li>
+        <li>При шантажі — не сплачуй, одразу 102 або 116 111</li>
+        <li>Знай свої права: ти не несеш відповідальності за чужу маніпуляцію</li>
+      </ul>
+    </div>
+    <div class="dig-col dont">
+      <h3>Не роби</h3>
+      <ul>
+        <li>Не ділись адресою, розкладом, маршрутами</li>
+        <li>Не надсилай особисті фото незнайомим</li>
+        <li>Не зустрічайся з онлайн-знайомим без свідків</li>
+        <li>Не вір, що «ти перший/перша, кому він/вона довіряє»</li>
+        <li>Не мовч, якщо тебе шантажують — це посилює ситуацію</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S6 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-num">06 — Вікторина</div>
+  <h2>8 запитань:<br><em>перевір себе</em></h2>
+  <p class="body-text">Про психологічну безпеку, маніпуляції, права і цифровий простір. Без простих відповідей.</p>
+
+  <div class="quiz-box">
+    <div class="qz-top">
+      <span class="qz-prog" id="qzProg">01 / 08</span>
+      <span class="qz-pts" id="qzPts">0 pts</span>
+    </div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-next" id="qzNext" onclick="nextQz()">Продовжити →</button>
+      <div class="qz-score" id="qzScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S7 ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s7">
+  <div class="sec-num">07 — Практика</div>
+  <h2>Особистий<br><em>план безпеки</em></h2>
+  <p class="body-text">У момент кризи мозок перемикається в режим виживання і «забуває» логіку. Готовий план — це ваш якір. Заповніть і збережіть.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про кризову психологію</div>
+    <p>Дослідження кризового менеджменту підтверджують: наявність заздалегідь складеного плану знижує час реакції в стресовій ситуації на 40–60%. Ви не думаєте — ви виконуєте. Ваш план безпеки — це не «на всяк випадок». Це вже інструмент.</p>
+  </div>
+
+  <div class="plan-form">
+    <div class="pf-block">
+      <label>Людина довіри</label>
+      <input class="pf-input" type="text" id="pf1" placeholder="Ім'я...">
+      <br><br>
+      <label>Як зв'язатись</label>
+      <input class="pf-input" type="text" id="pf2" placeholder="Телефон або месенджер...">
+    </div>
+    <div class="pf-block">
+      <label>Гаряча лінія</label>
+      <input class="pf-input" type="text" id="pf3" value="116 111 — діти та молодь">
+      <br><br>
+      <label>Екстрена допомога</label>
+      <input class="pf-input" type="text" id="pf4" value="102 — поліція / 103 — медики">
+    </div>
+    <div class="pf-block">
+      <label>Моє безпечне місце</label>
+      <textarea class="pf-input" id="pf5" rows="4" placeholder="Місце, де я можу відновитись..."></textarea>
+    </div>
+    <div class="pf-block">
+      <label>Мої кроки у кризі</label>
+      <textarea class="pf-input" id="pf6" rows="4" placeholder="1. Зупинитись. 2. Зателефонувати... 3."></textarea>
+    </div>
+  </div>
+  <button class="plan-gen" onclick="genPlan()">Згенерувати план безпеки</button>
+  <div class="plan-result" id="planResult">
+    <h3>Мій план психологічної безпеки</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.72rem;color:var(--text3);text-align:center;margin-top:1.5rem;letter-spacing:.06em">ЗРОБИ СКРІНШОТ · ЗБЕРЕЖИ В ТЕЛЕФОНІ</p>
+  </div>
+</section>
+
+<!-- ══ FINAL ══ -->
+<div class="div"></div>
+<div class="final-wrap reveal">
+  <span class="final-mark">◎</span>
+  <div class="sec-num" style="justify-content:center">Урок завершено</div>
+  <h2>Безпека — це<br><em>навичка</em></h2>
+  <p class="body-text">Ви пройшли урок, де немає простих відповідей — але є інструменти. Знаєте типи маніпуляції, рівні довіри, патерни цифрових загроз і маєте свій план. Це — реальний капітал.</p>
+  <div class="final-cert">
+    <div class="fc-label">Документ</div>
+    <div class="fc-val">Психологічна безпека та коло довіри — 9–11 клас</div>
+    <br>
+    <div class="fc-label">Компетенції</div>
+    <div class="fc-val">Розпізнавання маніпуляцій · Диференційована довіра · Цифрова безпека · Кризовий план · Право на допомогу</div>
+  </div>
+  <div class="psycho" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Просити про допомогу — не слабкість. Це одна з найскладніших і найважливіших речей, яку людина може зробити. Якщо зараз важко — телефон 116 111 працює цілодобово, анонімно, безкоштовно. Або просто — прийдіть до людини зі свого кола. Ви вже знаєте, хто це.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const pnds=document.querySelectorAll('.pnd');
+pnds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  sIds.forEach((id,i)=>{
+    const el=document.getElementById(id);if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){
+      pnds.forEach(d=>d.classList.remove('on'));pnds[i]?.classList.add('on');
+    }
+  });
+});
+document.querySelectorAll('.reveal').forEach(r=>
+  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// SIGNALS
+function evalSig(){
+  const n=document.querySelectorAll('.sig-cell.on').length;
+  const el=document.getElementById('sigEval');el.classList.add('show');
+  if(n>=5){el.style.borderColor='var(--green)';el.innerHTML=`<strong style="color:var(--green)">${n}/6 знаків.</strong> Ваше середовище в цілому психологічно безпечне. Зберігайте його усвідомлено — це рідкість.`;}
+  else if(n>=3){el.style.borderColor='var(--amber)';el.innerHTML=`<strong style="color:var(--amber)">${n}/6 знаків.</strong> Є ресурс, але є й прогалини. Варто проаналізувати, де межі порушуються — і з ким.`;}
+  else{el.style.borderColor='var(--rose)';el.innerHTML=`<strong style="color:var(--rose)">${n}/6 знаків.</strong> Можливо, ваше поточне середовище не є безпечним. Поговоріть з психологом або зателефонуйте на 116 111.`;}
+}
+
+// TRUST CIRCLE
+const cv=document.getElementById('tcC');
+const ctx=cv.getContext('2d');
+const rings=[
+  {r:52,color:'#1DB87A',label:'Ядро'},
+  {r:100,color:'#D4A843',label:'Близькі'},
+  {r:145,color:'#6B82A8',label:'Знайомі'},
+  {r:155,color:'#333',label:'Чужі'},
+];
+let tPpl=[];
+function drawTC(){
+  const cx=160,cy=160;
+  ctx.clearRect(0,0,320,320);
+  for(let i=rings.length-1;i>=0;i--){
+    const rg=rings[i];
+    ctx.beginPath();ctx.arc(cx,cy,rg.r,0,2*Math.PI);
+    ctx.fillStyle=rg.color+'12';ctx.fill();
+    ctx.strokeStyle=rg.color+'40';ctx.lineWidth=1;ctx.stroke();
+    ctx.fillStyle=rg.color+'88';
+    ctx.font='500 9px Instrument Sans,sans-serif';ctx.textAlign='center';
+    ctx.fillText(rg.label,cx,cy-rg.r+13);
+  }
+  tPpl.forEach(p=>{
+    const rg=rings[p.ring];
+    const px=cx+rg.r*.58*Math.cos(p.angle);
+    const py=cy+rg.r*.58*Math.sin(p.angle);
+    ctx.fillStyle=rg.color;ctx.font='600 10px Instrument Sans,sans-serif';ctx.textAlign='center';
+    ctx.fillText(p.e,px,py+4);
+    ctx.fillStyle=rg.color+'CC';ctx.font='400 8px Instrument Sans,sans-serif';
+    ctx.fillText(p.n,px,py+16);
+  });
+  ctx.beginPath();ctx.arc(cx,cy,8,0,2*Math.PI);
+  ctx.fillStyle='var(--green)';ctx.fill();
+  ctx.fillStyle='#0A0C0F';ctx.font='600 7px Instrument Sans,sans-serif';ctx.textAlign='center';
+  ctx.fillText('Я',cx,cy+2.5);
+}
+drawTC();
+function tcAdd(sel){
+  const ring=+sel.value;if(sel.value==='')return;
+  const n=sel.dataset.n,e=sel.dataset.e;
+  tPpl=tPpl.filter(p=>p.n!==n);
+  const cnt=tPpl.filter(p=>p.ring===ring).length;
+  tPpl.push({n,e,ring,angle:-Math.PI/2+cnt*(Math.PI*.6)+Math.random()*.15});
+  drawTC();
+  const msgs=['Ядро не порожнє — це ресурс.','Близькі — ваша перша лінія підтримки.','Знайомі розширюють горизонт можливостей.'];
+  const m=document.getElementById('tcMsg');
+  m.textContent=msgs[ring]||'';
+  if(n==='Онлайн'&&ring===0)m.textContent='⚑ Онлайн-знайомий в ядрі? Переконайтесь, що знаєте цю людину офлайн.';
+}
+
+// MANIP ACCORDION
+function toggleManip(head){
+  const item=head.parentElement;
+  item.classList.toggle('open');
+}
+
+// SCENARIOS
+const scenarios=[
+  {q:'Ваш партнер (-ка) перевіряє ваш телефон і пояснює це «турботою» та «бажанням бути ближче». Що відчуваєте і що робите?',
+   opts:['Нормально — якщо нема що ховати, то й проблем нема','Кажу, що це порушення моїх меж, навіть якщо я нічого не ховаю','Даю доступ — щоб довести, що все чисто','Мовчу, щоб не псувати стосунки'],
+   ans:1,fb:'Перевірка телефону без згоди — контролювальна поведінка, а не турбота. Відсутність таємниць не означає відсутність права на приватність. Здорові стосунки будуються на довірі, а не доступі.'},
+  {q:'Друг після конфлікту написав скандальні речі про вас у спільному чаті. Ви хочете відповісти різко. Що краще?',
+   opts:['Відповісти ще гостріше публічно','Написати йому особисто, попросити видалити і обговорити проблему приватно','Ігнорувати — саме розсмокчеться','Розповісти всім «правду» про нього'],
+   ans:1,fb:'Публічні конфлікти ескалуються і залишають цифровий слід. Приватна розмова дає шанс вирішити суть, а не «перемогти». Якщо не можете домовитись — зверніться до нейтральної сторони.'},
+  {q:'Незнайомець онлайн пише, що «відчуває з вами особливий зв\'язок» і просить не розповідати про вашу переписку батькам. Що робите?',
+   opts:['Продовжую — можливо, це правда','Припиняю переписку і розповідаю довіреній дорослій людині','Питаю більше деталей перед рішенням','Погоджуюсь на таємницю — якщо спілкування приємне'],
+   ans:1,fb:'«Не розповідай батькам» — класична ознака грумінгу. Справжній зв\'язок не вимагає тіні. Будь-яка людина, яка просить ізолювати ваш контакт від близьких, — небезпечна.'},
+  {q:'Після того як ви поставили межу, людина каже: «Ти змінився/лась, раніше ти не був/ла таким/ою». Як реагуєте?',
+   opts:['Може, вони праві — може, я справді змінився/лась не на краще','«Так, я стаю кращим/ою у захисті себе — це добра зміна»','Вибачаюсь і повертаюсь до попередньої поведінки','Пояснюю довго, чому маю право на межі'],
+   ans:1,fb:'«Ти змінився/лась» як реакція на встановлення меж — маніпуляція, що апелює до нальгії за вашою колишньою відсутністю кордонів. Ви не зобов\'язані бути незмінними. Зростання — норма.'},
+  {q:'Вам надіслали ваше особисте фото і вимагають гроші, інакше «розішлють всім». Що робите насамперед?',
+   opts:['Плачу — це швидший вихід','Блокую відправника, зберігаю скріншоти і одразу звертаюсь до кіберполіції 102 або 116 111','Прошу ще часу і намагаюсь домовитись','Чекаю, може вони блефують'],
+   ans:1,fb:'Оплата шантажу — ніколи не вирішує проблему, а підтверджує, що метод працює. Кіберполіція України має спеціальний підрозділ: cyberpolice.gov.ua. Ви — жертва злочину, а не його причина.'},
+  {q:'Ваш найкращий друг/подруга систематично принижує вас у жартах перед іншими, а потім каже «та я жартую, не ображайся». Що робите?',
+   opts:['Терплю — він/вона ж не зумисно','Кажу чесно: «Мені неприємно, навіть якщо жарт. Прошу так більше не робити»','Відповідаю тим же — хай теж відчує','Сміюсь разом — щоб не бути занудою'],
+   ans:1,fb:'«Я жартую» не скасовує ефект. Систематичне приниження навіть у форматі гумору — це мікроагресія. Ваша реакція не «образливість» — це природна відповідь на порушення поваги.'},
+  {q:'Ви дізнались, що ваш однокласник систематично слідкує за іншим учнем онлайн (кібербулінг). Що робите?',
+   opts:['Не моя справа','Повідомляю шкільному психологу або адміністрації, за можливості — підтримую жертву','Пишу про це в загальний чат','Чекаю, що жертва сама розбереться'],
+   ans:1,fb:'Кібербулінг — кримінально переслідуваний злочин за законодавством України. Мовчазна позиція — це підтримка агресора. Повідомити — не «стукацтво», це захист людини.'},
+  {q:'Вам дуже погано: тривога, апатія, думки що «нікому не потрібен/на». Що робите?',
+   opts:['Тримаюсь сам/сама — впораюсь','Розповідаю довіреній людині або телефоную на 116 111','Шукаю відповіді в інтернеті і форумах','Відволікаюсь — і не думаю про це'],
+   ans:1,fb:'Думки про власну «непотрібність» — серйозний симптом, що потребує уваги. Говорити про це — не слабкість. 116 111 — анонімно, безкоштовно, цілодобово. Або — психолог, якому ви довіряєте.'},
+  {q:'Вам пропонують приєднатись до групи, де розповсюджують принизливий контент про однокласника. «Всі так роблять». Що відповідаєте?',
+   opts:['Приєднуюсь — не хочу бути чужим/ою в компанії','«Ні. І «всі роблять» — не аргумент»','Приєднуюсь, але нічого не публікую','Мовчки виходжу з групи'],
+   ans:1,fb:'Участь у поширенні принизливого контенту — юридично і морально співучасть. «Всі так роблять» — класична маніпуляція соціальним тиском. Вихід з групи без слів — мінімум; «ні» вголос — максимум і зразок для інших.'},
+];
+let scI=0,scSc=0,scAns=false;
+function loadSc(){
+  const s=scenarios[scI];
+  document.getElementById('scNum').textContent=`Дилема ${scI+1} / ${scenarios.length}`;
+  document.getElementById('scBarFill').style.width=`${((scI+1)/scenarios.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{
+    const b=document.createElement('button');b.className='sc-opt';b.textContent=op;
+    b.onclick=()=>ansSc(i);o.appendChild(b);
+  });
+  document.getElementById('scFb').className='sc-fb';
+  document.getElementById('scNext').className='sc-next';
+  scAns=false;
+}
+function ansSc(i){
+  if(scAns)return;scAns=true;
+  const s=scenarios[scI];
+  document.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-opt')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scScoreInline').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-opt')[i].classList.add('bad');document.querySelectorAll('.sc-opt')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNext').className='sc-next show';
+}
+function nextSc(){
+  scI++;
+  if(scI<scenarios.length){loadSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNext').className='sc-next';
+  document.getElementById('scNum').textContent='Дилеми завершено';
+  document.getElementById('scBarFill').style.width='100%';
+  const sc=document.getElementById('scScore');sc.style.display='block';
+  const msgs=['Є над чим подумати — і це вже початок ▲','Ви орієнтуєтесь у складних ситуаціях ◎','Сильний рівень критичного мислення ◈','Бездоганно — ваша безпека у ваших руках ◉'];
+  const t=Math.min(Math.floor(scSc/(scenarios.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${scSc} / ${scenarios.length} — ${msgs[t]}`;
+}
+loadSc();
+
+// QUIZ
+const qzData=[
+  {q:'Що таке «DARVO» у контексті маніпуляції?',opts:['Метод медитації','Deny-Attack-Reverse Victim & Offender — тактика кривдника при спробі встановити межу','Термін із когнітивної психотерапії','Тип кіберзагрози'],ans:1,exp:'DARVO — заперечення, атака і «переверт» ролей. Кривдник стає «жертвою» щойно ви намагаєтесь захиститись. Знати назву — значить не бути розгубленим.'},
+  {q:'Що відрізняє вплив від маніпуляції?',opts:['Маніпуляція завжди агресивна','Вплив прозорий і залишає вибір; маніпуляція — прихована і апелює до страху чи провини','Вплив — це завжди добре, маніпуляція — завжди погано','Різниця лише в намірі — результат однаковий'],ans:1,exp:'Ключовий критерій — прозорість і наявність вибору. Якщо ви відчуваєте провину або страх без реальної причини — перед вами маніпуляція.'},
+  {q:'Що таке «love bombing»?',opts:['Тип кіберзлочину','Надмірна увага і ідеалізація на початку стосунків, що зазвичай передує знеціненню','Метод терапії стосунків','Нормальна закоханість'],ans:1,exp:'Love bombing — маніпулятивна стратегія, що створює емоційну залежність. Потім наступає знецінення — і ви постійно намагаєтесь «повернути першу фазу». Стабільна увага — здоровіший знак, ніж інтенсивна.'},
+  {q:'Хто несе відповідальність за сексторшн?',opts:['Жертва — не треба було надсилати','Кривдник — 100%','Обидві сторони рівно','Залежить від ситуації'],ans:1,exp:'100% відповідальності — на кривднику. Незалежно від того, як потрапили зображення. Жертва ніколи не відповідає за злочинні дії іншої людини.'},
+  {q:'Що таке «диференційована довіра» (за Брене Браун)?',opts:['Довіра лише до психологів','Вибіркова уразливість, що розвивається поступово через перевірку поведінки','Метод оцінки надійності людей за зовнішністю','Повна довіра до близьких і нуль — до інших'],ans:1,exp:'Справжня уразливість вибіркова. Вона розвивається поступово, через спостереження за поведінкою — не словами. «Ділитись з усіма рівно» — ознака нерозуміння меж, а не щедрості.'},
+  {q:'Яка ознака грумінгу — найхарактерніша?',opts:['Швидко просить фото','Просить тримати контакт у таємниці від близьких','Надто уважний на початку','Пише вночі'],ans:1,exp:'Вимога секретності від близьких — головна червона прапора. Справжня близькість не потребує тіні. Якщо людина наполягає на ізоляції вашого контакту — вона небезпечна.'},
+  {q:'Що таке «цифровий слід»?',opts:['Відбитки пальців на екрані','Сукупність даних, залишених онлайн — в т.ч. «видалених»','Технічний термін для cookies','Тип кіберзлочину'],ans:1,exp:'Все, опубліковане онлайн, залишається — навіть після видалення. Скріншоти, архіви, кеш. Цифровий слід формується роками і може мати наслідки в майбутньому.'},
+  {q:'Коли таємниця стає небезпечною?',opts:['Ніколи — таємниця є таємниця','Коли вона стосується чиєїсь безпеки, здоров\'я або незаконних дій','Якщо вона тягне довше 2 тижнів','Коли вона відома більш ніж двом людям'],ans:1,exp:'Таємниця, пов\'язана з безпекою — не є моральним зобов\'язанням зберігати. Повідомити в такому випадку — захист, а не зрада.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function loadQz(){
+  const q=qzData[qzI];
+  document.getElementById('qzProg').textContent=`${String(qzI+1).padStart(2,'0')} / ${String(qzData.length).padStart(2,'0')}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{
+    const b=document.createElement('button');b.className='qz-o';b.textContent=op;
+    b.onclick=()=>ansQz(i);o.appendChild(b);
+  });
+  document.getElementById('qzFb').className='qz-fb';
+  document.getElementById('qzNext').className='qz-next';
+  qzAns=false;
+}
+function ansQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qzData[qzI];
+  document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPts').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNext').className='qz-next show';
+}
+function nextQz(){
+  qzI++;
+  if(qzI<qzData.length){loadQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';
+  document.getElementById('qzProg').textContent='завершено';
+  const sc=document.getElementById('qzScore');sc.style.display='block';
+  const msgs=['Продовжуйте вивчати тему ▲','Ви орієнтуєтесь у ключових поняттях ◎','Сильна теоретична база ◈','Бездоганний рівень — справжній знавець ◉'];
+  const t=Math.min(Math.floor(qzSc/(qzData.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${qzSc} / ${qzData.length} — ${msgs[t]}`;
+}
+loadQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-row"><span class="pr-label">Людина довіри</span><span>${v('pf1')}</span></div>
+    <div class="pr-row"><span class="pr-label">Зв'язок</span><span>${v('pf2')}</span></div>
+    <div class="pr-row"><span class="pr-label">Гаряча лінія</span><span>${v('pf3')}</span></div>
+    <div class="pr-row"><span class="pr-label">Екстрена</span><span>${v('pf4')}</span></div>
+    <div class="pr-row"><span class="pr-label">Безпечне місце</span><span>${v('pf5')}</span></div>
+    <div class="pr-row"><span class="pr-label">Мої кроки</span><span>${v('pf6')}</span></div>`;
+  document.getElementById('planResult').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Коло довіри</b><br><span>Практика<br>Склади список із 3–5 людей, до кого можна звернутись</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (3)</summary><ol><li>Bowlby, J. (1988). <i>A Secure Base</i>. Basic Books.</li><li>Faber, A., &amp; Mazlish, E. (1980/2012). <i>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</i>. Scribner.</li><li>Edmondson, A. (1999). Psychological safety and learning behavior in work teams. <i>Administrative Science Quarterly, 44</i>(2), 350–383.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="02-emotions.html">← Попередня</a> <a href="../index.html">Усі теми</a></span><a href="04-boundaries.html">Наступна тема →</a></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конфлікт чи непорозуміння · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070A;--s1:#0E0E13;--s2:#14141B;--s3:#1B1B24;
+  --cu:#D8884A;--cu-l:rgba(216,136,74,.1);
+  --st:#7BA8D0;--st-l:rgba(123,168,208,.1);
+  --gr:#58C8A0;--gr-l:rgba(88,200,160,.1);
+  --ro:#D8606E;--ro-l:rgba(216,96,110,.1);
+  --vi:#A088E0;--vi-l:rgba(160,136,224,.1);
+  --text:#ECE8E4;--muted:rgba(236,232,228,.5);--dim:rgba(236,232,228,.26);
+  --bd:rgba(255,255,255,.07);--bd2:rgba(255,255,255,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:
+ radial-gradient(ellipse 55% 48% at 6% 18%,rgba(216,136,74,.1) 0%,transparent 65%),
+ radial-gradient(ellipse 48% 52% at 92% 85%,rgba(123,168,208,.09) 0%,transparent 62%);}
+.prog{position:fixed;top:0;left:0;height:1px;z-index:500;background:linear-gradient(90deg,var(--cu),var(--st));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:5px;height:5px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--cu);transform:scale(1.8);}
+
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 3rem 3.5rem;overflow:hidden;}
+.scales{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:min(320px,36vw);opacity:.85;pointer-events:none;}
+.scales svg{width:100%;height:auto;}
+.beam{transform-origin:160px 60px;animation:tilt 7s ease-in-out infinite alternate;}
+@keyframes tilt{from{transform:rotate(-4deg);}to{transform:rotate(4deg);}}
+.kick{font-size:.6rem;font-weight:500;letter-spacing:.26em;color:rgba(216,136,74,.7);text-transform:uppercase;margin-bottom:2rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,8.5vw,7.5rem);font-weight:400;line-height:.93;letter-spacing:-.02em;margin-bottom:2.5rem;position:relative;z-index:1;}
+.hero h1 em{font-style:italic;color:var(--cu);}
+.hero h1 .sm{display:block;font-size:.34em;font-weight:300;font-style:normal;color:var(--muted);margin-top:.7rem;font-family:'Inter',sans-serif;letter-spacing:.02em;}
+.hero-foot{border-top:1px solid var(--bd2);padding-top:1.5rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
+.hero-desc{font-size:.9rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:420px;}
+.hero-idx{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 1rem;}
+.hi{font-size:.6rem;font-weight:500;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;}
+
+.sec{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:7rem 2rem;}
+.divl{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;position:relative;z-index:2;padding:0 2rem;}
+.dl-ln{height:1px;background:linear-gradient(90deg,var(--cu),transparent);opacity:.3;}
+.dl-n{font-size:.58rem;font-weight:500;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;}
+.lbl{font-size:.6rem;font-weight:500;letter-spacing:.2em;color:var(--cu);margin-bottom:.9rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
+.lbl::after{content:'';width:24px;height:1px;background:var(--cu);opacity:.5;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:400;line-height:1.1;margin-bottom:1.1rem;letter-spacing:-.01em;}
+h2 em{font-style:italic;color:var(--cu);}
+.lead{font-size:.95rem;font-weight:300;line-height:1.95;color:var(--muted);max-width:680px;margin-bottom:2rem;}
+.psy{border-left:1px solid var(--cu);padding:1.4rem 2rem;margin:2.5rem 0;position:relative;}
+.psy::before{content:'';position:absolute;top:0;left:-1px;width:1px;height:40px;background:var(--cu);}
+.psy-who{font-size:.58rem;font-weight:500;letter-spacing:.2em;color:rgba(216,136,74,.7);margin-bottom:.7rem;text-transform:uppercase;}
+.psy p{font-size:.95rem;font-weight:300;line-height:1.95;color:rgba(236,232,228,.72);font-style:italic;font-family:'Playfair Display',serif;}
+
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);margin:2rem 0;}
+@media(max-width:640px){.tri{grid-template-columns:1fr;}}
+.tri>div{background:var(--s1);padding:1.4rem;}
+.tri .n{font-size:.58rem;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;margin-bottom:.4rem;}
+.tri h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;margin-bottom:.5rem;}
+.tri p{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.7;}
+.tri .ex{margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--bd);font-size:.74rem;font-style:italic;color:var(--dim);}
+
+.box{border:1px solid var(--bd);margin:2rem 0;}
+.box-top{padding:.85rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.box-tl{font-size:.58rem;font-weight:500;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;}
+.box-pp{font-size:.7rem;font-weight:600;color:var(--cu);}
+.box-pb{height:1px;background:var(--bd);}.box-pf{height:100%;background:var(--cu);transition:width .4s;}
+.box-body{padding:2rem 1.5rem;}
+.q{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:400;line-height:1.55;margin-bottom:1.4rem;}
+.scene{font-size:.86rem;font-weight:300;color:var(--muted);line-height:1.8;padding:.9rem 1.1rem;background:var(--s1);border-left:2px solid var(--st);margin-bottom:1.1rem;}
+.opts{display:flex;flex-direction:column;gap:.42rem;}
+.o{background:var(--s1);border:1px solid var(--bd);padding:.8rem 1.1rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.o:hover{border-color:var(--bd2);color:var(--text);}
+.o.ok{border-color:var(--gr);background:var(--gr-l);color:var(--gr);}
+.o.bad{border-color:var(--ro);background:var(--ro-l);color:var(--ro);}
+.o:disabled{cursor:not-allowed;}
+.fb{font-size:.83rem;font-weight:300;padding:.85rem 1.1rem;border-left:1px solid var(--bd2);margin-top:.9rem;display:none;line-height:1.82;color:var(--muted);}
+.fb.show{display:block;}.fb.ok{border-color:var(--gr);}.fb.bad{border-color:var(--ro);}
+.nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.5rem 1.5rem;font-family:'Inter',sans-serif;font-size:.76rem;color:var(--dim);cursor:pointer;}
+.nx:hover{border-color:var(--cu);color:var(--cu);}.nx.show{display:inline-block;}
+.fin{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--cu);text-align:center;margin-top:1.5rem;display:none;}
+
+/* slider */
+.sl-wrap{border:1px solid var(--bd);padding:1.8rem;margin:2rem 0;}
+.sl{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--bd2);outline:none;margin:1.2rem 0;}
+.sl::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--cu);cursor:pointer;box-shadow:0 0 12px rgba(216,136,74,.4);}
+.sl-ends{display:flex;justify-content:space-between;font-size:.62rem;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;}
+.sl-st{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cu);margin:.8rem 0 .3rem;}
+.sl-lv{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem;}
+.sl-tx{font-size:.88rem;font-weight:300;color:var(--muted);line-height:1.85;min-height:3.6rem;}
+.sl-ex{margin-top:.8rem;padding:.7rem 1rem;background:var(--gr-l);border-left:1px solid var(--gr);font-size:.82rem;color:var(--muted);line-height:1.7;}
+
+/* neg lab */
+.neg-steps{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:1.3rem;}
+.ns{flex:1;min-width:110px;text-align:center;padding:.5rem .4rem;border:1px solid var(--bd);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);}
+.ns.on{border-color:var(--cu);color:var(--cu);}.ns.done{border-color:var(--gr);color:var(--gr);}
+.neg-case{padding:1rem 1.2rem;background:var(--s1);border-left:2px solid var(--cu);font-size:.86rem;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
+.neg-q{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:1rem;line-height:1.5;}
+
+/* horsemen */
+.hz{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;margin:2rem 0;}
+.hc{background:var(--s1);border:1px solid var(--bd);padding:1.3rem;cursor:pointer;transition:all .2s;min-height:190px;}
+.hc:hover{border-color:var(--bd2);}
+.hc.flip{border-color:var(--gr);background:var(--gr-l);}
+.hc .f,.hc .b{display:block;}.hc .b{display:none;}
+.hc.flip .f{display:none;}.hc.flip .b{display:block;}
+.hc-i{font-size:1.6rem;margin-bottom:.5rem;display:block;}
+.hc-t{font-family:'Playfair Display',serif;font-size:1.02rem;margin-bottom:.4rem;}
+.hc-d{font-size:.78rem;font-weight:300;color:var(--muted);line-height:1.65;}
+.hc-ex{font-size:.74rem;font-style:italic;color:var(--ro);margin-top:.6rem;}
+.hc-ant{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gr);margin-bottom:.4rem;}
+.hc-ant2{font-size:.8rem;color:var(--text);line-height:1.7;}
+.hint{font-size:.7rem;color:var(--dim);margin-top:.4rem;font-style:italic;}
+
+/* TKI */
+.tkb{display:grid;grid-template-columns:130px 1fr 26px;gap:.8rem;align-items:center;margin-bottom:.6rem;font-size:.8rem;}
+.tkt{height:6px;background:var(--s3);}.tkf{height:100%;transition:width .6s;}
+.tk-main{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.5rem;}
+.tk-txt{font-size:.88rem;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
+.tk-res{display:none;padding:1.8rem 1.5rem;}.tk-res.show{display:block;}
+.rt{background:none;border:1px solid var(--cu);color:var(--cu);padding:.55rem 1.6rem;font-family:'Inter',sans-serif;font-size:.8rem;cursor:pointer;margin-top:.6rem;}
+.rt:hover{background:var(--cu);color:var(--bg);}
+
+/* DESC / builders */
+.bld{border:1px solid var(--bd);padding:1.8rem;margin:2rem 0;}
+.bld-sit{padding:.9rem 1.1rem;background:var(--s1);border-left:2px solid var(--st);font-size:.86rem;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
+.bld-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.bt{background:var(--s1);border:1px solid var(--bd);padding:.35rem .9rem;font-family:'Inter',sans-serif;font-size:.76rem;color:var(--muted);cursor:pointer;}
+.bt.on{border-color:var(--cu);color:var(--cu);}
+.bld-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.bld-f label{font-size:.58rem;font-weight:500;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;display:block;margin-bottom:.4rem;}
+.bld-f select,.bld-f textarea{width:100%;background:var(--s1);border:1px solid var(--bd2);color:var(--text);padding:.6rem .7rem;font-family:'Inter',sans-serif;font-size:.84rem;outline:none;}
+.bld-f select:focus,.bld-f textarea:focus{border-color:var(--cu);}
+.bld-btn{margin-top:1.2rem;background:var(--cu);color:var(--bg);border:none;padding:.65rem 1.8rem;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;}
+.bld-out{margin-top:1.2rem;padding:1.2rem 1.4rem;background:var(--cu-l);border-left:2px solid var(--cu);font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;line-height:1.8;min-height:3rem;}
+.bld-eval{font-family:'Inter',sans-serif;font-style:normal;font-size:.8rem;margin-top:.8rem;}
+
+/* apology checklist */
+.ap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.7rem;margin:1.5rem 0;}
+.apc{background:var(--s1);border:1px solid var(--bd);padding:1.1rem 1.2rem;cursor:pointer;transition:all .2s;}
+.apc:hover{border-color:var(--bd2);}.apc.on{border-color:var(--cu);background:var(--cu-l);}
+.apc b{font-size:.84rem;display:block;margin-bottom:.3rem;}.apc span{font-size:.76rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.ap-out{padding:1rem 1.3rem;border-left:1px solid var(--bd2);font-size:.86rem;font-weight:300;color:var(--muted);line-height:1.8;min-height:3rem;}
+
+/* plan */
+.pl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.plf{background:var(--s1);padding:1.4rem;}
+.pll{font-size:.58rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.pli{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.45rem 0;font-family:'Inter',sans-serif;font-size:.83rem;color:var(--text);outline:none;resize:none;line-height:1.55;}
+.pli:focus{border-color:var(--cu);}.pli::placeholder{color:var(--dim);}
+.pl-btn{background:none;border:1px solid var(--cu);color:var(--cu);padding:.72rem 2.2rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:500;cursor:pointer;display:block;margin:1.5rem auto;}
+.pl-btn:hover{background:var(--cu);color:var(--bg);}
+.pl-res{display:none;background:var(--s1);border:1px solid var(--bd2);padding:2rem;margin-top:1.5rem;}
+.pl-res.show{display:block;}
+.pl-res h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;text-align:center;margin-bottom:1.2rem;}
+.plr{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.82rem;font-weight:300;line-height:1.65;}
+.plr:last-child{border:none;}.plr-l{color:var(--dim);font-size:.65rem;font-weight:500;letter-spacing:.06em;min-width:155px;}
+
+.final{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:6rem 2rem 9rem;}
+.fc{border:1px solid var(--bd2);padding:2.5rem;margin:2rem 0;}
+.fcl{font-size:.58rem;font-weight:500;letter-spacing:.16em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-family:'Playfair Display',serif;font-size:.96rem;line-height:1.75;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="9-11" data-mo-id="08" data-mo-kind="student" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Тема 8 з 24 · Конфлікт чи непорозуміння: шукаємо вихід</span><span class="mo-r"><a href="07-crisis_calm.html" title="Попередня тема">‹</a><a href="09-selfesteem.html" title="Наступна тема">›</a></span></nav>
+<div class="prog" id="prog"></div>
+<nav class="snav"><button class="snd on" data-i="0"></button><button class="snd" data-i="1"></button><button class="snd" data-i="2"></button><button class="snd" data-i="3"></button><button class="snd" data-i="4"></button><button class="snd" data-i="5"></button><button class="snd" data-i="6"></button><button class="snd" data-i="7"></button><button class="snd" data-i="8"></button></nav>
+
+<section class="hero" id="s0">
+  <div class="scales"><svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="160" y1="60" x2="160" y2="210" stroke="rgba(236,232,228,.35)" stroke-width="1.5"/>
+    <line x1="110" y1="214" x2="210" y2="214" stroke="rgba(236,232,228,.35)" stroke-width="1.5"/>
+    <g class="beam"><line x1="50" y1="60" x2="270" y2="60" stroke="rgba(216,136,74,.8)" stroke-width="2"/>
+      <line x1="50" y1="60" x2="30" y2="130" stroke="rgba(236,232,228,.3)"/><line x1="50" y1="60" x2="80" y2="130" stroke="rgba(236,232,228,.3)"/>
+      <path d="M20 130 H90 Q55 165 20 130Z" fill="rgba(123,168,208,.18)" stroke="rgba(123,168,208,.7)"/>
+      <line x1="270" y1="60" x2="240" y2="130" stroke="rgba(236,232,228,.3)"/><line x1="270" y1="60" x2="290" y2="130" stroke="rgba(236,232,228,.3)"/>
+      <path d="M230 130 H300 Q265 165 230 130Z" fill="rgba(216,136,74,.18)" stroke="rgba(216,136,74,.7)"/></g>
+    <circle cx="160" cy="60" r="5" fill="rgba(236,232,228,.6)"/></svg></div>
+  <div class="kick">Онлайн-урок · 9–11 клас · Конфлікти, переговори, комунікація</div>
+  <h1><em>Конфлікт</em><br>чи непорозуміння?<span class="sm">анатомія, ескалація, переговори, відновлення</span></h1>
+  <div class="hero-foot"><p class="hero-desc">Як розібрати суперечку на частини, вести переговори без «переможців і переможених» і відновлювати стосунки після помилок</p>
+  <div class="hero-idx"><span class="hi">◈ Три рівні конфлікту</span><span class="hi">▲ Помилки атрибуції</span><span class="hi">◎ Ескалація (Glasl)</span><span class="hi">◇ Лабораторія переговорів</span><span class="hi">▽ Четверо вершників</span><span class="hi">◉ Анатомія вибачення</span></div></div>
+</section>
+
+<!-- S1 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">01 — Анатомія</div></div>
+<section class="sec reveal" id="s1">
+  <div class="lbl">Що саме ми називаємо конфліктом</div>
+  <h2>Три шари одного <em>конфлікту</em></h2>
+  <p class="lead">Більшість суперечок складається не з одного, а з кількох шарів. Якщо вирішувати «не той шар», сварка триває, хоч предмет «вирішено».</p>
+  <div class="tri">
+    <div><div class="n">Шар 1</div><h3>Предметний</h3><p>Про що суперечка: ресурс, рішення, розподіл завдань, час.</p><div class="ex">«Хто пише вступ у проєкті?»</div></div>
+    <div><div class="n">Шар 2</div><h3>Стосункові</h3><p>Про що насправді: повага, довіра, статус, відчуття «мене не бачать».</p><div class="ex">«Ти завжди вирішуєш за всіх»</div></div>
+    <div><div class="n">Шар 3</div><h3>Ціннісний</h3><p>Про що глибоко: цінності, ідентичність, уявлення про справедливість.</p><div class="ex">«Так не можна, це несправедливо»</div></div>
+  </div>
+  <div class="psy"><div class="psy-who">Порада психолога · Про діагностику</div><p>Предметний конфлікт вирішується переговорами. Стосункові потребує визнання й відновлення. Ціннісний часто не «вирішується» зовсім: його можна лише навчитись проживати з повагою. Помилка — вимагати від людини змінити цінності. Рішення — домовитись про те, як ми співіснуємо.</p></div>
+
+  <div class="box" id="atBox">
+    <div class="box-top"><span class="box-tl" id="atTl">Помилка атрибуції · 1 / 4</span><span class="box-pp" id="atPp">0 pts</span></div>
+    <div class="box-pb"><div class="box-pf" id="atPf" style="width:25%"></div></div>
+    <div class="box-body"><div class="q" id="atQ"></div><div class="opts" id="atO"></div><div class="fb" id="atFb"></div><button class="nx" id="atNx" onclick="atNext()">Далі →</button><div class="fin" id="atFin"></div></div>
+  </div>
+</section>
+
+<!-- S2 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">02 — Ескалація</div></div>
+<section class="sec reveal" id="s2">
+  <div class="lbl">Friedrich Glasl · 9 ступенів</div>
+  <h2>Куди <em>веде</em> конфлікт</h2>
+  <p class="lead">Глазль описав дев'ять ступенів у трьох зонах: «виграємо обоє» → «виграю я, а ти програєш» → «програємо обоє». Рухай повзунок і дивись, що змінюється. Головне: після 3-4 ступеня сторони рідко зупиняються без третьої сторони.</p>
+  <div class="sl-wrap">
+    <div class="sl-ends"><span>1 · напруга</span><span>9 · взаємне руйнування</span></div>
+    <input class="sl" type="range" min="1" max="9" value="1" id="gl" oninput="glShow(this.value)">
+    <div class="sl-lv" id="glLv"></div><div class="sl-st" id="glSt"></div><div class="sl-tx" id="glTx"></div><div class="sl-ex" id="glEx"></div>
+  </div>
+  <div class="psy"><div class="psy-who">Порада психолога · «Точка неповернення»</div><p>У моделі Глазля є момент, після якого логіка змінюється: сторони перестають шукати рішення й починають шукати, як нашкодити. Практичний висновок: найдорожче втручання — пізнє. Найдешевше — на першому-другому ступені, коли розмова ще можлива.</p></div>
+</section>
+
+<!-- S3 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">03 — Переговори</div></div>
+<section class="sec reveal" id="s3">
+  <div class="lbl">Harvard Negotiation Project · Fisher & Ury</div>
+  <h2>Лабораторія <em>переговорів</em></h2>
+  <p class="lead">Чотири принципи принципових переговорів: <strong>люди окремо від проблеми → інтереси замість позицій → варіанти для обопільної вигоди → об'єктивні критерії.</strong> Плюс страховка: <strong>BATNA</strong> (найкраща альтернатива, якщо домовленість не відбудеться). Пройди кейс покроково.</p>
+  <div class="box" id="ngBox"><div class="box-body">
+    <div class="neg-steps" id="ngSteps"></div>
+    <div class="neg-case" id="ngCase"></div>
+    <div class="neg-q" id="ngQ"></div><div class="opts" id="ngO"></div><div class="fb" id="ngFb"></div><button class="nx" id="ngNx" onclick="ngNext()">Далі →</button><div class="fin" id="ngFin"></div>
+  </div></div>
+</section>
+
+<!-- S4 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">04 — Стосунки</div></div>
+<section class="sec reveal" id="s4">
+  <div class="lbl">John Gottman · «Четверо вершників»</div>
+  <h2>Що руйнує стосунки<br>і що їх <em>рятує</em></h2>
+  <p class="lead">Gottman вивчав пари, але його патерни пізнаються у дружбі, команді й родині. Чотири «вершники» передбачають розпад стосунків. У кожного є антидот. Натискай картки.</p>
+  <div class="hz">
+    <div class="hc" onclick="this.classList.toggle('flip')"><div class="f"><span class="hc-i">🗡️</span><div class="hc-t">Критика</div><div class="hc-d">Нападаєш на людину, а не на поведінку.</div><div class="hc-ex">«Ти егоїст»</div><div class="hint">натисни → антидот</div></div><div class="b"><div class="hc-ant">Антидот</div><div class="hc-ant2"><b>Скарга замість критики:</b> «Коли ти пропустив зустріч, мені було образливо. Мені потрібно, щоб ми дотримувались домовленостей».</div></div></div>
+    <div class="hc" onclick="this.classList.toggle('flip')"><div class="f"><span class="hc-i">🙄</span><div class="hc-t">Презирство</div><div class="hc-d">Висміювання, сарказм, ставлення «зверху». Найсильніший провісник розриву.</div><div class="hc-ex">«Ага, звісно, геній»</div><div class="hint">натисни → антидот</div></div><div class="b"><div class="hc-ant">Антидот</div><div class="hc-ant2"><b>Культура поваги й вдячності:</b> регулярно називай, що в людині цінуєш. Повага — «профілактика» презирства.</div></div></div>
+    <div class="hc" onclick="this.classList.toggle('flip')"><div class="f"><span class="hc-i">🛡️</span><div class="hc-t">Захисна позиція</div><div class="hc-d">Відбиваєшся контратакою або жертвою замість визнання своєї частки.</div><div class="hc-ex">«А ти сам!»</div><div class="hint">натисни → антидот</div></div><div class="b"><div class="hc-ant">Антидот</div><div class="hc-ant2"><b>Взяти частку відповідальності:</b> «Так, я теж міг зробити інакше. Мою частину беру на себе».</div></div></div>
+    <div class="hc" onclick="this.classList.toggle('flip')"><div class="f"><span class="hc-i">🧱</span><div class="hc-t">Мовчазна стіна</div><div class="hc-d">Відключаєшся, мовчиш, іду. Часто — реакція на перевантаження.</div><div class="hc-ex">«Я з тобою не розмовляю»</div><div class="hint">натисни → антидот</div></div><div class="b"><div class="hc-ant">Антидот</div><div class="hc-ant2"><b>Самозаспокоєння + повернення:</b> «Мені треба 20 хвилин, щоб охолонути. Я повернусь і ми продовжимо». Пауза з обіцянкою повернутись — це не стіна.</div></div></div>
+  </div>
+  <div class="psy"><div class="psy-who">Порада психолога · Ремонт і відновлення</div><p>Gottman також показав: щасливі стосунки відрізняються не відсутністю сварок, а <em>вміннями відновлювати</em> після них: жарт у напруженій розмові, «давай почнемо спочатку», «дякую, що ти це сказав». Ремонтні спроби — навичка, яку можна тренувати.</p></div>
+</section>
+
+<!-- S5 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">05 — Стиль і голос</div></div>
+<section class="sec reveal" id="s5">
+  <div class="lbl">Thomas–Kilmann · DESC</div>
+  <h2>Твій <em>стиль</em> і твій голос</h2>
+  <p class="lead">Спершу визнач, що ти обираєш найчастіше (10 ситуацій). Потім потренуй асертивну фразу за схемою DESC: <strong>Describe</strong> (факт) → <strong>Express</strong> (почуття) → <strong>Specify</strong> (прохання) → <strong>Consequences</strong> (позитивний наслідок).</p>
+  <div class="box" id="tkBox"><div class="box-top"><span class="box-tl" id="tkTl">Ситуація 1 / 10</span><span class="box-tl">Результат лише для тебе</span></div><div class="box-pb"><div class="box-pf" id="tkPf" style="width:10%"></div></div>
+    <div class="box-body" id="tkBody"><div class="q" id="tkQ"></div><div class="opts" id="tkO"></div></div><div class="tk-res" id="tkRes"></div></div>
+
+  <div class="bld">
+    <div class="lbl" style="margin-bottom:.8rem">Конструктор DESC</div>
+    <div class="bld-tabs" id="dsTabs"></div>
+    <div class="bld-sit" id="dsSit"></div>
+    <div class="bld-grid">
+      <div class="bld-f"><label>D · Опиши факт</label><select id="dsD"></select></div>
+      <div class="bld-f"><label>E · Вислови почуття</label><select id="dsE"></select></div>
+      <div class="bld-f"><label>S · Сформулюй прохання</label><select id="dsS"></select></div>
+      <div class="bld-f"><label>C · Позитивний наслідок</label><select id="dsC"></select></div>
+    </div>
+    <button class="bld-btn" onclick="dsBuild()">Зібрати</button>
+    <div class="bld-out" id="dsOut">Обери частини та натисни «Зібрати»</div>
+  </div>
+</section>
+
+<!-- S6 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">06 — Різні погляди</div></div>
+<section class="sec reveal" id="s6">
+  <div class="lbl">Steelman · Найсильніша версія опонента</div>
+  <h2>Коли ви <em>не згодні</em> по суті</h2>
+  <p class="lead">Не кожну суперечку потрібно «вирішити». Іноді людина має іншу думку чи цінність. Тоді працює навичка: спершу сформулювати позицію опонента <em>так, щоб він сказав «так, саме це я і маю на увазі»</em>, і лише потім відповідати.</p>
+  <div class="box" id="stBox"><div class="box-top"><span class="box-tl" id="stTl">Steelman · 1 / 3</span><span class="box-pp" id="stPp">0 pts</span></div><div class="box-pb"><div class="box-pf" id="stPf" style="width:33%"></div></div>
+    <div class="box-body"><div class="scene" id="stSc"></div><div class="q" id="stQ"></div><div class="opts" id="stO"></div><div class="fb" id="stFb"></div><button class="nx" id="stNx" onclick="stNext()">Далі →</button><div class="fin" id="stFin"></div></div></div>
+  <div class="psy"><div class="psy-who">Порада психолога · Межа вправи</div><p>Steelman — для різних думок і цінностей, а не для виправдання насильства чи приниження. Є теми, де «обидві сторони» не існують: булінг, дискримінація, заперечення чужого права на безпеку. Там ми не «розуміємо позицію», а захищаємо людину. І в умовах війни не кожна розмова про політику безпечна: можна відмовитись обговорювати, якщо тебе це ранить.</p></div>
+</section>
+
+<!-- S7 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">07 — Відновлення</div></div>
+<section class="sec reveal" id="s7">
+  <div class="lbl">Анатомія вибачення</div>
+  <h2>Що робить вибачення <em>справжнім</em></h2>
+  <p class="lead">Дослідження вибачень (Lewicki та ін., 2016) виділяють складники. «Вибач, якщо тебе це образило» не працює, бо перекладає провину. Склади вибачення з елементів і побач результат.</p>
+  <div class="ap" id="apGrid">
+    <div class="apc" data-t="Я розумію, що зробив/-ла: [конкретно]." onclick="apTog(this)"><b>1 · Визнання (що саме)</b><span>Конкретний факт без «якщо» й «але».</span></div>
+    <div class="apc" data-t="Моя поведінка була помилкою, і це моя відповідальність." onclick="apTog(this)"><b>2 · Відповідальність</b><span>Без «ти теж», «так склалось».</span></div>
+    <div class="apc" data-t="Мені шкода, що тобі було [боляче/образливо/страшно]." onclick="apTog(this)"><b>3 · Емпатія до наслідків</b><span>Визнання впливу на людину.</span></div>
+    <div class="apc" data-t="Я хочу виправити так: [конкретна дія]." onclick="apTog(this)"><b>4 · Спроба виправити</b><span>Конкретна пропозиція, а не загальні слова.</span></div>
+    <div class="apc" data-t="Я постараюсь, щоб це не повторилось: [що зміню]." onclick="apTog(this)"><b>5 · Зобов'язання</b><span>Що буде інакше.</span></div>
+    <div class="apc" data-t="Я розумію, що тобі потрібен час, і не вимагаю відповіді зараз." onclick="apTog(this)"><b>6 · Повага до часу</b><span>Прощення не можна вимагати.</span></div>
+  </div>
+  <div class="ap-out" id="apOut">Обери складники вибачення</div>
+  <div class="psy"><div class="psy-who">Порада психолога · Про вибачення в онлайні</div><p>Вибачення в чаті — працює, якщо воно особисте й конкретне. Публічне вибачення «для всіх» часто посилює сором і не відновлює довіру. Питання до себе: «Для кого це вибачення — для мене, щоб полегшало, чи для людини?»</p></div>
+</section>
+
+<!-- S8 -->
+<div class="divl reveal"><div class="dl-ln"></div><div class="dl-n">08 — Дилеми, вікторина, протокол</div></div>
+<section class="sec reveal" id="s8">
+  <div class="lbl">9 дилем</div>
+  <h2>Складні <em>ситуації</em></h2>
+  <div class="box"><div class="box-top"><span class="box-tl" id="scTl">Дилема I / IX</span><span class="box-pp" id="scPp">0 pts</span></div><div class="box-pb"><div class="box-pf" id="scPf" style="width:11%"></div></div>
+    <div class="box-body"><div class="scene" id="scSc"></div><div class="q" id="scQ"></div><div class="opts" id="scO"></div><div class="fb" id="scFb"></div><button class="nx" id="scNx" onclick="scNext()">Наступна →</button><div class="fin" id="scFin"></div></div></div>
+
+  <div style="height:3rem"></div><div class="lbl">9 питань</div><h2>Вікторина</h2>
+  <div class="box"><div class="box-top"><span class="box-tl" id="qzTl">I / IX</span><span class="box-pp" id="qzPp">0 pts</span></div><div class="box-pb"><div class="box-pf" id="qzPf" style="width:11%"></div></div>
+    <div class="box-body"><div class="q" id="qzQ"></div><div class="opts" id="qzO"></div><div class="fb" id="qzFb"></div><button class="nx" id="qzNx" onclick="qzNext()">Далі →</button><div class="fin" id="qzFin"></div></div></div>
+
+  <div style="height:3rem"></div><div class="lbl">Особистий протокол</div><h2>Мій <em>протокол</em> конфлікту</h2>
+  <div class="pl-grid">
+    <div class="plf"><label class="pll">Мій ранній сигнал ескалації</label><textarea class="pli" id="a1" rows="2" placeholder="Тіло / думка / тон…"></textarea></div>
+    <div class="plf"><label class="pll">Мій стиль і коли він мене підводить</label><textarea class="pli" id="a2" rows="2" placeholder="Уникаю, і проблеми накопичуються…"></textarea></div>
+    <div class="plf"><label class="pll">Який «вершник» мені найближчий</label><input class="pli" id="a3" placeholder="Критика / презирство / захист / стіна"></div>
+    <div class="plf"><label class="pll">Мій антидот (конкретна фраза)</label><textarea class="pli" id="a4" rows="2" placeholder="Мені потрібно 20 хвилин, я повернусь…"></textarea></div>
+    <div class="plf"><label class="pll">Моя BATNA у типовій ситуації</label><input class="pli" id="a5" placeholder="Якщо не домовимось, я зроблю…"></div>
+    <div class="plf"><label class="pll">Коли це вже не конфлікт, а тиск/насильство, до кого</label><input class="pli" id="a6" value="Дорослий якому довіряю · психолог · 116 111"></div>
+  </div>
+  <button class="pl-btn" onclick="genPlan()">Зберегти протокол →</button>
+  <div class="pl-res" id="plRes"><h3>Мій протокол конфлікту</h3><div id="plC"></div><p style="font-size:.65rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.1em">СКРІНШОТ · ПЕРЕЧИТАЙ ПЕРЕД ВАЖКОЮ РОЗМОВОЮ</p></div>
+</section>
+
+<div class="final reveal">
+  <div class="lbl">Урок завершено</div>
+  <h2>Не <em>перемога</em>,<br>а можливість жити поруч</h2>
+  <p class="lead">Конфлікти не зникнуть. Але ти можеш обирати, що вони зроблять зі стосунками.</p>
+  <div class="fc"><div class="fcl">Компетенції</div><div class="fcv">Три шари конфлікту · Помилки атрибуції · Ескалація за Глазлем · Принципові переговори і BATNA · Вершники Готтмана і антидоти · DESC · Steelman · Анатомія вибачення</div><br><div class="fcl">Коли це вже не конфлікт</div><div class="fcv">Систематичне приниження, шантаж, контроль, насильство в стосунках — це не про «домовитись». Дорослий якому довіряєш · психолог · 116 111 (анонімно, безкоштовно) · 102 при загрозі</div></div>
+  <div class="psy"><div class="psy-who">Порада психолога · Фінальна порада</div><p>Переговорні навички не потрібні, щоб «виграти». Вони потрібні, щоб залишатись собою у стосунках з іншими людьми. І ще одне: уміти відмовитись від переговорів, коли тебе принижують, залякують або контролюють, — теж навичка. Це називається межею, і вона не слабкість.</p></div>
+</div>
+
+<script>
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight))*100+'%';sIds.forEach((id,i)=>{const e=document.getElementById(id);if(!e)return;const r=e.getBoundingClientRect();if(r.top<=innerHeight*.55&&r.bottom>=innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+const rom=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+
+/* generic quiz engine */
+function engine(cfg){
+ let i=0,s=0,done=false;
+ const $=id=>document.getElementById(id);
+ function load(){const d=cfg.data[i];if(cfg.tl)$(cfg.tl).textContent=cfg.label(i,cfg.data.length);if(cfg.pf)$(cfg.pf).style.width=((i+1)/cfg.data.length*100)+'%';if(cfg.sc)$(cfg.sc).textContent=d.s||'';$(cfg.q).textContent=d.q;const o=$(cfg.o);o.innerHTML='';d.o.forEach((t,k)=>{const b=document.createElement('button');b.className='o';b.textContent=t;b.onclick=()=>ans(k);o.appendChild(b);});$(cfg.fb).className='fb';$(cfg.nx).className='nx';done=false;}
+ function ans(k){if(done)return;done=true;const d=cfg.data[i];const bs=$(cfg.o).querySelectorAll('.o');bs.forEach(b=>b.disabled=true);const f=$(cfg.fb);if(k===d.a){bs[k].classList.add('ok');f.className='fb ok show';s++;if(cfg.pp)$(cfg.pp).textContent=s+' pts';}else{bs[k].classList.add('bad');bs[d.a].classList.add('ok');f.className='fb bad show';}f.textContent=d.e;$(cfg.nx).className='nx show';}
+ function next(){i++;if(i<cfg.data.length){load();return;}$(cfg.q).textContent='';$(cfg.o).innerHTML='';if(cfg.sc)$(cfg.sc).style.display='none';$(cfg.fb).className='fb';$(cfg.nx).className='nx';if(cfg.tl)$(cfg.tl).textContent='Завершено';const f=$(cfg.fin);f.style.display='block';f.textContent=`${s} / ${cfg.data.length}`;}
+ load();return next;
+}
+
+/* attribution */
+const atNext=engine({data:[
+ {q:'Однокласник не привітався в коридорі. Яка інтерпретація найімовірніша?',o:['Він мене ігнорує навмисно','Він був заглиблений у думки або не побачив','Він мене ненавидить','Він мене проганяє'],a:1,e:'Фундаментальна помилка атрибуції: чужу поведінку ми пояснюємо характером («він грубий»), свою — обставинами («я поспішав»). Найімовірніше — обставини.'},
+ {q:'Ти запізнився/-лась, бо автобус не приїхав. Друг запізнився, і ти подумав/-ла «безвідповідальний». Це:',o:['Об\'єктивна оцінка','Помилка атрибуції: себе виправдовуємо обставинами, інших судимо за характером','Інтуїція','Нормальна логіка'],a:1,e:'Actor–observer asymmetry. Корисне питання: «Яке пояснення я б прийняв/-ла, якби це був я?»'},
+ {q:'Яка найкраща перша реакція, коли здається, що тебе образили?',o:['Одразу відповісти різко','Уточнити: «Я прочитав це так… Ти мав на увазі це?»','Перестати спілкуватись','Розповісти друзям'],a:1,e:'Перевірка наміру перед реакцією (perception checking) — один із найпростіших способів знизити конфлікт.'},
+ {q:'Гостра атрибуційна помилка сильніша, коли ми…',o:['Спокійні й виспані','Втомлені, налякані або перебуваємо в стресі','У хорошому настрої','Говоримо віч-на-віч'],a:1,e:'Стрес збільшує схильність бачити загрозу й злий намір. Тому під час війни й хронічної напруги непорозумінь більше, і «охолонути» — не розкіш.'},
+],label:(i,n)=>`Помилка атрибуції · ${i+1} / ${n}`,tl:'atTl',pf:'atPf',pp:'atPp',q:'atQ',o:'atO',fb:'atFb',nx:'atNx',fin:'atFin'});
+
+/* Glasl */
+const gl=[
+ ['Зона 1 · Win–Win','Ступінь 1 · Загострення','Позиції стикаються, але ще є віра, що домовимось. Напруга, роздратування.','Приклад: «Давай розкладемо задачі по-іншому, мені так незручно».'],
+ ['Зона 1 · Win–Win','Ступінь 2 · Дебати і поляризація','«Або так, або ніяк». Мислення чорно-біле, з\'являються «ми правильні, вони неправі».','Приклад: «Ти завжди стоїш на своєму».'],
+ ['Зона 1 · Win–Win','Ступінь 3 · Дії замість слів','Розмова не працює, сторони діють мовчки (ігнор, «тиха війна»). Емпатія падає.','Приклад: перестав відповідати в чаті «щоб зрозумів».'],
+ ['Зона 2 · Win–Lose','Ступінь 4 · Образи й коаліції','Стереотипи про іншого, пошук союзників, «ми проти них».','Приклад: «Скажіть їй, що вона не права».'],
+ ['Зона 2 · Win–Lose','Ступінь 5 · Втрата обличчя','Публічне приниження, викриття. Репутація стає зброєю.','Приклад: розповісти секрет у груповому чаті.'],
+ ['Зона 2 · Win–Lose','Ступінь 6 · Погрози','Ультиматуми, залякування. Страх керує поведінкою.','Приклад: «Якщо ти не…, я покажу всім».'],
+ ['Зона 3 · Lose–Lose','Ступінь 7 · Обмежені удари','Мета: нашкодити, навіть якщо шкодить і мені.','Приклад: зіпсувати чужий проєкт.'],
+ ['Зона 3 · Lose–Lose','Ступінь 8 · Розкладання','Мета — зруйнувати опонента та його ресурси.','Приклад: систематична кампанія цькування.'],
+ ['Зона 3 · Lose–Lose','Ступінь 9 · Разом у прірву','Готовність втратити все, аби опонент теж втратив.','Приклад: «Мені однаково, що буде зі мною».'],
+];
+const glEx=['Вихід: уточнити й поговорити зараз. Найдешевший момент.','Вихід: шукати інтереси під позиціями; питати «чому це важливо?».','Вихід: повернутись до слів. Сказати: «Я замовчував, бо мені було боляче. Давай поговоримо».','Вихід: розпустити «армії», один на один, за потреби — нейтральна третя сторона.','Вихід: потрібна третя сторона. Відновлювати повагу, не «виграти».','Вихід: прийняти погрози серйозно, звернутись до дорослого. Не обіцяти поступок під тиском.','Вихід: тільки третя сторона й структура (школа, психолог). Самі сторони навряд чи зупиняться.','Вихід: втручання дорослих і, за потреби, правове. Це вже насильство/булінг.','Вихід: безпека. Якщо «мені однаково, що буде зі мною» стосується тебе — до дорослого або 116 111.'];
+function glShow(v){v=+v;const g=gl[v-1];document.getElementById('glLv').textContent=g[0];document.getElementById('glSt').textContent=g[1];document.getElementById('glTx').textContent=g[2]+' '+g[3];document.getElementById('glEx').textContent='↳ '+glEx[v-1];const p=((v-1)/8)*100;document.getElementById('gl').style.background=`linear-gradient(to right,var(--cu) ${p}%,var(--bd2) ${p}%)`;}
+glShow(1);
+
+/* negotiation lab: 5 steps on one case */
+const ngC='Ви з однокласницею в парі готуєте проєкт на 15 грудня. Ти хочеш закінчити за тиждень до дедлайну, вона пропонує «все робити в останні дні, бо так мотивує». Ти нервуєш, вона образилась на «ти мені не довіряєш».';
+const ng=[
+ {n:'Люди ≠ проблема',q:'Що ти скажеш першим?',o:['«Ти ледача й безвідповідальна»','«Я розумію, що тебе зачепило. Давай розберемось із планом, а не одне з одного»','«Добре, роби як хочеш»'],a:1,e:'Принцип 1: відокремлюй людину від проблеми. Визнай почуття (образу) й сфокусуйся на спільній задачі.'},
+ {n:'Інтереси',q:'Що ти запитаєш, щоб знайти інтерес?',o:['«Чому ти так вирішила?»','«Що для тебе важливо у твоєму ритмі роботи? Мені важливий запас часу на сюрпризи»','«Ти просто не вмієш планувати»'],a:1,e:'Принцип 2: питай про потреби, а не про виправдання. Ти називаєш свій інтерес (надійність), вона — свій (мотивація).'},
+ {n:'Варіанти',q:'Яка пропозиція створює вигоду для обох?',o:['Робимо по-моєму','Розбиваємо проєкт: основне — за 10 днів до дедлайну, творчий фінал — «в її ритмі» в останні 3 дні','Робимо по-її'],a:1,e:'Принцип 3: розроби варіанти до вибору. «Гібрид» враховує інтереси обох (надійність і мотивація).'},
+ {n:'Критерії',q:'Як вибрати, якщо досі не згодні?',o:['Хто голосніше','Об\'єктивні критерії: вимоги вчителя, попередній досвід, жереб, порада нейтральної третьої людини','Хто старший','Образитись'],a:1,e:'Принцип 4: об\'єктивні критерії замість боротьби волі. Інакше виграє той, хто наполегливіший.'},
+ {n:'BATNA',q:'Що таке твоя BATNA тут і навіщо?',o:['Спосіб змусити її погодитись','Твоя найкраща альтернатива, якщо домовитись не вийде (наприклад, попросити вчителя змінити пару). Вона дає спокій і не змушує погоджуватись на що завгодно','Погроза','Нічого, потрібно просто домовитись будь-якою ціною'],a:1,e:'BATNA — не погроза, а твоє розуміння, коли «ні» краще за погану угоду. Вона знижує тиск і робить переговори чеснішими.'},
+];
+let ngI=0,ngS=0,ngA=false;
+function ngLoad(){const d=ng[ngI];document.getElementById('ngSteps').innerHTML=ng.map((x,k)=>`<div class="ns ${k<ngI?'done':k===ngI?'on':''}">${k+1}. ${x.n}</div>`).join('');document.getElementById('ngCase').textContent='Кейс: '+ngC;document.getElementById('ngQ').textContent=d.q;const o=document.getElementById('ngO');o.innerHTML='';d.o.forEach((t,k)=>{const b=document.createElement('button');b.className='o';b.textContent=t;b.onclick=()=>{if(ngA)return;ngA=true;const bs=o.querySelectorAll('.o');bs.forEach(x=>x.disabled=true);const f=document.getElementById('ngFb');if(k===d.a){b.classList.add('ok');f.className='fb ok show';ngS++;}else{b.classList.add('bad');bs[d.a].classList.add('ok');f.className='fb bad show';}f.textContent=d.e;document.getElementById('ngNx').className='nx show';};o.appendChild(b);});document.getElementById('ngFb').className='fb';document.getElementById('ngNx').className='nx';ngA=false;}
+function ngNext(){ngI++;if(ngI<ng.length){ngLoad();return;}document.getElementById('ngSteps').innerHTML=ng.map(x=>`<div class="ns done">${x.n}</div>`).join('');document.getElementById('ngQ').textContent='';document.getElementById('ngO').innerHTML='';document.getElementById('ngFb').className='fb';document.getElementById('ngNx').className='nx';const f=document.getElementById('ngFin');f.style.display='block';f.textContent=`${ngS} / ${ng.length}`;}
+ngLoad();
+
+/* TKI */
+const tkQ=[
+ {q:'Однокласник бере твою річ без питання:',o:[['«Поверни. Це моє»','A'],['«Давай домовимось, як ми обоє будемо користуватись речами»','B'],['«Добре, але наступного разу ти даєш мені»','C'],['Нічого не кажу, сподіваюсь не повториться','D'],['«Та бери, мені не шкода»','E']]},
+ {q:'У проєкті бачиш, що план групи слабкий:',o:[['Наполягаю на своєму плані','A'],['Пропоную обговорити потреби кожного і зібрати найкраще','B'],['Пропоную взяти по частині від кожного','C'],['Мовчу, не хочу сварки','D'],['Погоджуюсь, щоб уникнути напруги','E']]},
+ {q:'Друг публічно пожартував з тебе, тобі неприємно:',o:[['Відповідаю різкіше','A'],['Пізніше кажу, що мені було неприємно, і питаю про намір','B'],['Жартую у відповідь, щоб вирівняти рахунок','C'],['Роблю вигляд, що все ок','D'],['Сміюсь разом','E']]},
+ {q:'Ви з другом хочете різного на вихідні:',o:[['Кажу, що йдемо за моїм планом','A'],['Шукаємо варіант, який влаштує обох','B'],['Сьогодні мій, наступного разу твій','C'],['«Та мені все одно» і самоусуваюсь','D'],['Піду на його варіант','E']]},
+ {q:'Тебе звинувачують у тому, чого ти не робив/-ла:',o:[['Різко заперечую і вимагаю вибачень','A'],['Спокійно пропоную розібрати факти разом','B'],['Погоджуюсь «розділити відповідальність», щоб закрити тему','C'],['Йду, не хочу це обговорювати','D'],['«Ну добре, це я», щоб відстали','E']]},
+ {q:'В чаті класу почалась суперечка:',o:[['Вступаю і доводжу свою правоту','A'],['Пропоную перейти в приват і розібрати','B'],['Пишу щось «нейтрально-примирливе»','C'],['Виходжу з чату','D'],['Підтримую найгучніших, щоб не стати мішенню','E']]},
+ {q:'Оцінка здається несправедливою:',o:[['Публічно вимагаю переглянути','A'],['Після уроку показую роботу й прошу пояснити критерії','B'],['Прошу підняти хоча б трохи','C'],['Мовчу, нічого не зміниш','D'],['Вирішую, що заслужив/-ла','E']]},
+ {q:'Двоє друзів посварились, обоє просять тебе обрати сторону:',o:[['Обираю ту, що права, і кажу це прямо','A'],['Не обираю сторін, але допомагаю їм поговорити','B'],['Догоджаю обом потроху','C'],['Віддаляюсь від обох','D'],['Підтримую ту, що тисне сильніше','E']]},
+ {q:'Ти зрозумів/-ла, що сам/-а винен/-на:',o:[['Тримаюсь свого — визнати складно','A'],['Вибачаюсь і пропоную, як виправити','B'],['«Ми обидва були не праві»','C'],['Сподіваюсь, що забудеться','D'],['Вибачаюсь за все, навіть за зайве','E']]},
+ {q:'Конфлікт зачіпає важливий для тебе принцип:',o:[['Стою до кінця','A'],['Шукаю рішення, що враховує мої принципи і потреби іншого','B'],['Погоджуюсь на половину','C'],['Відходжу — не варто того','D'],['Відмовляюсь від свого заради миру','E']]},
+];
+const tkM={A:['Суперництво','#D8606E','Ти відстоюєш позицію рішуче. Корисно для меж і терміновості. Ризик: перемога в суперечці коштом стосунків.'],B:['Співпраця','#58C8A0','Ти шукаєш рішення, яке враховує всіх. Найсильніше для близьких стосунків. Ризик: витрата сил там, де достатньо швидкого компромісу.'],C:['Компроміс','#D8884A','Взаємні поступки. Швидко, чесно. Ризик: обидва отримують «менше, ніж могли».'],D:['Уникання','#A088E0','Відступ від напруги. Корисно при дрібницях і щоб охолонути. Ризик: накопичення й вибух.'],E:['Пристосування','#7BA8D0','Поступка заради стосунків. Корисно, коли питання важливіше для іншого. Ризик: власні потреби ігноруються.']};
+let tI=0,tV={A:0,B:0,C:0,D:0,E:0};
+function tkLoad(){const q=tkQ[tI];document.getElementById('tkTl').textContent=`Ситуація ${tI+1} / ${tkQ.length}`;document.getElementById('tkPf').style.width=((tI+1)/tkQ.length*100)+'%';document.getElementById('tkQ').textContent=q.q;const o=document.getElementById('tkO');o.innerHTML='';q.o.slice().sort(()=>Math.random()-.5).forEach(([t,v])=>{const b=document.createElement('button');b.className='o';b.textContent=t;b.onclick=()=>{tV[v]++;tI++;tI<tkQ.length?tkLoad():tkShow();};o.appendChild(b);});}
+function tkShow(){document.getElementById('tkBody').style.display='none';const top=Object.entries(tV).sort((a,b)=>b[1]-a[1])[0][0];const m=tkM[top];let h=`<div class="tk-main" style="color:${m[1]}">Найчастіше: ${m[0]}</div><div class="tk-txt">${m[2]}</div>`;Object.keys(tkM).forEach(k=>{h+=`<div class="tkb"><span>${tkM[k][0]}</span><div class="tkt"><div class="tkf" style="width:${tV[k]*10}%;background:${tkM[k][1]}"></div></div><span>${tV[k]}</span></div>`;});h+=`<div class="tk-txt" style="margin-top:1rem">Це тенденція, а не вирок і не «тип особистості». Здорово вміти перемикатись: дрібниці — поступитись, межі — відстояти, близькі стосунки — шукати співпрацю.</div><button class="rt" onclick="tkReset()">Пройти ще раз</button>`;const r=document.getElementById('tkRes');r.innerHTML=h;r.classList.add('show');}
+function tkReset(){tI=0;tV={A:0,B:0,C:0,D:0,E:0};document.getElementById('tkBody').style.display='block';document.getElementById('tkRes').classList.remove('show');tkLoad();}
+tkLoad();
+
+/* DESC builder */
+const ds=[
+ {t:'Партнер по проєкту не здав свою частину',D:['Ми домовлялись, що твоя частина буде готова у вівторок, а зараз четвер, і її немає','Ти знову нічого не зробив/-ла'],E:['я хвилююсь, що не встигнемо','мене це дістало'],S:['Чи можеш ти надіслати до завтра 18:00, або скажи, що тобі заважає?','Зроби нарешті'],C:['тоді ми встигнемо й обоє здамо спокійно','бо якщо ні — я скаржитимусь вчителю']},
+ {t:'Друг регулярно жартує з тебе перед іншими',D:['Коли ти жартуєш про мене при всіх, мені стає ніяково','Ти завжди з мене глузуєш'],E:['і я відчуваю себе приниженим/-ою','ти просто хамло'],S:['Будь ласка, жартуй інакше або наодинці','Припини негайно'],C:['тоді мені буде легше жартувати разом із тобою','бо інакше ми не друзі']},
+ {t:'Тебе виключили з групового чату без пояснень',D:['Я помітив/-ла, що мене видалили з чату класу','Ви мене викинули, бо ви такі'],E:['мені боляче й незрозуміло','мені все одно'],S:['Чи можемо ми поговорити, що сталось?','Поверніть мене, інакше…'],C:['тоді ми зможемо прояснити й, можливо, повернути нормальне спілкування','бо мені потрібна справедливість']},
+];
+let dI=0;
+const dT=document.getElementById('dsTabs');ds.forEach((s,i)=>{const b=document.createElement('button');b.className='bt'+(i?'':' on');b.textContent='Ситуація '+(i+1);b.onclick=()=>{document.querySelectorAll('#dsTabs .bt').forEach(x=>x.classList.remove('on'));b.classList.add('on');dI=i;dsLoad();};dT.appendChild(b);});
+function dsLoad(){const s=ds[dI];document.getElementById('dsSit').textContent='Ситуація: '+s.t;['D','E','S','C'].forEach(k=>{const el=document.getElementById('ds'+k);el.innerHTML='';s[k].forEach((t,j)=>{const o=document.createElement('option');o.value=j;o.textContent=t;el.appendChild(o);});});document.getElementById('dsOut').textContent='Обери частини та натисни «Зібрати»';}
+function dsBuild(){const s=ds[dI];const g=k=>+document.getElementById('ds'+k).value;const sel=[g('D'),g('E'),g('S'),g('C')];const ok=sel.every(v=>v===0);const txt=`${s.D[sel[0]]}, ${s.E[sel[1]]}. ${s.S[sel[2]]} — ${s.C[sel[3]]}.`;document.getElementById('dsOut').innerHTML=`«${txt}»<div class="bld-eval" style="color:${ok?'#58C8A0':'#D8884A'}">${ok?'✓ Це асертивна фраза: факт, почуття, прохання, позитивний наслідок. Без узагальнень, оцінок і погроз.':'⚠ У фразі є узагальнення, оцінка, вимога або погроза. Асертивність не означає агресію: перший варіант у кожному списку — приклад.'}</div>`;}
+dsLoad();
+
+/* steelman */
+const stNext=engine({data:[
+ {s:'Тема: чи заборонити телефони на уроках. Одноклас­ник: «Телефони треба повністю заборонити, бо вони руйнують увагу».',q:'Яка формулювання — «найсильніша версія» його позиції?',o:['«Ти просто не любиш технології»','«Ти хвилюєшся, що ні ти, ні клас не можуть зосередитись, і вважаєш, що повна заборона — єдиний надійний спосіб це змінити. Так?»','«Ти хочеш, щоб ми всі страждали»','«Ти повторюєш за вчителями»'],a:1,e:'Steelman: ти формулюєш його позицію так, що він скаже «так, саме це». Лише після цього можна відповісти своїми аргументами.'},
+ {s:'Тема: чи важливо вчитись заради оцінок. Подруга: «Оцінки — єдине, що відкриває двері до університету».',q:'Що допоможе діалогу?',o:['«Оцінки нічого не варті»','«Для тебе оцінки — це гарантія майбутнього, і ти не хочеш ризикувати. Мені важливо ще й розуміти предмет. Давай подивимось, як це поєднати»','«Ти карєрист»','Змінити тему'],a:1,e:'Спочатку визнаєш цінність («гарантія майбутнього»), потім додаєш свою цінність, і не робиш «або-або».'},
+ {s:'Хтось у чаті пише образливі жарти про людей з певного регіону/мови, інші сперечаються «а може він має право на думку».',q:'Це ситуація для steelman?',o:['Так, треба зрозуміти його найсильніші аргументи','Ні: це принизливі висловлювання щодо людей, а не просто «різні погляди». Тут потрібна межа: сказати «це неприйнятно», не підтримувати, за потреби — до дорослого/модератора','Так, але тільки з одного боку','Не втручатись ніколи'],a:1,e:'Steelman — для різних думок і цінностей, а не для приниження людей. Є різниця між «я не згоден» і «ти гірший через регіон, мову, походження». Другому — межа, а не «діалог».'},
+],label:(i,n)=>`Steelman · ${i+1} / ${n}`,tl:'stTl',pf:'stPf',pp:'stPp',sc:'stSc',q:'stQ',o:'stO',fb:'stFb',nx:'stNx',fin:'stFin'});
+
+/* apology */
+function apTog(el){el.classList.toggle('on');const sel=[...document.querySelectorAll('.apc.on')].map(x=>x.dataset.t);const out=document.getElementById('apOut');if(!sel.length){out.textContent='Обери складники вибачення';return;}const miss=6-sel.length;out.innerHTML=`«${sel.join(' ')}»<br><br><span style="font-size:.78rem;color:${sel.length>=4?'#58C8A0':'#D8884A'}">${sel.length>=4?'Вибачення з достатньою кількістю складників: конкретне і не перекладає відповідальність.':'Не вистачає складників ('+miss+'). Для стійкого відновлення довіри важливі хоча б визнання, відповідальність, емпатія і спроба виправити.'} Одне «вибач» без решти — найчастіше не працює.</span>`;}
+
+/* dilemmas */
+const scN=engine({data:[
+ {s:'Твій найближчий друг систематично контролює, з ким ти спілкуєшся, ображається, якщо ти проводиш час з іншими, і каже «якщо ти мене цінуєш, то не підеш».',q:'Це що?',o:['Звичайні дружні розбіжності','Ознаки контролю й емоційного тиску. Це не просто «конфлікт»: треба обговорити межі, а при повторенні поговорити з дорослим','Знак щирої любові','Це нормально для друзів'],a:1,e:'Контроль, ізоляція від інших, шантаж почуттями — ознаки нездорових стосунків. Тут не «домовляйтесь», а встановлюйте межі й шукайте підтримки.'},
+ {s:'У чаті класу почали «цькувати» одного учня. Всі пишуть, ти бачиш, але нічого не пишеш.',q:'Яка твоя роль?',o:['Нейтральний спостерігач, тому все ок','Свідок. Мовчання підтримує цькування. Можна написати «припиніть», підтримати жертву особисто, повідомити дорослому','Учасник, бо читаєш','Не твоя справа'],a:1,e:'Дослідження булінгу: втручання свідків — один із найефективніших факторів зупинки. Не обов\'язково героїчно: підтримати особисто, не підтримувати, повідомити.'},
+ {s:'Вчитель при всіх зробив тобі несправедливе, на твою думку, зауваження.',q:'Що найкраще?',o:['Сперечатись публічно','Зберегти спокій на уроці й поговорити після: «Я хотів/-ла б зрозуміти ваше зауваження, можу пояснити свою позицію»','Мститися через поведінку на уроках','Скаржитись у соцмережах'],a:1,e:'Конфлікти з дорослими, що мають владу, потребують акуратного вибору моменту й каналу. Публічна ескалація рідко допомагає.'},
+ {s:'Двоє твоїх друзів з різних регіонів посварились через різні досвіди війни й почали дорікати один одному. Кожен тисне на тебе «обери».',q:'Що допоможе?',o:['Обрати сторону того, хто тобі ближчий','Не обирати сторін, дати кожному висловитись, нагадати, що травми різні й не вимірюються, запропонувати перерву; при ескалації — залучити дорослого/психолога','Сказати, що обидва неправі','Вийти з компанії'],a:1,e:'Досвід війни різний, «змагання страждань» руйнує. Роль третьої сторони — створити безпечний простір і не вирішувати «чий біль більший».'},
+ {s:'Ти сам/-а образив/-ла друга жартом і побачив/-ла, що він замовк.',q:'Що робиш?',o:['Нічого, пройде','Напишу: «Мій жарт був недоречний, я розумію, що тебе зачепило [що саме]. Мені шкода. Як мені виправити?»','Зроблю ще один жарт, щоб розрядити','Скажу, що він надто чутливий'],a:1,e:'Конкретне визнання, відповідальність, емпатія і спроба виправити. «Ти надто чутливий» перекладає провину.'},
+ {s:'Ти і партнер по проєкту дуже по-різному працюєте. Ти вже кілька днів накопичуєш роздратування, але мовчиш.',q:'Що найімовірніше станеться?',o:['Само пройде','Накопичення призведе до вибуху на «дрібницю». Краще розмова зараз, DESC-фразою','Він/вона сам/-а здогадається','Вирішиться на дедлайні'],a:1,e:'Уникання відкладає конфлікт і підвищує його «ціну». Рання розмова на 1-2 ступені ескалації дешевша.'},
+ {s:'Хтось із класу шантажує тебе приватними фото/перепискою і вимагає щось зробити.',q:'Що робити?',o:['Виконати вимогу, щоб не поширив','Не відповідати агресору, зберегти докази, негайно розповісти дорослому; при шантажі — 102 і кіберполіція','Погрожувати у відповідь','Видалити все'],a:1,e:'Шантаж — правопорушення, а не конфлікт. Виконання вимог зазвичай посилює тиск. Докази зберігаємо, дорослі залучаються.'},
+ {s:'Ти думаєш, що друг переживає складний період, а на твої питання відповідає «все добре», і при цьому стає все різкішим.',q:'Що можна зробити?',o:['Дочекатись, поки сам скаже','Один раз спокійно сказати: «Я помітив/-ла зміну. Я поруч, коли захочеш поговорити». Не тиснути. Якщо є ознаки небезпеки — до дорослого','Висміяти','Перестати спілкуватись'],a:1,e:'Не всі «конфлікти» — про тебе. Часом різкість — сигнал страждання. Присутність без тиску — найкращий стартовий крок.'},
+ {s:'Ти вже кілька тижнів страждаєш від системних образ групи, не можеш спати й боїшся йти до школи.',q:'Що правильно?',o:['Терпіти — «може закінчиться»','Це не конфлікт, а цькування. Розповісти дорослому, якому довіряєш, психологу; 116 111 — анонімно й безкоштовно. Ти не повинен/-на домовлятись з тим, хто тебе принижує','Помститись','Не ходити до школи'],a:1,e:'Систематичне приниження + нерівність сил + наслідки для сну й школи = булінг. Переговори тут не підходять. Тобі потрібен захист.'},
+],label:(i,n)=>`Дилема ${rom[i]} / ${rom[n-1]}`,tl:'scTl',pf:'scPf',pp:'scPp',sc:'scSc',q:'scQ',o:'scO',fb:'scFb',nx:'scNx',fin:'scFin'});
+
+/* quiz */
+const qzN=engine({data:[
+ {q:'Скільки шарів має типовий конфлікт?',o:['Один: предмет','Три: предметний, стосунковий, ціннісний','Два: правда й неправда','Чотири: стать, вік, клас, регіон'],a:1,e:'Часто вирішують лише предметний шар, а стосунковий і ціннісний залишаються — і конфлікт триває.'},
+ {q:'Фундаментальна помилка атрибуції — це:',o:['Привіт, спокійно','Схильність пояснювати чужу поведінку характером, а свою — обставинами','Здатність розуміти чужі почуття','Помилка в розрахунках'],a:1,e:'Особливо сильна в стресі. Лікує її уточнення й питання «що ще може пояснювати це?»'},
+ {q:'Після якої зони у моделі Глазля сторони, як правило, не можуть зупинитись без третьої сторони?',o:['Після першої','Приблизно після переходу до «Win–Lose» (ступені 4+)','Тільки на 9-му','Ніколи'],a:1,e:'Чим вище, тим більше потрібен нейтральний посередник або структура. Тому важливо діяти рано.'},
+ {q:'Що таке BATNA?',o:['Тип вибачення','Найкраща альтернатива домовленості: що ти зробиш, якщо не домовитесь. Вона не дозволяє погоджуватись на погану угоду від безвиході','Спосіб тиску','Правило школи'],a:1,e:'Fisher & Ury. BATNA знижує залежність від конкретної угоди й робить переговори чеснішими.'},
+ {q:'Який із «вершників» Готтмана — найсильніший провісник розпаду стосунків?',o:['Критика','Презирство','Мовчазна стіна','Захисна позиція'],a:1,e:'Презирство (сарказм, глузування «зверху») — найсильніший провісник. Антидот — культура поваги й вдячності.'},
+ {q:'Що відрізняє асертивну фразу (DESC) від агресивної?',o:['Гучність','Факт, почуття, прохання і позитивний наслідок замість узагальнень, оцінок і погроз','Довжина','Вибір слів'],a:1,e:'Асертивність — відстоювання себе з повагою до іншого. Не пасивність і не агресія.'},
+ {q:'Коли steelman не підходить?',o:['Коли тема складна','Коли йдеться про принизливі висловлювання щодо людей або про булінг: тут потрібна межа, а не «діалог»','Коли є час','Ніколи'],a:1,e:'Steelman — про різні думки й цінності. Приниження людини — не «погляд», а порушення меж.'},
+ {q:'Що з нижчого НЕ є складником справжнього вибачення?',o:['Визнання конкретної дії','Спроба виправити','«Вибач, якщо тебе це образило»','Зобов\'язання змінитись'],a:2,e:'«Якщо» перекладає провину на того, хто образився. Справжнє вибачення конкретне й бере відповідальність.'},
+ {q:'Як відрізнити конфлікт від булінгу?',o:['Булінг гучніший','Булінг: навмисність + повторюваність + нерівність сил; жертва не може захиститись. Переговори тут не працюють — потрібні дорослі','Різниці немає','Конфлікт — тільки між друзями'],a:1,e:'Саме тому вчимо й меж: коли тиск системний, треба не «домовлятись», а шукати захист.'},
+],label:(i,n)=>`${rom[i]} / ${rom[n-1]}`,tl:'qzTl',pf:'qzPf',pp:'qzPp',q:'qzQ',o:'qzO',fb:'qzFb',nx:'qzNx',fin:'qzFin'});
+function atNextW(){}
+
+/* plan */
+function genPlan(){const v=id=>(document.getElementById(id).value.trim()||'—').replace(/</g,'&lt;');const L=[['Ранній сигнал','a1'],['Мій стиль','a2'],['Мій «вершник»','a3'],['Мій антидот','a4'],['Моя BATNA','a5'],['Якщо це тиск/насильство','a6']];document.getElementById('plC').innerHTML=L.map(([l,id])=>`<div class="plr"><span class="plr-l">${l}</span><span>${v(id)}</span></div>`).join('');document.getElementById('plRes').classList.add('show');}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🎤</i><b>The walk from «no» to «yes»</b><br><span>William Ury, TED, 2010<br>Про переговори; для обговорення</span></div><div><i>🧰</i><b>Я-повідомлення</b><br><span>Практика<br>Коли ти…, я відчуваю…, прошу…</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (9)</summary><ol><li>Glasl, F. (1982). The process of conflict escalation and roles of third parties. In G. B. J. Bomers &amp; R. B. Peterson (Eds.), <i>Conflict management and industrial relations</i>. Kluwer-Nijhoff.</li><li>Fisher, R., &amp; Ury, W. (1981). <i>Getting to Yes</i>. Houghton Mifflin.</li><li>Thomas, K. W., &amp; Kilmann, R. H. (1974). <i>Thomas-Kilmann Conflict Mode Instrument</i>. Xicom.</li><li>Gottman, J. M. (1994). <i>What Predicts Divorce?</i> Lawrence Erlbaum.</li><li>Lazare, A. (2004). <i>On Apology</i>. Oxford University Press.</li><li>Deutsch, M. (1973). <i>The Resolution of Conflict</i>. Yale University Press.</li><li>Johnson, D. W., &amp; Johnson, R. T. (1996). Conflict resolution and peer mediation programs in elementary and secondary schools: A review of the research. <i>Review of Educational Research, 66</i>(4), 459–506.</li><li>Olweus, D. (1993). <i>Bullying at School</i>. Blackwell.</li><li>Bower, S. A., &amp; Bower, G. H. (1976). <i>Asserting Yourself</i>. Addison-Wesley.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="07-crisis_calm.html">← Попередня</a> <a href="../index.html">Усі теми</a></span><a href="09-selfesteem.html">Наступна тема →</a></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>
